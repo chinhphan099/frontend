@@ -1,0 +1,45 @@
+table.tb-temp.ver-top
+  tr
+    th: strong Youtube
+    th: strong Code
+    th: strong Code
+    th: strong Video HTML5
+  tr
+    td
+      .video-wrap(data-youtube='{"idOrLink": "https://youtu.be/NZ2Plnhz2-Q", "autoplay": 0}')
+        .video-container
+          .iframeYoutube
+          .thumb(style="background-image: url(images/upload/banner-1.jpg)" data-handle)
+        +button({})(class="control" data-handle)
+          i.icon-play-outline
+          i.icon-pause-outline
+    td
+      code.code
+        span.tab0 .video-wrap(data-youtube='{"idOrLink": "#[strong.red-text Q2uTz6otsAk]", "autoplay": #[strong.red-text 0]}')
+        span.tab1 .video-container
+        span.tab2 .iframeYoutube
+        span.tab2 .thumb(style="background-image: url(images/upload/banner-1.jpg)" data-handle)
+        span.tab1 +button({})(class="control" data-handle)
+        span.tab2 i.icon-play-outline
+        span.tab2 i.icon-pause-outline
+    td
+      code.code
+        span.tab0 .video-wrap(data-video)
+        span.tab1 .video-container
+        span.tab2 video(controls data-handle="")
+        span.tab3 source(src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4")
+        span.tab3 source(src="http://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg")
+        span.tab2 .thumb(style="background-image: url(images/upload/banner-2.jpg)" data-handle)
+        span.tab1 +button({})(class="control" data-handle)
+        span.tab2 i.icon-play-outline
+        span.tab2 i.icon-pause-outline
+    td
+      .video-wrap(data-video)
+        .video-container
+          video(controls data-handle="")
+            source(src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4")
+            source(src="http://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg")
+          .thumb(style="background-image: url(images/upload/banner-2.jpg)" data-handle)
+        +button({})(class="control" data-handle)
+          i.icon-play-outline
+          i.icon-pause-outline

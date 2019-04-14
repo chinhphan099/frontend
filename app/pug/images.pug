@@ -1,0 +1,19 @@
+extends layouts/template
+
+block vars
+  -title = 'Images'
+  -bodyClass = 'template'
+
+block main
+  ul.tmp-img(data-copies)
+    li(data-handler): +images('banner-0.jpg', 'alt')
+    li(data-handler): +images('banner-1.jpg', 'alt')
+    li(data-handler): +images('banner-2.jpg', 'alt')
+    li(data-handler): +images('banner-3.jpg', 'alt')
+block menu
+  .tmp-main-nav-wrap
+    .tmp-main-nav
+      ul
+        li: +link('Style Guide', 'temp-style-guide.html').outlink
+        li: +link('Style Sprite', 'temp-sprite.html').outlink
+        li: +link('Style js', 'temp-js.html').outlink

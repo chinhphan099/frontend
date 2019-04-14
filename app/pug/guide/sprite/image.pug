@@ -1,0 +1,20 @@
+table.tb-temp
+  thead
+    tr
+      td: strong Mixin
+      td: strong View
+  tbody
+    tr(data-handler="")
+      td
+        code.highlight
+          strong Image in images/ folder
+          br
+          span(data-copy="") +img('logo.png', 'Alt_of_Image')
+      td: +img('logo.png', 'Alt_of_Image')(style="max-width: 100px;")
+    tr(data-handler="")
+      td
+        code.highlight
+          strong Image in images/upload/ folder
+          br
+          span(data-copy="") +img-upload('2016.jpg', 'Alt_Of_Image')
+      td: +img-upload('2016.jpg', 'Alt_Of_Image')(style="max-width: 100px;")

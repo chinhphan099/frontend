@@ -1,0 +1,252 @@
+h3.temp-h3.divider#mobile-first: span Mobile First
+.tmp-tb-wrap
+  table.tb-temp
+    thead
+      tr
+        th
+          strong #[span.red-text Mobile First:] Style for #[span.red-text Large Mobile] First.
+        th
+          strong Screens
+    tbody
+      tr(data-handler="")
+        td
+          code.highlight #[span(data-copy="/* Max Tablet */ @media (max-width: @md-max) {}") @media (max-width: @md-max) {}]
+        td.temp-table-utilities-wrap
+          table.temp-table-utilities
+            tr
+              td.is-visible Small Mobile
+              td.is-visible Large Mobile
+              td.is-visible Tablet
+              td Desktop
+              td Large Desktop
+      tr(data-handler="")
+        td
+          code.highlight #[span(data-copy="/* Max Large Mobile */ @media (max-width: @sm-max) {}") @media (max-width: @sm-max) {}]
+        td.temp-table-utilities-wrap
+          table.temp-table-utilities
+            tr
+              td.is-visible Small Mobile
+              td.is-visible Large Mobile
+              td Tablet
+              td Desktop
+              td Large Desktop
+      tr(data-handler="")
+        td
+          code.highlight(data-copy="/* Max Small Mobile */ @media (max-width: @xs-max) {}") @media (max-width: @xs-max) {}
+        td.temp-table-utilities-wrap
+          table.temp-table-utilities
+            tr
+              td.is-visible Small Mobile
+              td Large Mobile
+              td Tablet
+              td Desktop
+              td Large Desktop
+      tr(data-handler="")
+        td
+          code.highlight(data-copy="/* Min Large Mobile */ @media (min-width: @sm-min) {}") @media (min-width: @sm-min) {}
+        td.temp-table-utilities-wrap
+          table.temp-table-utilities
+            tr
+              td Small Mobile
+              td.is-visible Large Mobile
+              td.is-visible Tablet
+              td.is-visible Desktop
+              td.is-visible Large Desktop
+      tr(data-handler="")
+        td
+          code.highlight(data-copy="/* Large Mobile Only */ @media (min-width: @sm-min) and (max-width: @sm-max) {}") @media (min-width: @sm-min) and (max-width: @sm-max) {}
+        td.temp-table-utilities-wrap
+          table.temp-table-utilities
+            tr
+              td Small Mobile
+              td.is-visible Large Mobile
+              td Tablet
+              td Desktop
+              td Large Desktop
+      tr(data-handler="")
+        td
+          code.highlight(data-copy="/* Large Mobile Landscape */ @media (min-width: @sm-min) and (max-width: @sm-max) and (orientation:landscape) {}") @media (min-width: @sm-min) and (max-width: @sm-max) and (orientation:landscape) {}
+        td.temp-table-utilities-wrap
+          table.temp-table-utilities
+            tr
+              td Small Mobile
+              td.is-visible Large Mobile Landscape
+              td Tablet
+              td Desktop
+              td Large Desktop
+      tr(data-handler="")
+        td
+          code.highlight(data-copy="/* Min Tablet */ @media (min-width: @md-min) {}") @media (min-width: @md-min) {}
+        td.temp-table-utilities-wrap
+          table.temp-table-utilities
+            tr
+              td Small Mobile
+              td Large Mobile
+              td.is-visible Tablet
+              td.is-visible Desktop
+              td.is-visible Large Desktop
+      tr(data-handler="")
+        td
+          code.highlight(data-copy="/* Tablet Only */ @media (min-width: @md-min) and (max-width: @md-max) {}") @media (min-width: @md-min) and (max-width: @md-max) {}
+        td.temp-table-utilities-wrap
+          table.temp-table-utilities
+            tr
+              td Small Mobile
+              td Large Mobile
+              td.is-visible Tablet
+              td Desktop
+              td Large Desktop
+      tr(data-handler="")
+        td
+          code.highlight(data-copy="/* Tablet Landscape */ @media (min-width: @md-min) and (max-width: @md-max) and (orientation: landscape) {}") @media (min-width: @md-min) and (max-width: @md-max) and (orientation: landscape) {}
+        td.temp-table-utilities-wrap
+          table.temp-table-utilities
+            tr
+              td Small Mobile
+              td Large Mobile
+              td.is-visible Tablet landscape
+              td Desktop
+              td Large Desktop
+      tr(data-handler="")
+        td
+          code.highlight(data-copy="/* Min Small Desktop */ @media (min-width: @lg-min) {}") @media (min-width: @lg-min) {}
+        td.temp-table-utilities-wrap
+          table.temp-table-utilities
+            tr
+              td Small Mobile
+              td Large Mobile
+              td Tablet
+              td.is-visible Desktop
+              td.is-visible Large Desktop
+      tr(data-handler="")
+        td
+          code.highlight(data-copy="/* Min Large Desktop */ @media (min-width: @xl-min) {}") @media (min-width: @xl-min) {}
+        td.temp-table-utilities-wrap
+          table.temp-table-utilities
+            tr
+              td Small Mobile
+              td Large Mobile
+              td Tablet
+              td Desktop
+              td.is-visible Large Desktop
+
+h3.temp-h3.divider#desktop-first: span Desktop First
+.tmp-tb-wrap
+  table.tb-temp
+    thead
+      tr
+        th
+          strong #[span.red-text Desktop First:] Style for #[span.red-text Desktop] First.
+        th
+          strong Screens
+    tbody
+      tr(data-handler="")
+        td
+          code.highlight #[span(data-copy="/* Min Small Desktop */ @media (min-width: @lg-min) {}") @media (min-width: @lg-min) {}]
+        td.temp-table-utilities-wrap
+          table.temp-table-utilities
+            tr
+              td Small Mobile
+              td Large Mobile
+              td Tablet
+              td.is-visible Desktop
+              td.is-visible Large Desktop
+      tr(data-handler="")
+        td
+          code.highlight(data-copy="/* Min Large Desktop */ @media (min-width: @xl-min) {}") @media (min-width: @xl-min) {}
+        td.temp-table-utilities-wrap
+          table.temp-table-utilities
+            tr
+              td Small Mobile
+              td Large Mobile
+              td Tablet
+              td Desktop
+              td.is-visible Large Desktop
+      tr(data-handler="")
+        td
+          code.highlight(data-copy="/* Max Small Desktop */ @media (max-width: @lg-max) {}") @media (max-width: @lg-max) {}
+        td.temp-table-utilities-wrap
+          table.temp-table-utilities
+            tr
+              td.is-visible Small Mobile
+              td.is-visible Large Mobile
+              td.is-visible Tablet
+              td.is-visible Desktop
+              td Large Desktop
+      tr(data-handler="")
+        td
+          code.highlight(data-copy="/* Max Tablet */ @media (max-width: @md-max) {}") @media (max-width: @md-max) {}
+        td.temp-table-utilities-wrap
+          table.temp-table-utilities
+            tr
+              td.is-visible Small Mobile
+              td.is-visible Large Mobile
+              td.is-visible Tablet
+              td Desktop
+              td Large Desktop
+      tr(data-handler="")
+        td
+          code.highlight(data-copy="/* Tablet Only */ @media (min-width: @md-min) and (max-width: @md-max) {}") @media (min-width: @md-min) and (max-width: @md-max) {}
+        td.temp-table-utilities-wrap
+          table.temp-table-utilities
+            tr
+              td Small Mobile
+              td Large Mobile
+              td.is-visible Tablet
+              td Desktop
+              td Large Desktop
+      tr(data-handler="")
+        td
+          code.highlight(data-copy="/* Tablet Landscape */ @media (min-width: @md-min) and (max-width: @md-max) and (orientation: landscape) {}") @media (min-width: @md-min) and (max-width: @md-max) and (orientation: landscape) {}
+        td.temp-table-utilities-wrap
+          table.temp-table-utilities
+            tr
+              td Small Mobile
+              td Large Mobile
+              td.is-visible Tablet Lanscape
+              td Desktop
+              td Large Desktop
+      tr(data-handler="")
+        td
+          code.highlight(data-copy="/* Max Large Mobile */ @media (max-width: @sm-max) {}") @media (max-width: @sm-max) {}
+        td.temp-table-utilities-wrap
+          table.temp-table-utilities
+            tr
+              td.is-visible Small Mobile
+              td.is-visible Large Mobile
+              td Tablet
+              td Desktop
+              td Large Desktop
+      tr(data-handler="")
+        td
+          code.highlight(data-copy="/* Large Mobile Only */ @media (min-width: @sm-min) and (max-width: @sm-max) {}") @media (min-width: @sm-min) and (max-width: @sm-max) {}
+        td.temp-table-utilities-wrap
+          table.temp-table-utilities
+            tr
+              td Small Mobile
+              td.is-visible Large Mobile
+              td Tablet
+              td Desktop
+              td Large Desktop
+      tr(data-handler="")
+        td
+          code.highlight(data-copy="/* Large Mobile Landscape */ @media (min-width: @sm-min) and (max-width: @sm-max) and (orientation:landscape) {}") @media (min-width: @sm-min) and (max-width: @sm-max) and (orientation:landscape) {}
+        td.temp-table-utilities-wrap
+          table.temp-table-utilities
+            tr
+              td Small Mobile
+              td.is-visible Large Mobile Landscape
+              td Tablet
+              td Desktop
+              td Large Desktop
+      tr(data-handler="")
+        td
+          code.highlight(data-copy="/* Max Small Mobile */ @media (max-width: @xs-max) {}") @media (max-width: @xs-max) {}
+        td.temp-table-utilities-wrap
+          table.temp-table-utilities
+            tr
+              td.is-visible Small Mobile
+              td Large Mobile
+              td Tablet
+              td Desktop
+              td Large Desktop

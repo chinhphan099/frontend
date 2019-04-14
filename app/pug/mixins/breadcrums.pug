@@ -1,0 +1,10 @@
+mixin breadcrumbs(arr)
+  ul.breadcrumbs&attributes(attributes)
+    - var n = arr.length
+    each item,index in arr
+      if (index < n-1)
+        li
+          +link(item.title, item.href, item.text)
+        li #[i.icon-arrow-right]
+      else
+        li.active!= item.text ? item.text : item.title

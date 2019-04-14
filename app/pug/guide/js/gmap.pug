@@ -1,0 +1,33 @@
+table.tb-temp.ver-top
+  tr
+    th: strong View
+    th: strong Code
+  tr
+    td
+      .fieldset
+        +customSelect({id: 'selectlocation'}, [
+          {value: '', text: 'Please select position'}
+        ])
+    td
+      .fieldset
+        +customSelect({id: 'selectlocation1'}, [
+          {value: '', text: 'Please select position'}
+        ])
+  tr
+    td
+      #map(data-gmap='{"id":"map", "zoom": [4, 17], "dropdown": "selectlocation", "input": "pacInput", "initValue": "Chi nhánh Tân Bình", "locations": "locations"}')
+      input(id="pacInput" class="controls" type="text" placeholder="Search Box")
+    td
+      #map1(data-gmap='{"id":"map1", "zoom": [4, 17], "dropdown": "selectlocation1", "input": "pacInput1", "locations": "locations1"}')
+      input(id="pacInput1" class="controls" type="text" placeholder="Search Box")
+script.
+  var locations = [
+    {name: 'Chi nhánh Tân Bình', lat: 10.8305335, lng: 106.6353312, mess: '<div class="noscrollbar">124/85 Phan Huy Ích, Phường 15, Quận Tân Bình</div>'},
+    {name: 'Chi nhánh Quận 1', lat: 10.7903090, lng: 106.6991340, mess: '<div class="noscrollbar">60 Nguyễn Văn Thủ, Đa Kao, Quận 1</div>', marker: 'http://rawgit.com/chinhphan099/blogspot/master/turquoise-marker.png'}
+  ];
+  var locations1 = [
+    {name: 'Chi nhánh Tân Bình', lat: 10.8305335, lng: 106.6353312, mess: '<div class="noscrollbar">124/85 Phan Huy Ích, Phường 15, Quận Tân Bình</div>'},
+    {name: 'Chi nhánh Quận 1', lat: 10.7903090, lng: 106.6991340, mess: '<div class="noscrollbar">60 Nguyễn Văn Thủ, Đa Kao, Quận 1</div>', marker: 'http://rawgit.com/chinhphan099/blogspot/master/turquoise-marker.png'}
+  ];
+script(src="//maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAIlQFC86Q2W1wp1cnjdXQDH9WnU7wH1e8&libraries=places")
+//script(src="//maps.googleapis.com/maps/api/js?key=AIzaSyAIlQFC86Q2W1wp1cnjdXQDH9WnU7wH1e8&libraries=places")

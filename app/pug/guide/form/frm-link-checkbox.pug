@@ -1,0 +1,55 @@
+h3.temp-h3.divider#custom-link-checkbox: span Custom Link Checkbox
+table.tb-temp
+  thead
+    tr
+      th: strong Mixin
+      th: strong View
+  tbody
+    tr
+      td(data-handler="")
+        code.highlight(data-copy="") .fieldset: +linkCheckbox({id: 'link-cb', text: 'Link_Checkbox', checked: 'checked'})
+      td
+        .fieldset
+          +linkCheckbox({id: 'link-cb', text: 'Link_Checkbox', checked: 'checked'})
+    tr
+      td(data-handler="")
+        code.highlight(data-copy="") .fieldset: +linkCheckbox({id: 'link-cb-2', text: 'Link_Checkbox'}).circle
+      td: .fieldset: +linkCheckbox({id: 'link-cb-2', text: 'Link_Checkbox'}).circle
+    tr
+      td(data-handler="")
+        code.highlight(data-copy="") .fieldset: +linkCheckbox({id: 'link-cb-21', text: 'Link_Checkbox_Right'}).circle.right
+      td: .fieldset: +linkCheckbox({id: 'link-cb-21', text: 'Link_Checkbox_Right'}).circle.right
+    tr
+      td(data-handler="")
+        code.highlight(data-copy="") .fieldset: +linkCheckbox({id: 'link-cb-22', text: 'Link_Checkbox_Full_Width'}).expanded.right
+      td: .fieldset: +linkCheckbox({id: 'link-cb-22', text: 'Link_Checkbox_Full_Width'}).expanded.right
+    tr
+      td(data-handler="")
+        code.highlight(data-copy="") .fieldset: +linkCheckbox({id: 'link-cb-03', text: 'Link_Checkbox_At_Center', checked: 'checked'}).center-mode
+      td: .fieldset: +linkCheckbox({id: 'link-cb-03', text: 'Link_Checkbox_At_Center', checked: 'checked'}).center-mode
+    tr
+      td(data-handler="")
+        code.highlight(data-copy="") .fieldset.text-center: +linkCheckbox({id: 'link-cb-031', text: 'Link_Checkbox_At_Center_Above', checked: 'checked'}).center-mode.above
+      td: .fieldset.text-center: +linkCheckbox({id: 'link-cb-031', text: 'Link_Checkbox_At_Center_Above', checked: 'checked'}).center-mode.above
+    tr
+      td(data-handler="")
+        code.highlight(data-copy="") .fieldset.text-center: +linkCheckbox({id: 'link-cb-032', text: 'Link_Checkbox_At_Center_Below', checked: 'checked'}).center-mode.below
+      td: .fieldset.text-center: +linkCheckbox({id: 'link-cb-032', text: 'Link_Checkbox_At_Center_Below', checked: 'checked'}).center-mode.below
+    tr
+      td(colspan="2")
+        code.highlight
+          | Options:
+          br
+          | - type: "checkbox"
+          br
+          | - id
+          br
+          | - name == id
+          br
+          | - value
+          br
+          | - checked
+          br
+          | - text (of link)
+          br
+          | - class (go with .custom-checkbox)

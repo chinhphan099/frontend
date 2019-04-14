@@ -1,0 +1,39 @@
+extends layouts/sitemap
+
+block main
+  +rowTitle('Guide')
+  +rowContentList([
+    {
+    name: 'Style Guide',
+    link: 'temp-style-guide.html',
+      progress: '100'
+    },
+    {
+    name: 'Temp Sprite',
+    link: 'temp-sprite.html',
+      progress: '100'
+    },
+    {
+    name: 'Temp Flexbox',
+    link: 'temp-flex.html',
+      progress: '5'
+    },
+    {
+    name: 'Guide js',
+    link: 'temp-js.html',
+      progress: '100'
+    },
+    {
+    name: 'Images',
+    link: 'images.html',
+      progress: '100'
+    }
+  ])
+  +rowTitle('Pages')
+  +rowContentList([
+    {
+      name: 'Index',
+      link: 'index.html',
+      progress: '100'
+    }
+  ])

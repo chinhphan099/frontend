@@ -1,0 +1,169 @@
+h3.temp-h3.divider#position: span a. Mixin Position
+table.tb-temp(data-equal="")
+  thead
+    tr
+      th: strong Mixin
+      th: strong View
+  tbody
+    tr(data-handler="")
+      td(data-parent="")
+        code.highlight(data-child="child")
+          span(data-copy="") .position();
+      td
+        | position : absolute;
+        br
+        | top : 0;
+        br
+        | right : 0;
+        br
+        | bottom : 0;
+        br
+        | left : 0
+    tr(data-handler="")
+      td(data-parent="")
+        code.highlight(data-child="child")
+          span(data-copy="") .position(1px);
+      td
+        | position : absolute;
+        br
+        | top : 1px;
+        br
+        | right : 1px;
+        br
+        | bottom : 1px;
+        br
+        | left : 1px;
+    tr(data-handler="")
+      td(data-parent="")
+        code.highlight(data-child="child")
+          span(data-copy="") .position(static, 1px);
+      td
+        | position : static;
+        br
+        | top : 1px;
+        br
+        | right : 1px;
+        br
+        | bottom : 1px;
+        br
+        | left : 1px;
+    tr(data-handler="")
+      td(data-parent="")
+        code.highlight(data-child="child")
+          span(data-copy="") .position(1px null 3px 4px);
+      td
+        | position : absolute;
+        br
+        | top : 1px;
+        br
+        | bottom : 3px;
+        br
+        | left : 4px;
+    tr(data-handler="")
+      td(data-parent="")
+        code.highlight(data-child="child")
+          span(data-copy="") .position(static, 1px null 3px 4px);
+      td
+        | position : static;
+        br
+        | top : 1px;
+        br
+        | bottom : 3px;
+        br
+        | left : 4px
+    tr(data-handler="")
+      td(data-parent="")
+        code.highlight(data-child="child")
+          span(data-copy="") .position(1px 2px);
+      td
+        | position : absolute;
+        br
+        | top : 1px;
+        br
+        | right : 2px;
+    tr(data-handler="")
+      td(data-parent="")
+        code.highlight(data-child="child")
+          span(data-copy="") .position(static, 1px 2px);
+      td
+        | position : static;
+        br
+        | top : 1px;
+        br
+        | right : 2px;
+    tr(data-handler="")
+      td(data-parent="")
+        code.highlight(data-child="child")
+          span(data-copy="") .position(1px null);
+      td
+        | position : absolute;
+        br
+        | top : 1px;
+    tr(data-handler="")
+      td(data-parent="")
+        code.highlight(data-child="child")
+          span(data-copy="") .position(static, 1px null);
+      td
+        | position : static;
+        br
+        | top : 1px;
+
+h3.temp-h3.divider#triangle: span b. Mixin Triangle
+table.tb-temp
+  thead
+    tr
+      th: strong Mixin
+      th: strong View
+  tbody
+    tr(data-handler="")
+      td
+        code.highlight(data-copy="") .triangle(up, 30px, 40px, @color08);
+      td
+        .triangle-up
+    tr(data-handler="")
+      td
+        code.highlight(data-copy="") .triangle(right, 30px, 40px, @color08);
+      td
+        .triangle-right
+    tr(data-handler="")
+      td
+        code.highlight(data-copy="") .triangle(down, 30px, 40px, @color08);
+      td
+        .triangle-down
+    tr(data-handler="")
+      td
+        code.highlight(data-copy="") .triangle(left, 30px, 40px, @color08);
+      td
+        .triangle-left
+    tr(data-handler="")
+      td
+        code.highlight(data-copy="") .triangle(upleft, 30px, 40px, @color08);
+      td
+        .triangle-upleft
+    tr(data-handler="")
+      td
+        code.highlight(data-copy="") .triangle(upright, 30px, 40px, @color08);
+      td
+        .triangle-upright
+    tr(data-handler="")
+      td
+        code.highlight(data-copy="") .triangle(downleft, 30px, 40px, @color08);
+      td
+        .triangle-downleft
+    tr(data-handler="")
+      td
+        code.highlight(data-copy="") .triangle(downright, 30px, 40px, @color08);
+      td
+        .triangle-downright
+    tr
+      td(colspan="2")
+        code.highlight
+          | Options:
+          br
+          | - direction: up, down, right, left, upright, upleft, downright, downleft
+          br
+          | - width
+          br
+          | - height
+          br
+          | - color

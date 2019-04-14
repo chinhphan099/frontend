@@ -1,0 +1,15 @@
+header.header
+	nav.nav.clearfix
+		ul.navigation
+			+items([
+				{title: 'Home', href: '#'},
+				{
+					title: 'javascript',
+					href:'#',
+					subList: [
+						{title: 'sAJAX'},
+						{title: 'sXML'},
+					], subActive: sub1
+				},
+				{title: 'Sitemap', href: 'sitemap.html'}
+			], mainNav)

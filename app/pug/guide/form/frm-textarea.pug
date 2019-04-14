@@ -1,0 +1,22 @@
+h3.temp-h3.divider#textarea: span Textarea
+table.tb-temp
+  thead
+    tr
+      th: strong Mixin
+      th: strong View
+  tbody
+    tr
+      td
+        code.highlight(data-handler="")
+          span(data-copy="") .fieldset: +textarea('area_id', 'Placeholder')
+          br
+          br
+          | Values:
+          br
+          | - id
+          br
+          | - placeholder
+      td
+        .fieldset
+          +label('area_id', 'Normal State').label
+          +textarea('area_id', 'Placeholder')

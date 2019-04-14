@@ -1,0 +1,33 @@
+mixin singleMenu(items)
+  nav&attributes(attributes)
+    - var active = ''
+    each item,index in items
+      - active = index === mainNav ? 'active' : ''
+      +link(item.title, item.href, item.text)(class=active)
+
+mixin items(items, activeIndex)
+  - var active = ''
+  each item,index in items
+    - active = index === activeIndex ? 'active': ''
+    li(class=active, class=item.liClass)
+      if item.subList
+        +link(item.title, item.href, item.text)(class=item.linkClass, target=item.target, data-active="", data-handle=item.title)
+        div(class=item.subClass, data-content=item.title)
+          ul(data-collapse="")
+            +items(item.subList, item.subActive)
+      else
+        +link(item.title, item.href, item.text)(class=item.linkClass, target=item.target)
+
+mixin items-1(items, activeIndex)
+  - var active = ''
+  each item,index in items
+    - active = index === activeIndex ? 'active': ''
+    li(class=active, class=item.liClass)
+      if item.subList
+        +link(item.title, item.href, item.text)(class=item.linkClass, target=item.target, data-scrollto='{"handle": "' + item.href + '"}')
+        div(class=item.subClass)
+          ul
+            +items-1(item.subList, item.subActive)
+      else
+        +link(item.title, item.href, item.text)(class=item.linkClass, target=item.target, data-scrollto='{"handle": "' + item.href + '", "initUnder": 3000}')
+

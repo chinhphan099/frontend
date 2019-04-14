@@ -1,0 +1,9 @@
+mixin img(src, alt)
+  img(src=src ? 'images/' + src : 'images/transparent.png', alt=alt ? alt : 'alt')&attributes(attributes)
+
+mixin img-upload(src, alt)
+  img(src=src ? 'images/upload/' + src : 'images/transparent.png', alt=alt ? alt : 'alt')&attributes(attributes)
+
+//- Use for images.jade
+mixin images(src, alt)
+  +img-upload(src, alt)(data-copy="+img-upload(" + src+ ", " + alt + ")")

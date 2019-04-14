@@ -1,0 +1,61 @@
+// Variable
+@import "libs/variable.less";
+// Mixin
+@import "mixins/mixin.less";
+
+/* Animate */
+@import "plugins/animate.less";
+/* Tabs */
+@import "plugins/tabs.less";
+/* Slider */
+@import "plugins/slider.less";
+/* Fancybox */
+@import "plugins/fancybox.less";
+/* mCustomScrollbar */
+@import "plugins/jquery.mCustomScrollbar.less";
+/* Zoomer */
+@import "plugins/zoomer.less";
+/* Gmap */
+@import "plugins/gmap.less";
+/* Video */
+@import "plugins/video.less";
+/* SmoothZoom */
+@import "plugins/smoothzoom.less";
+
+/* Custom CSS's plugin*/
+.mCSB_inside > .mCSB_container {
+	margin-right: 16px;
+  .fancybox-wrap & {
+    margin-right: 0;
+  }
+}
+.mCSB_scrollTools .mCSB_buttonUp,
+.mCSB_scrollTools .mCSB_buttonDown,
+.mCSB_scrollTools .mCSB_buttonLeft,
+.mCSB_scrollTools .mCSB_buttonRight{
+	background-image: url("../images/mCSB_buttons.png");
+}
+.mCS-invisible-scrollbar .mCS-invisible-scrollbar {
+	opacity: 0 !important;
+}
+// Scrollbar
+.scroll-wrap {
+  overflow: auto;
+  position: relative;
+  background-color: @color02;
+  height: 300px;
+  padding: 10px 0 10px 10px;
+}
+.horizontal-scroll {
+  padding: 10px;
+  height: 50px;
+  &.mCustomScrollbar {
+    height: auto;
+  }
+  .thumb {
+    float: left;
+  }
+  .content {
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,120 @@
+//- form
+mixin form(opts)
+  form(action=(opts.action || "#"),
+    method=(opts.method || "post"),
+    name=opts.name ? opts.name : opts.id,
+    id=opts.id)&attributes(attributes)
+    if block
+      block
+
+//- input
+mixin input(opts)
+  input(type=(opts.type || "text"),
+    name=opts.name || opts.id,
+    id=opts.id,
+    value=opts.value,
+    required=opts.required,
+    placeholder=opts.placeholder)&attributes(attributes)
+
+//- button
+mixin button(opts)
+  button(id=opts.id, name=opts.name ? opts.name : opts.id, type=opts.type || "button", class=opts.class)&attributes(attributes)
+    if block
+      block
+
+//- custom input
+mixin customInput(ctrl, opts)
+  .custom-input
+    if ctrl.id
+      button(type=(ctrl.type || "submit"),
+        name=ctrl.id,
+        id=ctrl.id,
+        class=ctrl.btnClass)!=ctrl.text
+        if ctrl.iconClass
+          i(class=ctrl.iconClass)
+    else
+      i(class=ctrl.iconClass)!=(ctrl.text || "")
+    span: input(type=(opts.type || "text"),
+      name=opts.name ? opts.name : opts.id,
+      id=opts.id,
+      value=opts.value,
+      required=opts.required,
+      placeholder=opts.placeholder)&attributes(attributes)
+
+mixin customDate(opts)
+  .custom-date(data-date="")
+    span!=opts.placeholder
+    input(type=(opts.type || "date"),
+      name=opts.name ? opts.name : opts.id,
+      id=opts.id,
+      value=opts.value,
+      required=opts.required,
+      placeholder=opts.placeholder)
+    i.icon-arrow-down
+
+//- textarea
+mixin textarea(id, placeholder)
+  textarea(name=id, id=id, placeholder=placeholder)&attributes(attributes)
+
+//- label
+mixin label(id, text)
+  label(for=id)&attributes(attributes)!=text
+//- label
+mixin label-horizontal(id, text)
+  label(for=id)&attributes(attributes): span!=text
+
+mixin customSelect(select, opts)
+  .custom-select(data-select="")
+    span Please select an option
+    select(name=select.id, id=select.id)&attributes(attributes)
+      each item in opts
+        option(value=item.value, selected=item.selected)!=(item.text || item.value)
+    i.icon-arrow-down
+
+mixin linkCheckbox(opts)
+  .checkbox(class=opts.class)&attributes(attributes)
+    input(type="checkbox",
+      name=opts.name ? opts.name : opts.id,
+      id=opts.id,
+      value=opts.id,
+      checked=opts.checked)
+    +link(opts.text, opts.href)
+    i.icon-check
+
+//- Custom Checkbox
+mixin checkbox(opts)
+  .checkbox(class=opts.class)&attributes(attributes)
+    input(type="checkbox",
+      name=opts.name ? opts.name : opts.id,
+      id=opts.id,
+      value=opts.id,
+      required=opts.required,
+      checked=opts.checked)
+    +label(opts.id, opts.text)
+    i.icon-check
+
+//- Custom Checkbox List
+mixin checkboxList(arr)
+  ul.checkbox-list&attributes(attributes)
+    each opts in arr
+      li
+        +checkbox(opts)
+
+//- Custom Radio
+mixin radio(opts)
+  .radio(class=opts.class)&attributes(attributes)
+    input(type="radio",
+      name=opts.name,
+      id=opts.id,
+      value=opts.id,
+      required=opts.required,
+      checked=opts.checked)
+    +label(opts.id, opts.text)
+    i.icon-check
+
+//- Custom Radio List
+mixin radioList(arr)
+  ul.radio-list&attributes(attributes)
+    each opts in arr
+      li
+        +radio(opts)

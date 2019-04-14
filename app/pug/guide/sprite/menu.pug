@@ -1,0 +1,84 @@
+table.tb-temp
+  thead
+    tr
+      td: strong Mixin
+      td: strong View
+  tbody
+    tr
+      td
+        strong Single Menu
+        code.code
+          span.tab0 +singleMenu([
+          span.tab1 {title: 'Home', href: 'index.html'},
+          span.tab1 {title: 'Sitemap', href: 'sitemap.html'}
+          span.tab0 ]).main-nav.clearfix
+      td
+        +singleMenu([
+          {title: 'Home', href: 'index.html'},
+          {title: 'Sitemap', href: 'sitemap.html'}
+        ]).main-nav.clearfix
+    tr
+      td
+        strong Multiple Menu
+        code.code
+          span.tab0 nav.nav.clearfix
+          span.tab1 ul.navigation
+          span.tab2 +items([
+          span.tab3 {title: 'Home', href: '#'},
+          span.tab3 {
+          span.tab4 title: 'javascript',
+          span.tab4 href:'#',
+          span.tab4 subList: [
+          span.tab5 {title: 'AJAX'},
+          span.tab5 {
+          span.tab5 title: 'RSS',
+          span.tab5 subClass: 'hehe',
+          span.tab5 subList: [
+          span.tab6 {title: 'Local'},
+          span.tab6 {
+          span.tab7 title: 'Online',
+          span.tab7 subList: [
+          span.tab8 {title: 'rss 1'},
+          span.tab8 {title: 'rss 2'}
+          span.tab7 ],
+          span.tab7 subActive: sub3
+          span.tab6 }
+          span.tab5 ],
+          span.tab5 subActive: sub2
+          span.tab5 },
+          span.tab5 {title: 'XML'},
+          span.tab4 ], subActive: sub1
+          span.tab3 },
+          span.tab3 {title: 'Sitemap', href: 'sitemap.html'}
+          span.tab2 ], mainNav)
+      td
+        nav.nav.clearfix
+          ul.navigation
+            +items([
+              {title: 'Home', href: '#'},
+              {
+                title: 'javascript',
+                href:'#',
+                subList: [
+                  {title: 'AJAX'},
+                  {
+                    title: 'RSS',
+                    subClass: 'hehe',
+                    subList: [
+                      {title: 'Local'},
+                      {
+                        title: 'Online',
+                        subList: [
+                          {title: 'rss 1'},
+                          {title: 'rss 2'}
+                        ],
+                        subActive: sub3
+                      }
+                    ],
+                    subActive: sub2
+                  },
+                  {title: 'XML'},
+                ], subActive: sub1
+              },
+              {title: 'Sitemap', href: 'sitemap.html'}
+            ], mainNav)

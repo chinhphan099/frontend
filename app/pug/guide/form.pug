@@ -1,0 +1,144 @@
+div(data-validates='guide')
+  +form({id: 'guide'})
+    .container.bgd-light-grey
+      .row
+        .col-sm-8.col-sm-offset-2
+          .panel
+            .text-center
+              +button({id: 'guide_btn', type: 'submit'}).button.btn-primary.expanded Click Me
+            .fieldset
+              +label('guide_txt', 'Input Text').label
+              +input({id: 'guide_txt', placeholder: 'Placeholder', type: 'text', required: 'required'})
+            .fieldset
+              +label('guide_date', 'DOB').label
+              +customDate({id: 'guide_date', placeholder: 'dd/mm/yyyy', required: 'required'})
+            .fieldset(data-number='{"maxLength": 3}')
+              +label('guide_number', 'Number').label
+              +input({id: 'guide_number', placeholder: 'Number', type: 'number', required: 'required'})(data-input='' autocomplete="off")
+            .fieldset
+              +label('group_txt_01', 'Group input').label
+              .row.valid-wrap
+                .col-sm-4
+                  +input({id: 'group_txt_01', placeholder: 'First Name', type: 'text', required: 'required'}).valid-group
+                .col-sm-4
+                  +input({id: 'group_txt_02', placeholder: 'Middle Name', type: 'text', required: 'required'}).valid-group
+                .col-sm-4
+                  +input({id: 'group_txt_03', placeholder: 'Last Name', type: 'text', required: 'required'}).valid-group
+            .fieldset
+              +label('group_txt_011', 'Group input Number').label
+              .row.valid-wrap
+                .col-sm-4(data-number='{"maxLength": 2}')
+                  +input({id: 'group_txt_011', placeholder: 'Day', type: 'number', required: 'required'})(data-input='' autocomplete="off").valid-group
+                .col-sm-4(data-number='{"maxLength": 2}')
+                  +input({id: 'group_txt_012', placeholder: 'Month', type: 'number', required: 'required'})(data-input='' autocomplete="off").valid-group
+                .col-sm-4(data-number='{"maxLength": 4}')
+                  +input({id: 'group_txt_013', placeholder: 'Year', type: 'number', required: 'required'})(data-input='' autocomplete="off").valid-group
+            .fieldset
+              +label('guide_txt_custom', 'Custom Input').label
+              +customInput({iconClass: 'icon-account'}, {id: 'guide_txt_custom', required: 'required'})
+            .fieldset
+              +label('guide_tarea', 'Text area').label
+              +textarea('guide_tarea', 'Placeholder')(required='required')
+            .fieldset: +radio({name: 'guide_sb', id: 'guide_sb', text: 'Radio Single', required: 'required'}).circle
+            .fieldset: +checkbox({id: 'guide_cb', text: 'Checkbox', required: 'required'})
+            .fieldset
+              +label('guide_sb_01', 'Radio List').label
+              +radioList([
+                {name: 'guide_sb_group', id: 'guide_sb_01', text: 'Radio List', class: 'circle', required: 'required'},
+                {name: 'guide_sb_group', id: 'guide_sb_02', text: 'Radio List', class: 'circle', required: 'required'}
+              ])
+            .fieldset
+              +label('guide_cb_01', 'Checkbox List').label
+              +checkboxList([
+                {name: 'guide_cb_group', id: 'guide_cb_01', text: 'Choose at least One item'},
+                {name: 'guide_cb_group', id: 'guide_cb_02', text: 'Choose at least One item'}
+              ])
+            .fieldset
+              +label('guide_select', 'Custom Select Box').label
+              +customSelect({id: 'guide_select'}, [
+                {value: '', text: 'Please select an option'},
+                {value: 'Option 1'},
+                {value: 'Option 2'}
+              ])(required="required")
+            br
+            +divider('Horizontal Form')
+            br
+            .fieldset.form-group
+              +label-horizontal('horizontal_guide_txt', 'Input Text').control-label.col-sm-4
+              .col-sm-8
+                +input({id: 'horizontal_guide_txt', placeholder: 'Placeholder', type: 'text', required: 'required'})
+            .fieldset.form-group
+              +label-horizontal('horizontal_guide_date', 'DOB').control-label.col-sm-4
+              .col-sm-8
+                +customDate({id: 'horizontal_guide_date', placeholder: 'Click to Choose Date', required: 'required'})
+            .fieldset.form-group(data-number='{"maxLength": 2}')
+              +label-horizontal('horizontal_guide_number', 'Number').control-label.col-sm-4
+              .col-sm-8
+                +input({id: 'horizontal_guide_number', placeholder: 'Number', type: 'number', required: 'required'})(data-input='' autocomplete="off")
+            .fieldset.form-group
+              +label-horizontal('group_txt_01', 'Group input').control-label.col-sm-4
+              .col-sm-8
+                .row.valid-wrap
+                  .col-sm-4
+                    +input({id: 'horizontal_group_txt_01', placeholder: 'First Name', type: 'text', required: 'required'}).valid-group
+                  .col-sm-4
+                    +input({id: 'horizontal_group_txt_02', placeholder: 'Middle Name', type: 'text', required: 'required'}).valid-group
+                  .col-sm-4
+                    +input({id: 'horizontal_group_txt_03', placeholder: 'Last Name', type: 'text', required: 'required'}).valid-group
+            .fieldset.form-group
+              +label-horizontal('group_txt_011', 'Group input Number').control-label.col-sm-4
+              .col-sm-8
+                .row.valid-wrap
+                  .col-sm-4(data-number='{"maxLength": 2}')
+                    +input({id: 'horizontal_group_txt_011', placeholder: 'Day', type: 'number', required: 'required'})(data-input='' autocomplete="off").valid-group
+                  .col-sm-4(data-number='{"maxLength": 2}')
+                    +input({id: 'horizontal_group_txt_012', placeholder: 'Month', type: 'number', required: 'required'})(data-input='' autocomplete="off").valid-group
+                  .col-sm-4(data-number='{"maxLength": 4}')
+                    +input({id: 'horizontal_group_txt_013', placeholder: 'Year', type: 'number', required: 'required'})(data-input='' autocomplete="off").valid-group
+            .fieldset.form-group
+              +label-horizontal('horizontal_guide_txt_custom', 'Custom Input').control-label.col-sm-4
+              .col-sm-8
+                +customInput({iconClass: 'icon-account'}, {id: 'horizontal_guide_txt_custom', required: 'required'})
+            .fieldset.form-group
+              +label-horizontal('horizontal_guide_tarea', 'Text area').control-label.col-sm-4
+              .col-sm-8
+                +textarea('horizontal_guide_tarea', 'Placeholder')(required='required')
+            .fieldset.form-group
+              .col-sm-8.col-sm-offset-4
+                +radio({name: 'horizontal_guide_sb', id: 'horizontal_guide_sb', text: 'Radio Single', required: 'required'}).circle
+            .fieldset.form-group
+              .col-sm-8.col-sm-offset-4
+                +checkbox({id: 'horizontal_guide_cb', text: 'Checkbox', required: 'required'})
+            .fieldset.form-group
+              +label-horizontal('horizontal_guide_sb_01', 'Radio List').control-label.col-sm-4
+              .col-sm-8
+                +radioList([
+                  {name: 'horizontal_guide_sb_group', id: 'horizontal_guide_sb_01', text: 'Radio List', class: 'circle', required: 'required'},
+                  {name: 'horizontal_guide_sb_group', id: 'horizontal_guide_sb_02', text: 'Radio List', class: 'circle', required: 'required'}
+                ])
+            .fieldset.form-group
+              +label-horizontal('horizontal_guide_cb_01', 'Checkbox List').control-label.col-sm-4
+              .col-sm-8
+                +checkboxList([
+                  {name: 'horizontal_guide_cb_group', id: 'horizontal_guide_cb_01', text: 'Choose at least One item'},
+                  {name: 'horizontal_guide_cb_group', id: 'horizontal_guide_cb_02', text: 'Choose at least One item'}
+                ])
+            .fieldset.form-group
+              +label-horizontal('horizontal_guide_select', 'Custom Select Box').control-label.col-sm-4
+              .col-sm-8
+                +customSelect({id: 'horizontal_guide_select'}, [
+                  {value: '', text: 'Please select an option'},
+                  {value: 'Option 1'},
+                  {value: 'Option 2'}
+                ])(required="required")
+            .fieldset.text-center
+              +button({id: 'guide_btn_01', type: 'submit'}).button.btn-primary Click Me
+    include form/frm-form
+    include form/frm-label
+    include form/frm-textarea
+    include form/frm-input
+    include form/frm-select
+    include form/frm-checkbox
+    include form/frm-radio
+    include form/frm-link-checkbox
+    include form/frm-button

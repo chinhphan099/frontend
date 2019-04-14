@@ -1,0 +1,39 @@
+.pinchZoomWrap {
+  position: relative;
+  z-index: 6;
+  img {
+    display: block;
+  }
+  [data-closezoom] {
+    .position(0 0 null null);
+    z-index: 3;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+    color: @color01;
+    .font-size(30px);
+    .showZoomContainer& {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  .pinchZoomInner {
+    .position();
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+    .showZoomContainer& {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  [data-cslider] & {
+    .position();
+    opacity: 0;
+    visibility: hidden;
+    &.showZoomContainer {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

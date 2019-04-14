@@ -1,0 +1,65 @@
+table.tb-temp.ver-top
+  tr
+    th: strong Code
+    th: strong Action / View
+  tr
+    td
+      strong Thumbnail
+      code.code
+        span.tab0 (data-popup='{"handle": "#[strong.red-text .aaa]"}')
+        span.tab1 +link('title', 'images/upload/1_b.jpg')(data-fancybox-group="gallery")#[strong.red-text .aaa]
+    td
+      .wrap-popup-elm(data-popup='{"handle": ".aaa"}')
+        +link('title', 'images/upload/1_b.jpg').aaa
+          +img-upload('1_s.jpg')
+        +link('title', 'images/upload/2_b.jpg').aaa
+          +img-upload('2_s.jpg')
+      .wrap-popup-elm(data-popup='{"handle": ".aaa"}')
+        +link('title', 'images/upload/1_b.jpg').aaa
+          +img-upload('1_s.jpg')
+  tr
+    td
+      strong Ajax
+      code.code
+        span.tab0 (data-popup='{"handle": "#[strong.red-text .bbb]", "type": "#[strong ajax]"}')
+        span.tab1 +link('title', '#[strong.red-text /data/data.html]')#[strong.red-text .bbb]
+    td
+      .wrap-popup-elm(data-popup='{"handle": ".bbb", "type": "ajax"}')
+        +link('title', '/data/data.html').bbb
+          +img-upload('2_s.jpg')
+        +link('title', '/data/data1.html').bbb
+          +img-upload('1_s.jpg')
+  tr
+    td
+      strong Iframe
+      code.code
+        span.tab0 (data-popup='{"handle": "#[strong.red-text .ddd]", "type": "#[strong iframe]"}')
+        span.tab1 +link('title', '#[strong.red-text /data/data.html]')#[strong.red-text .ddd]
+    td
+      .wrap-popup-elm(data-popup='{"handle": ".ccc", "type": "iframe"}')
+        +link('title', 'data/iframe.html').ccc
+          +img-upload('1_s.jpg')
+        +link('title', 'data/iframe1.html').ccc
+          +img-upload('2_s.jpg')
+  tr
+    td
+      strong Slider inside Popup
+      code.code
+        span.tab0 (data-popup='{"handle": "#[strong.red-text .ddd]", "type": "inline", "slider": #[strong true]}')
+        span.tab1 +link('title', '#[strong.red-text #slider_1]')
+        span.tab0 .slider.single-slider#slider_1(data-cslider='{"type": "single"}', style="display: none; max-width: 800px; max-height: 500px;")
+    td
+      .wrap-popup-elm(data-popup='{"handle": ".ddd", "type": "inline", "slider": true}')
+        +link('title', '#slider_1').ddd
+          +img-upload('1_s.jpg')
+      .slider.single-slider#slider_1(data-cslider='{"type": "single"}', style="display: none;")
+        .slick
+          .item: +img-upload('banner-0.jpg').img-view
+          .item: +img-upload('banner-1.jpg').img-view
+          .item: +img-upload('banner-2.jpg').img-view
+          .item: +img-upload('banner-3.jpg').img-view
+          .item: +img-upload('banner-0.jpg').img-view
+          .item: +img-upload('banner-1.jpg').img-view
+          .item: +img-upload('banner-2.jpg').img-view
+          .item: +img-upload('banner-3.jpg').img-view
+        span.load

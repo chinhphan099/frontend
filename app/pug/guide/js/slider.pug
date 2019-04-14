@@ -1,0 +1,275 @@
+table.tb-temp.ver-top
+  tr
+    th(colspan="2"): strong View
+    th: strong Code
+  tr
+    td(colspan="2")
+      .slider.centermode-slider(data-cslider='{"type": "videoSlide"}')
+        .slick
+          .item
+            .img-view.video-wrap(data-youtube='{"idOrLink": "Q2uTz6otsAk", "autoplay": 0}')
+              .video-container
+                .iframeYoutube
+                .thumb(style="background-image: url(images/upload/banner-0.jpg)" data-handle)
+              +button({})(class="control" data-handle)
+                i.icon-play-outline
+                i.icon-pause-outline
+          .item
+            .img-view.video-wrap(data-youtube='{"idOrLink": "Q2uTz6otsAk", "autoplay": 0}')
+              .video-container
+                .iframeYoutube
+                .thumb(style="background-image: url(images/upload/banner-1.jpg)" data-handle)
+              +button({})(class="control" data-handle)
+                i.icon-play-outline
+                i.icon-pause-outline
+          .item
+            .img-view.video-wrap(data-video)
+              .video-container
+                video(controls data-handle="")
+                  source(src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4")
+                .thumb(style="background-image: url(images/upload/banner-2.jpg)" data-handle)
+              +button({})(class="control" data-handle)
+                i.icon-play-outline
+                i.icon-pause-outline
+          .item
+            .img-view.video-wrap(data-video)
+              .video-container
+                video(controls data-handle="")
+                  source(src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4")
+                .thumb(style="background-image: url(images/upload/banner-3.jpg)" data-handle)
+              +button({})(class="control" data-handle)
+                i.icon-play-outline
+                i.icon-pause-outline
+        span.load
+    td
+      .divider: span.red-text Youtube / Video slider
+      code.code
+        span.tab0 .slider.centermode-slider(data-cslider='{"type": "videoSlide"}')
+        span.tab1 .slick
+        span.tab2 .item
+        span.tab3 .img-view.video-wrap(data-youtube='{"idOrLink": "Q2uTz6otsAk", "autoplay": 0}')
+        span.tab4 .video-container
+        span.tab5 .iframeYoutube
+        span.tab5 .thumb(style="background-image: url(images/upload/banner-2.jpg)" data-handle)
+        span.tab4 +button({})(class="control" data-handle)
+        span.tab5 i.icon-play-outline
+        span.tab5 i.icon-pause-outline
+        span.tab2 .item
+        span.tab3 .img-view.video-wrap(data-video)
+        span.tab4 .video-container
+        span.tab5 video(controls data-handle="")
+        span.tab6 source(src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4")
+        span.tab5 .thumb(style="background-image: url(images/upload/banner-2.jpg)" data-handle)
+        span.tab4 +button({})(class="control" data-handle)
+        span.tab5 i.icon-play-outline
+        span.tab5 i.icon-pause-outline
+        span.tab1 span.load
+  tr
+    td(colspan="3")
+      table.tb-temp
+        tr
+          td
+            .slider.single-slider(data-cslider='{"type": "single" , "setPositionArrows": true}')
+              .slick
+                .item: +img-upload('banner-0.jpg').img-view
+                .item: +img-upload('banner-1.jpg').img-view
+                .item: +img-upload('banner-2.jpg').img-view
+                .item: +img-upload('banner-3.jpg').img-view
+              span.load
+          td
+            .divider: span.red-text Single Slider
+            code.code
+              span.tab0 .slider.single-slider(data-cslider='{"type": "single"#[strong.red-text , "setPositionArrows": true]}')
+              span.tab1 .slick
+              span.tab2 .item: +img-upload('banner-0.jpg').img-view
+              span.tab2 .item: +img-upload('banner-1.jpg').img-view
+              span.tab2 .item: +img-upload('banner-2.jpg').img-view
+              span.tab2 .item: +img-upload('banner-3.jpg').img-view
+              span.tab1 span.load
+          td
+            .slider.single-slider(data-cslider='{"type": "fade"}')
+              .slick
+                .item: +img-upload('banner-0.jpg').img-view
+                .item: +img-upload('banner-1.jpg').img-view
+                .item: +img-upload('banner-2.jpg').img-view
+                .item: +img-upload('banner-3.jpg').img-view
+              span.load
+          td
+            .divider: span.red-text FADE Effect
+            code.code
+              span.tab0 .slider.single-slider(data-cslider='{"type": "fade"}')
+              span.tab1 .slick
+              span.tab2 .item: +img-upload('banner-0.jpg').img-view
+              span.tab2 .item: +img-upload('banner-1.jpg').img-view
+              span.tab2 .item: +img-upload('banner-2.jpg').img-view
+              span.tab2 .item: +img-upload('banner-3.jpg').img-view
+              span.tab1 span.load
+  tr
+    td(colspan="2")
+      .slider.carousel-slider(data-cslider='{"type": "carousel", "slideOnHover": true, "dots": true}')
+        .slick
+          .item: +img-upload('banner-0.jpg').img-view
+          .item: +img-upload('banner-1.jpg').img-view
+          .item: +img-upload('banner-2.jpg').img-view
+          .item: +img-upload('banner-3.jpg').img-view
+          .item: +img-upload('banner-0.jpg').img-view
+          .item: +img-upload('banner-1.jpg').img-view
+          .item: +img-upload('banner-2.jpg').img-view
+          .item: +img-upload('banner-3.jpg').img-view
+          .item: +img-upload('banner-0.jpg').img-view
+          .item: +img-upload('banner-1.jpg').img-view
+          .item: +img-upload('banner-2.jpg').img-view
+          .item: +img-upload('banner-3.jpg').img-view
+          .item: +img-upload('banner-0.jpg').img-view
+          .item: +img-upload('banner-1.jpg').img-view
+          .item: +img-upload('banner-2.jpg').img-view
+          .item: +img-upload('banner-3.jpg').img-view
+        span.load
+    td
+      .divider: span.red-text Carousel Slider / Hover Button to Change
+      code.code
+        span.tab0 .slider.carousel-slider(data-cslider='{"type": "carousel"#[strong.red-text , "slideOnHover": true, "dots": true]}')
+        span.tab1 .slick
+        span.tab2 .item: +img-upload('banner-0.jpg').img-view
+        span.tab2 .item: +img-upload('banner-1.jpg').img-view
+        span.tab2 .item: +img-upload('banner-2.jpg').img-view
+        span.tab2 .item: +img-upload('banner-3.jpg').img-view
+        span.tab1 span.load
+  tr
+    td(colspan="2")
+      .slider.centermode-slider(data-cslider='{"type": "centerMode"}')
+        .slick
+          .item: +img-upload('banner-0.jpg').img-view
+          .item: +img-upload('banner-1.jpg').img-view
+          .item: +img-upload('banner-2.jpg').img-view
+          .item: +img-upload('banner-3.jpg').img-view
+          .item: +img-upload('banner-0.jpg').img-view
+          .item: +img-upload('banner-1.jpg').img-view
+          .item: +img-upload('banner-2.jpg').img-view
+          .item: +img-upload('banner-3.jpg').img-view
+        span.load
+    td
+      .divider: span.red-text CenterMode Slider
+      code.code
+        span.tab0 .slider.centermode-slider(data-cslider='{"type": "centermode"}')
+        span.tab1 .slick
+        span.tab2 .item: +img-upload('banner-0.jpg').img-view
+        span.tab2 .item: +img-upload('banner-1.jpg').img-view
+        span.tab2 .item: +img-upload('banner-2.jpg').img-view
+        span.tab2 .item: +img-upload('banner-3.jpg').img-view
+        span.tab1 span.load
+  tr
+    td(colspan="2")
+      .pinchZoomWrap(data-pinchzoom='{"img": "images/upload/banner-0.jpg"}')
+        +img-upload('banner-0.jpg')
+        .pinchZoomInner
+          i.icon-close-solid(data-closezoom="")
+          div(data-handle="")
+      br
+      br
+      br
+      .pinchZoomWrap(data-pinchzoom='{"img": "images/upload/banner-0.jpg"}')
+        +img-upload('banner-0.jpg')
+        .pinchZoomInner
+          i.icon-close-solid(data-closezoom="")
+          div(data-handle="")
+      br
+      br
+      br
+      .slider.syncing-slider(data-cslider='{"type": "syncing", "navFor": ".slider-nav", "view": "true", "hasPopup": true, "hasZoom": true, "smoothZoom": true}')
+        .slick.slider-thumb
+          .item(data-zoom-id="zoom2"): +img-upload('banner-0.jpg').img-view.zoomer(data-zoom-image="images/upload/banner-0.jpg")
+          .item(data-zoom-id="zoom2"): +img-upload('banner-1.jpg').img-view.zoomer(data-zoom-image="images/upload/banner-1.jpg")
+          .item(data-zoom-id="zoom2"): +img-upload('banner-2.jpg').img-view.zoomer(data-zoom-image="images/upload/banner-2.jpg")
+          .item(data-zoom-id="zoom2"): +img-upload('banner-3.jpg').img-view.zoomer(data-zoom-image="images/upload/banner-3.jpg")
+        span.load
+        .pinchZoomWrap(data-pinchzoom='{"initUnder": 767}')
+          .pinchZoomInner
+            i.icon-close-solid(data-closezoom="")
+            div(data-handle="")
+    td
+      .divider: span.red-text Cyncing Slider - View
+      code.code
+        span.tab0 .slider.syncing-slider(data-cslider='{"type": "syncing", "navFor": ".slider-nav", "view": "true", #[strong.red-text "hasPopup": true], #[strong.red-text "hasZoom": true]}')
+        span.tab1 .slick#[strong.red-text .slider-thumb]
+        span.tab2 .item: +img-upload('banner-0.jpg').img-view
+        span.tab2 .item: +img-upload('banner-1.jpg').img-view
+        span.tab1 span.load
+  tr
+    td(colspan="2")
+      .slider.syncing-slider(data-cslider='{"type": "syncing", "navFor": ".slider-thumb"}')
+        .slick.slider-nav
+          .item: +img-upload('banner-0.jpg').img-view
+          .item: +img-upload('banner-1.jpg').img-view
+          .item: +img-upload('banner-2.jpg').img-view
+          .item: +img-upload('banner-3.jpg').img-view
+        span.load
+    td
+      .divider: span.red-text Cyncing Slider - Thumb
+      code.code
+        span.tab0 .slider.syncing-slider(data-cslider='{"type": "syncing", "navFor": ".slider-thumb"}')
+        span.tab1 .slick#[strong.red-text .slider-nav]
+        span.tab2 .item: +img-upload('banner-0.jpg').img-view
+        span.tab2 .item: +img-upload('banner-1.jpg').img-view
+        span.tab1 span.load
+  tr
+    td(colspan="2")
+      .slider.vertical-slider(data-cslider='{"type": "vertical"}')
+        .slick
+          .item: +img-upload('1.jpg').img-view
+          .item: +img-upload('2.jpg').img-view
+          .item: +img-upload('1.jpg').img-view
+          .item: +img-upload('2.jpg').img-view
+          .item: +img-upload('1.jpg').img-view
+          .item: +img-upload('2.jpg').img-view
+          .item: +img-upload('1.jpg').img-view
+          .item: +img-upload('2.jpg').img-view
+        span.load
+    td
+      .divider: span.red-text Vertical Slider
+      code.code
+        span.tab0 .slider.vertical-slider(data-cslider='{"type": "vertical"}')
+        span.tab1 .slick
+        span.tab2 .item: +img-upload('banner-0.jpg').img-view
+        span.tab2 .item: +img-upload('banner-1.jpg').img-view
+        span.tab2 .item: +img-upload('banner-2.jpg').img-view
+        span.tab2 .item: +img-upload('banner-3.jpg').img-view
+        span.tab1 span.load
+  tr
+    td(colspan="2")
+      .slider(data-cslider='{"type": "single", "initUnder": 767}')
+        .slick
+          .item: +img-upload('banner-0.jpg').img-view
+          .item: +img-upload('banner-1.jpg').img-view
+        span.load
+    td
+      .divider: span.red-text Slider run under a breakpoint - Resize to check
+      code.code
+        span.tab0 .slider(data-cslider='{"type": "single"#[strong.red-text , "initUnder": 767]}')
+        span.tab1 .slick
+        span.tab2 .item: +img-upload('banner-0.jpg').img-view
+        span.tab2 .item: +img-upload('banner-1.jpg').img-view
+        span.tab1 span.load
+  tr
+    td(colspan="2")
+      .slider.variablewidth-slider(data-cslider='{"type": "variableWidth"}')
+        .slick
+          .item: +img-upload('banner-0.jpg').img-view
+          .item: +img-upload('banner-1.jpg').img-view
+          .item: +img-upload('banner-2.jpg').img-view
+          .item: +img-upload('banner-3.jpg').img-view
+          .item: +img-upload('banner-0.jpg').img-view
+          .item: +img-upload('banner-1.jpg').img-view
+          .item: +img-upload('banner-2.jpg').img-view
+          .item: +img-upload('banner-3.jpg').img-view
+        span.load
+    td
+      .divider: span.red-text VariableWidth Slider
+      code.code
+        span.tab0 .slider.variablewidth-slider(data-cslider='{"type": "variableWidth"}')
+        span.tab1 .slick
+        span.tab2 .item: +img-upload('banner-0.jpg').img-view
+        span.tab2 .item: +img-upload('banner-1.jpg').img-view
+        span.tab2 .item: +img-upload('banner-2.jpg').img-view
+        span.tab2 .item: +img-upload('banner-3.jpg').img-view
+        span.tab1 span.load

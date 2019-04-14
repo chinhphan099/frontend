@@ -1,0 +1,7 @@
+mixin link(title, href, text)
+  a(href=href ? href : '#!', title!=title ? title : text)&attributes(attributes)
+    if block
+      !=text
+      block
+    else
+      !=text ? text : title

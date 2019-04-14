@@ -1,0 +1,18 @@
+table.tb-temp
+  thead
+    tr
+      td: strong Mixin
+      td: strong View
+  tbody
+    tr(data-handler="")
+      td
+        code.highlight
+          span(data-copy="") +price('$89', '$100')
+          br
+          | Options:
+          br
+          | - $89 : Old price
+          br
+          | - $100 : New price
+      td
+        +price('$89', '$100')

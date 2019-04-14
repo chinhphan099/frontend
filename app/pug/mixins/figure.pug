@@ -1,0 +1,13 @@
+mixin figure(alt, src, title)
+  figure&attributes(attributes)
+    +img(alt, src, title)
+    figcaption.description
+      if block
+        block
+
+mixin thumbnail(alt, src)
+  figure&attributes(attributes)
+    .thumbnail: +img(alt, src)
+    figcaption.description
+      if block
+        block

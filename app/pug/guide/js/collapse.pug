@@ -1,0 +1,246 @@
+table.tb-temp.ver-top
+  tr
+    th: strong Code
+    th: strong View / Action
+  tr
+    td
+      p
+        strong
+          span.red-text data-collapse='{"breakpoint": 991}]
+          | : Number 991 can change.
+        br
+        strong - window &gt; 991px: Same as Tab
+        br
+        strong - window &lt; 991px: Same as Accordion
+        br
+        strong - Resize window to check
+    td
+      ul.nav.bgd-dark-grey(data-collapse='{"breakpoint":991}')
+        li
+          a(href='#!', title='Nav 1', data-active='', data-init='', data-handle='Nav 1')
+            | Nav 1
+            i.icon-plus
+            i.icon-minus
+          .sub-nav(data-content='Nav 1')
+            ul(data-collapse='{"breakpoint":991}')
+              li
+                a(href='#!', title='Nav 1.1', data-active='', data-init='', data-handle='Nav 1.1')
+                  | Nav 1.1
+                  i.icon-plus
+                  i.icon-minus
+                .sub-nav(data-content='Nav 1.1')
+                  ul
+                    li
+                      a(href='#!', title='Nav 1.1.1')
+                        | Nav 1.1.1
+              li
+                a(href='#!', title='Nav 1.2', data-active='', data-handle='Nav 1.2')
+                  | Nav 1.2
+                  i.icon-plus
+                  i.icon-minus
+                .sub-nav(data-content='Nav 1.2')
+                  ul
+                    li
+                      a(href='#!', title='Nav 1.2.1')
+                        | Nav 1.2.1
+        li
+          a(href='#!', title='Nav 1', data-active='', data-handle='Nav 2')
+            | Nav 2
+            i.icon-plus
+            i.icon-minus
+          .sub-nav(data-content='Nav 2')
+            ul
+              li
+                a(href='#!', title='Nav 2.1') Nav 2.1
+  tr
+    td
+      code.code
+        span.tab0 ul.nav.bgd-dark-grey(#[strong.red-text data-collapse=""])
+        span.tab1 li
+        span.tab2 a(href="#!", title="Nav 1", #[strong.red-text data-active="", data-handle="Nav 1"]) Nav 1 \#[i.icon-plus]\#[i.icon-minus]
+        span.tab2 .sub-nav(#[strong.red-text data-content="Nav 1"])
+    td
+      p: strong Default: #[span.red-text data-collapse=''] same as #[span.red-text data-collapse='{"type": "", "effect": "slide", "duration": 400}']
+      p: strong #[span.red-text Effect: slide / fade]
+      p: strong Init tab: #[span.red-text data-init=''] go with [data-handle]
+      ul.nav.bgd-dark-grey(data-collapse='')
+        li
+          a(href='#!', title='Nav 1', data-active='', data-handle='Nav 1', data-init='')
+            | Nav 1
+            i.icon-plus
+            i.icon-minus
+          .sub-nav(data-content='Nav 1')
+            ul(data-collapse='')
+              li
+                a(href='#!', title='Nav 1.1', data-active='', data-handle='Nav 1.1')
+                  | Nav 1.1
+                  i.icon-plus
+                  i.icon-minus
+                .sub-nav(data-content='Nav 1.1')
+                  ul(data-collapse='')
+                    li
+                      a(href='#!', title='Nav 1.1.1', data-active='', data-handle='Nav 1.1.1')
+                        | Nav 1.1.1
+                        i.icon-plus
+                        i.icon-minus
+                      .sub-nav(data-content='Nav 1.1.1')
+                        ul(data-collapse='')
+                          li
+                            a(href='#!', title='Nav 1.1.1.1') Nav 1.1.1.1
+              li
+                a(href='#!', title='Nav 1.2', data-active='', data-handle='Nav 1.2')
+                  | Nav 1.2
+                  i.icon-plus
+                  i.icon-minus
+                .sub-nav(data-content='Nav 1.2')
+                  ul(data-collapse='')
+                    li
+                      a(href='#!', title='Nav 1.2.1', data-active='', data-handle='Nav 1.2.1')
+                        | Nav 1.2.1
+                        i.icon-plus
+                        i.icon-minus
+                      .sub-nav(data-content='Nav 1.2.1')
+                        ul
+                          li
+                            a(href='#!', title='Nav 1.2.1.1') Nav 1.2.1.1
+        li
+          a(href='#!', title='Nav 1', data-active='', data-handle='Nav 2')
+            | Nav 2
+            i.icon-plus
+            i.icon-minus
+          .sub-nav(data-content='Nav 2')
+            ul
+              li
+                a(href='#!', title='Nav 2.1') Nav 2.1
+  tr
+    td
+      strong.red-text "type": "toggleSelf"
+    td
+      ul.nav.bgd-dark-grey(data-collapse='{"type": "toggleSelf"}')
+        li
+          a(href='#!', title='Nav 1', data-active='', data-handle='Nav 1', data-init='')
+            | Nav 1
+            i.icon-plus
+            i.icon-minus
+          .sub-nav(data-content='Nav 1')
+            ul
+              li
+                a(href='#!', title='Nav 1.1')
+                  | Nav 1.1
+              li
+                a(href='#!', title='Nav 1.2')
+                  | Nav 1.2
+        li
+          a(href='#!', title='Nav 1', data-active='', data-handle='Nav 2')
+            | Nav 2
+            i.icon-plus
+            i.icon-minus
+          .sub-nav(data-content='Nav 2')
+            ul
+              li
+                a(href='#!', title='Nav 2.1') Nav 2.1
+  tr
+    td
+      p
+        strong
+          span.red-text "type": "tab"
+    td
+      ul.nav.bgd-dark-grey(data-collapse='{"type": "tab"}')
+        li
+          a(href='#!', title='Nav 1', data-active='', data-handle='Nav 1', data-init="")
+            | Nav 1
+            i.icon-plus
+            i.icon-minus
+          .sub-nav(data-content='Nav 1')
+            ul(data-collapse='{"type": "tab"}')
+              li
+                a(href='#!', title='Nav 1.1', data-active='', data-handle='Nav 1.1')
+                  | Nav 1.1
+                  i.icon-plus
+                  i.icon-minus
+                .sub-nav(data-content='Nav 1.1')
+                  ul
+                    li
+                      a(href='#!', title='Nav 1.1.1')
+                        | Nav 1.1.1
+              li
+                a(href='#!', title='Nav 1.2', data-active='', data-handle='Nav 1.2')
+                  | Nav 1.2
+                  i.icon-plus
+                  i.icon-minus
+                .sub-nav(data-content='Nav 1.2')
+                  ul
+                    li
+                      a(href='#!', title='Nav 1.2.1')
+                        | Nav 1.2.1
+        li
+          a(href='#!', title='Nav 1', data-active='', data-handle='Nav 2')
+            | Nav 2
+            i.icon-plus
+            i.icon-minus
+          .sub-nav(data-content='Nav 2')
+            ul
+              li
+                a(href='#!', title='Nav 2.1') Nav 2.1
+  tr
+    td
+      p
+        strong #[span.red-text data-close='']
+        br
+        strong Close current activeContent and child of activeContent
+        br
+        strong Put into [data-content]
+    td
+      ul.nav.bgd-dark-grey(data-collapse='')
+        li
+          a(href='#!', title='Nav 1', data-active='', data-handle='Nav 1', data-init='')
+            | Nav 1
+            i.icon-plus
+            i.icon-minus
+          .sub-nav(data-content='Nav 1')
+            ul(data-collapse='')
+              li
+                a(href='#!', title='Nav 1.1', data-active='', data-handle='Nav 1.1')
+                  | Nav 1.1
+                  i.icon-plus
+                  i.icon-minus
+                .sub-nav(data-content='Nav 1.1')
+                  ul
+                    li
+                      a(href='#!', title='Nav 1.1.1')
+                        | Click X icon to Close Child tab
+                        i.icon-close(data-close="")
+              li
+                a(href='#!', title='Close')
+                  | Click X icon to Close Parent and Child tab
+                  i.icon-close(data-close="")
+  tr
+    td
+      p
+        strong #[span.red-text data-collapse='{"initUnder": 991}']
+        br
+        strong - Resize window to check
+    td
+      ul.nav.bgd-dark-grey(data-collapse='{"initUnder": 991}')
+        li
+          a(href='#!', title='Nav 1', data-active='', data-handle='Nav 1', data-init='')
+            | Nav 1
+            i.icon-plus
+            i.icon-minus
+          .sub-nav(data-content='Nav 1')
+            ul(data-collapse='{"initUnder": 991}')
+              li
+                a(href='#!', title='Nav 1.1', data-active='', data-handle='Nav 1.1')
+                  | Nav 1.1
+                  i.icon-plus
+                  i.icon-minus
+                .sub-nav(data-content='Nav 1.1')
+                  ul
+                    li
+                      a(href='#!', title='Nav 1.1.1')
+                        | Click X icon to Close Child tab
+                        i.icon-close(data-close="")
+              li
+                a(href='#!', title='Close')
+                  | Click X icon to Close Parent and Child tab
+                  i.icon-close(data-close="")

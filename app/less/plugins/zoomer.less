@@ -1,0 +1,26 @@
+.zoomContainer {
+  z-index: 2 !important;
+  .user-select(none);
+  .tmp-open-left-nav & {
+    display: none;
+  }
+}
+.zoomWrapper {
+  position: relative;
+  div {
+    top: 0;
+  }
+}
+.gallery {
+  .clearfix();
+  .thumb {
+    float: left;
+    width: 20%;
+    a {
+      opacity: 0.5;
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+}

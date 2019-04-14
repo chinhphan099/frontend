@@ -1,0 +1,82 @@
+[data-youtube],
+[data-video] {
+  position: relative;
+  .thumb {
+    .position();
+    z-index: 1;
+    opacity: 1;
+    visibility: visible;
+    background-size: cover;
+    background-position: center top;
+    .transition(~"all .4s ease");
+  }
+  .control {
+    .position(50% null null 50%);
+    .translate(-50%, -50%);
+    .font-size(70px);
+    z-index: 2;
+    color: white;
+    .transition(all .25s ease);
+    &:hover {
+      i {
+        &:before {
+          .text-shadow(0 0 5px @color12);
+        }
+      }
+    }
+  }
+  i {
+    & + i {
+      display: none;
+    }
+  }
+  .playing& {
+    .thumb {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .control {
+      opacity: 0;
+    }
+    &:hover {
+      .control {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+    i {
+      display: none;
+      & + i {
+        display: block;
+      }
+    }
+  }
+  .paused& {
+    .thumb {
+      opacity: 0;
+      visibility: visible;
+      z-index: -1;
+      [data-cslider] & {
+        opacity: 1;
+        visibility: visible;
+        z-index: 1;
+      }
+    }
+  }
+}
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  iframe {
+    .position(0 null null 0);
+    .size(100%);
+  }
+  video {
+    display: block;
+    .position(0 null null 0);
+    .size(100%);
+    background-color: @color11;
+  }
+}

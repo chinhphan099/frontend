@@ -1,0 +1,119 @@
+h3.temp-h3.divider#input: span Input
+table.tb-temp
+  thead
+    tr
+      th: strong Mixin
+      th: strong View
+  tbody
+    tr
+      td(data-handler="")
+        code.highlight
+          span(data-copy="") .fieldset: +input({id: 'input_1', placeholder: 'Placeholder'})
+      td
+        .fieldset
+          +label('input_1', 'Normal State').label
+          +input({id: 'input_1', placeholder: 'Placeholder', type: 'text'})
+    tr
+      td(colspan="2")
+        code.highlight
+          | Options:
+          br
+          | - id
+          br
+          | - name == id
+          br
+          | - type: text
+          br
+          | - value
+          br
+          | - placeholder
+    tr
+      td(data-handler="")
+        code.highlight: span(data-copy="") .fieldset: +customDate({id: 'date', placeholder: "Input_Date"})
+      td
+        .fieldset
+          +customDate({id: 'date', placeholder: "Input_Date"})
+    tr
+      td(data-handler="")
+        code.highlight: span(data-copy="") .fieldset: +customDate({id: 'date2', value: "1990-06-05", placeholder: 'Input_Date'})
+      td
+        .fieldset
+          +customDate({id: 'date2', value: "1990-06-05", placeholder: "Input_Date"})
+    tr
+      td(data-handler="")
+        code.code(data-copy="")
+          span.tab0 .fieldset(data-number='{"handle": "qty", "maxLength": 3}')
+          span.tab1 +label('number_11', 'Quanty Desktop').label
+          span.tab1 +input({id: 'number_11', placeholder: 'Placeholder', type: 'number'})(data-input="" autocomplete="off")
+          span.tab1 +button({})(data-decrease="")
+            span.tab2 i.icon-minus
+          span.tab1 +button({})(data-increase="")
+            span.tab2 i.icon-plus
+
+          span.tab0 .fieldset(data-number='{"handle": "qty", "maxLength": 3}')
+          span.tab1 +label('number_12', 'Quanty Mobile').label
+          span.tab1 +input({id: 'number_12', placeholder: 'Placeholder', type: 'number'})(data-input="" autocomplete="off")
+          span.tab1 +button({})(data-decrease="")
+            span.tab2 i.icon-minus
+          span.tab1 +button({})(data-increase="")
+            span.tab2 i.icon-plus
+      td
+        .fieldset
+          +label('number_11', 'Quanty Desktop').label
+          .custom-number(data-number='{"handle": "qty", "maxLength": 3}')
+            +input({id: 'number_11', placeholder: 'Placeholder', type: 'number'})(data-input="" autocomplete="off")
+            +button({})(data-decrease="")
+              i.icon-minus
+            +button({})(data-increase="")
+              i.icon-plus
+        hr
+        .fieldset
+          +label('number_12', 'Quanty Mobile').label
+          .custom-number(data-number='{"handle": "qty", "maxLength": 3}')
+            +input({id: 'number_12', placeholder: 'Placeholder', type: 'number'})(data-input="" autocomplete="off")
+            +button({})(data-decrease="")
+              i.icon-minus
+            +button({})(data-increase="")
+              i.icon-plus
+
+h3.temp-h3.divider#custom-input: span Custom Input
+table.tb-temp
+  thead
+    tr
+      th: strong Custom Input
+      th: strong View
+  tbody
+    tr
+      td(data-handler="")
+        code.highlight
+          h4.temp-h4 icon with input
+          span(data-copy="") .fieldset: +customInput({iconClass: 'icon-person'}, {id: "input_user"})
+      td
+        .fieldset
+          +customInput({iconClass: 'icon-person'}, {id: "input_user"})
+    tr
+      td(data-handler="")
+        code.highlight
+          h4.temp-h4 Button icon with input
+          span(data-copy="") .fieldset: +customInput({id: 'search_btn_2', iconClass: 'icon-search'}, {id: "txt_search_2"})
+      td
+        .fieldset: +customInput({id: 'search_btn_2', iconClass: 'icon-search'}, {id: "txt_search_2"})
+    tr
+      td(data-handler="")
+        code.highlight
+          h4.temp-h4 Button text with input
+          span(data-copy="") .fieldset: +customInput({id: 'search_btn_0', text: 'Submit', btnClass: 'button'}, {id: "txt_search"})
+          br
+          br
+          | Note:
+          br
+          | - Type of button default is #[span.red-text submit], Can change by option: #[span.red-text type]
+      td
+        .fieldset: +customInput({id: 'search_btn_0', text: 'Submit', btnClass: 'button'}, {id: "txt_search"})
+    tr
+      td(data-handler="")
+        code.highlight
+          h4.temp-h4 Button text, icon with input
+          span(data-copy="") +customInput({id: 'search_btn_1', type: 'button', text: 'button', iconClass: 'icon-right'}, {id: "txt_search_1"})
+      td
+        .fieldset: +customInput({id: 'search_btn_1', type: 'button', text: 'button', iconClass: 'icon-right'}, {id: "txt_search_1"})

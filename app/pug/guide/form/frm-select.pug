@@ -1,0 +1,63 @@
+h3.temp-h3.divider#custom-select: span Custom Select
+table.tb-temp
+  thead
+    tr
+      th: strong Mixin
+      th: strong View
+  tbody
+    tr
+      td
+        code.highlight
+          | .fieldset
+          br
+          | &nbsp;&nbsp;+customSelect({id: 'select_id'}, [
+          br
+          | &nbsp;&nbsp;&nbsp;&nbsp;{value: '', text: 'Please select an option'},
+          br
+          | &nbsp;&nbsp;&nbsp;&nbsp;{value: 'Option 1'},
+          br
+          | &nbsp;&nbsp;&nbsp;&nbsp;{value: 'Option 2'}
+          br
+          | &nbsp;&nbsp;])
+      td
+        .fieldset
+          +label('select_id', 'Normal State').label
+          +customSelect({id: 'select_id'}, [
+            {value: '', text: 'Please select an option'},
+            {value: 'Option 1'},
+            {value: 'Option 2'}
+          ])
+    tr
+      td
+        code.highlight
+          | .fieldset
+          br
+          | &nbsp;&nbsp;+customSelect({id: 'select_id_1'}, [
+          br
+          | &nbsp;&nbsp;&nbsp;&nbsp;{value: '', text: 'Please select an option'},
+          br
+          | &nbsp;&nbsp;&nbsp;&nbsp;{value: 'Option 1', selected: 'selected'},
+          br
+          | &nbsp;&nbsp;&nbsp;&nbsp;{value: 'Option 2'}
+          br
+          | &nbsp;&nbsp;])
+      td
+        .fieldset
+          +label('select_id_1', 'Selected Value').label
+          +customSelect({id: 'select_id_1'}, [
+            {value: '', text: 'Please select an option'},
+            {value: 'Option 1', selected: 'selected'},
+            {value: 'Option 2'}
+          ])
+    tr
+      td(colspan="2")
+        code.highlight
+          | Options:
+          br
+          | - id of &lt;select&gt; tag
+          br
+          | - name of &lt;select&gt; tag == id
+          br
+          | - value of &lt;option&gt; tag
+          br
+          | - text of &lt;option&gt; tag

@@ -1,0 +1,30 @@
+table.tb-temp
+  thead
+    tr
+      td: strong Mixin
+      td: strong View
+  tbody
+    tr
+      td
+        code.highlight
+          span
+            | +breadcrumbs([
+            br
+            | &nbsp;&nbsp;{title: 'Home', href: 'index.html', text: 'Home'},
+            br
+            | &nbsp;&nbsp;{title: 'Term & condition', href: 'index.html', text: 'Term &amp; condition'},
+            br
+            | &nbsp;&nbsp;{title: 'Contact', href: 'contact.html'}
+            br
+            | ])
+          br
+          br
+          | Options:
+          br
+          | - title
+          br
+          | - href
+          br
+          | - text (Optional)
+      td
+        +breadcrumbs([{title: 'Home', href: 'index.html', text: 'Home'}, {title: 'Term & condition', href: 'index.html', text: 'Term &amp; condition'}, {title: 'Contact', href: 'contact.html'}])

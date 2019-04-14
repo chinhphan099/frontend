@@ -1,0 +1,33 @@
+h3.temp-h3.divider#label: span Label
+table.tb-temp
+  thead
+    tr
+      th: strong Mixin
+      th: strong View
+  tbody
+    tr(data-handler="")
+      td
+        code.highlight
+          span(data-copy="") +label('lbl_id', 'Label_No_Padding_Bottom')
+      td
+        +label('lbl_id', 'Label_No_Padding_Bottom')
+    tr(data-handler="")
+      td
+        code.highlight
+          span(data-copy="") +label('lbl_id2', 'Label_Has_Padding_Bottom').label
+      td
+        +label('lbl_id2', 'Label_Has_Padding_Bottom').label
+    tr(data-handler="")
+      td
+        code.highlight
+          span(data-copy="") +label-horizontal('lbl_id3', 'Use for Horizontal, .fieldset tag has class .form-group').label01
+      td
+        +label-horizontal('lbl_id3', 'Label has class .label01 - Use for Horizontal, .fieldset tag has class .form-group').label01
+    tr
+      td(colspan="2")
+        code.highlight
+          | Values:
+          br
+          | - for
+          br
+          | - text

@@ -1,0 +1,81 @@
+h3.temp-h3.divider#custom-checkbox: span Custom Checkbox
+table.tb-temp
+  thead
+    tr
+      th: strong Mixin
+      th: strong View
+  tbody
+    tr
+      td(data-handler="")
+        code.highlight(data-copy="") .fieldset: +checkbox({id: 'cb_01', text: 'Single_Checkbox', checked: 'checked'})
+      td
+        .fieldset
+          +checkbox({id: 'cb_01', text: 'Single_Checkbox', checked: 'checked'})
+    tr
+      td(data-handler="")
+        code.highlight(data-copy="") .fieldset: +checkbox({id: 'cb_02', text: 'Single_Checkbox'}).circle
+      td: .fieldset: +checkbox({id: 'cb_02', text: 'Single_Checkbox'}).circle
+    tr
+      td(data-handler="")
+        code.highlight(data-copy="") .fieldset: +checkbox({id: 'cb_021', text: 'Single_Checkbox_Right'}).circle.right
+      td: .fieldset: +checkbox({id: 'cb_021', text: 'Single_Checkbox_Right'}).circle.right
+    tr
+      td(data-handler="")
+        code.highlight(data-copy="") .fieldset: +checkbox({id: 'cb_022', text: 'Single_Checkbox_Full_Width'}).right.expanded
+      td: .fieldset: +checkbox({id: 'cb_022', text: 'Single_Checkbox_Full_Width'}).right.expanded
+    tr
+      td(data-handler="")
+        code.highlight(data-copy="") .fieldset: +checkbox({id: 'cb_03', text: 'Single_Checkbox_At_Center', checked: 'checked'}).center-mode
+      td: .fieldset: +checkbox({id: 'cb_03', text: 'Single_Checkbox_At_Center', checked: 'checked'}).center-mode
+    tr
+      td(data-handler="")
+        code.highlight(data-copy="") .fieldset.text-center: +checkbox({id: 'cb_031', text: 'Single_Checkbox_At_Center_Above', checked: 'checked'}).center-mode.above
+      td: .fieldset.text-center: +checkbox({id: 'cb_031', text: 'Single_Checkbox_At_Center_Above', checked: 'checked'}).center-mode.above
+    tr
+      td(data-handler="")
+        code.highlight(data-copy="") .fieldset.text-center: +checkbox({id: 'cb_032', text: 'Single_Checkbox_At_Center_Below', checked: 'checked'}).center-mode.below
+      td: .fieldset.text-center: +checkbox({id: 'cb_032', text: 'Single_Checkbox_At_Center_Below', checked: 'checked'}).center-mode.below
+    tr
+      td(colspan="2")
+        code.highlight
+          | Options:
+          br
+          | - type: "checkbox"
+          br
+          | - id
+          br
+          | - name == id
+          br
+          | - value
+          br
+          | - checked
+          br
+          | - text (of Label)
+          br
+          | - class (go with .custom-checkbox)
+
+h3.temp-h3.divider#custom-checkbox-list: span Custom Checkbox List
+table.tb-temp
+  thead
+    tr
+      th: strong Mixin
+      th: strong View
+  tbody
+    tr
+      td
+        code.highlight
+          | .fieldset
+          br
+          | &nbsp;&nbsp;+checkboxList([
+          br
+          | &nbsp;&nbsp;&nbsp;&nbsp;{name: 'gender', id: 'cb_04', text: 'checkbox', checked: 'checked', class: 'circle'},
+          br
+          | &nbsp;&nbsp;&nbsp;&nbsp;{name: 'gender', id: 'cb_05', text: 'checkbox'}
+          br
+          | &nbsp;&nbsp;])
+      td
+        .fieldset
+          +checkboxList([
+            {name: 'gender', id: 'cb_04', text: 'checkbox', checked: 'checked', class: 'circle'},
+            {name: 'gender', id: 'cb_05', text: 'checkbox'}
+          ])

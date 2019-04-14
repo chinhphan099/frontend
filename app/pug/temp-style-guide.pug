@@ -1,0 +1,163 @@
+extends layouts/template
+
+block vars
+  -title = 'Style Guide'
+  -bodyClass = 'template'
+
+block slideMenu
+  .navigation
+    .inner
+      ul.nav(data-collapse="")
+        +items([
+          {title: 'Breakpoint'},
+          {title: 'Grid'},
+          {title: 'Basic Colors'},
+          {title: 'Color Variables'},
+          {title: 'Background Classes'},
+          {title: 'Fonts'},
+          {title: 'Icons'},
+          {title: 'Utilities Class'},
+          {title: 'Media Queries', href: '#!', text: 'Media Queries<i class="icon-plus"></i><i class="icon-minus"></i>',
+            subList: [
+              {title: 'Mobile First'},
+              {title: 'Dekstop First'}
+            ],
+            subClass: 'sub-nav'
+          },
+          {title: 'Utilities Block', href: '#!', text: 'Utilities Block<i class="icon-plus"></i><i class="icon-minus"></i>',
+            subList: [
+              {title: 'Heading'},
+              {title: 'Link & Text'},
+              {title: 'Breadcrumbs'},
+              {title: 'Price'},
+              {title: 'Image'},
+              {title: 'Pagination'},
+              {title: 'Divider'},
+              {title: 'Blockquote'},
+              {title: 'Useful Tag'},
+              {title: 'Menu'}
+            ],
+            subClass: 'sub-nav'
+          },
+          {title: 'Form Element', href: '#!', text: 'Form Element<i class="icon-plus"></i><i class="icon-minus"></i>',
+            subList: [
+              {title: 'Form'},
+              {title: 'Label'},
+              {title: 'Textarea'},
+              {title: 'Input'},
+              {title: 'Custom Input'},
+              {title: 'Custom Select'},
+              {title: 'Custom Link Checkbox'},
+              {title: 'Custom Checkbox'},
+              {title: 'Custom Checkbox List'},
+              {title: 'Custom Radio'},
+              {title: 'Custom Radio List'},
+              {title: 'Button'}
+            ],
+            subClass: 'sub-nav'
+          },
+          {title: 'CSS Mixin', href: '#!', text: 'CSS Mixin<i class="icon-plus"></i><i class="icon-minus"></i>',
+            subList: [
+              {title: 'Position'},
+              {title: 'Triangle'}
+            ],
+            subClass: 'sub-nav'
+          },
+          {title: 'JS', href: '#!', text: 'JS<i class="icon-plus"></i><i class="icon-minus"></i>',
+            subList: [
+              {title: 'Collapse'}
+            ],
+            subClass: 'sub-nav'
+          }
+        ])
+  .right-navigation
+    .head-nav
+      +form({id: 'search_form'})(data-validates="search_form")
+        +customInput({id: 'search_btn_22', iconClass: 'icon-search'}, {id: "txt_search_22", placeholder: "Search for ..."})
+    .inner
+      ul.search-results
+        +items([
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'}
+        ])
+block main
+  .main
+    include ./guide/master
+block menu
+  .tmp-main-nav-wrap
+    .tmp-main-nav
+      ul
+        +items-1([
+          {title: 'Breakpoint', href: '#breakpoint'},
+          {title: 'Grid', href: '#grid'},
+          {title: 'Media Queries', href: '#media', text: 'Media Queries<i class="icon-arrow-up"></i>',
+            subList: [
+              {title: 'Dekstop First', href: '#desktop-first'},
+              {title: 'Mobile First', href: '#mobile-first'}
+            ],
+            subClass: 'tmp-sub-nav-1'
+          },
+          {title: 'Color', href: '#colors', linkClass: 'colors'},
+          {title: 'Background', href: '#backgrounds', linkClass: 'backgrounds'},
+          {title: 'Fonts', href: '#fonts'},
+          {title: 'Icons', href: '#icons', text: 'Icons<i class="icon-circle-filled"></i>'},
+          {title: 'Utilities Class', href: '#utilities-class'},
+          {title: 'Form Element', href: '#form-element', text: 'Form Element<i class="icon-arrow-up"></i>',
+            subList: [
+              {title: 'Form', href: '#guide_frm'},
+              {title: 'Label', href: '#label'},
+              {title: 'Textarea', href: '#textarea'},
+              {title: 'Input', href: '#input'},
+              {title: 'Custom Input', href: '#custom-input'},
+              {title: 'Custom Select', href: '#custom-select'},
+              {title: 'Custom Checkbox', href: '#custom-checkbox'},
+              {title: 'Custom Checkbox List', href: '#custom-checkbox-list'},
+              {title: 'Custom Link Checkbox', href: '#custom-link-checkbox'},
+              {title: 'Custom Radio', href: '#custom-radio'},
+              {title: 'Custom Radio List', href: '#custom-radio-list'},
+              {title: 'Button', href: '#button'}
+            ],
+            subClass: 'tmp-sub-nav-1'
+          },
+          {title: 'CSS Mixin', href: '#CSS-Mixin', text: 'CSS Mixin'}
+        ])
+        li: +link('Style sprite', 'temp-sprite.html').outlink
+        li: +link('Style js', 'temp-js.html').outlink
+        li: +link('Images', 'images.html').outlink

@@ -1,0 +1,21 @@
+table.tb-temp
+  thead
+    tr
+      td: strong Class Name / Mixin
+      td: strong View
+  tbody
+    tr(data-handler="")
+      td: code.highlight(data-copy="") .red-text
+      td: p.red-text Lorem ipsum dolor sit amet.
+    tr(data-handler="")
+      td: code.highlight(data-copy="") +link('title', '#href').link
+      td: +link('title', '#href').link
+    tr(data-handler="")
+      td
+        code.highlight(data-copy="")
+          | +link('title', '#href', 'text').link
+          br
+          | &nbsp;&nbsp;i.icon-right
+      td
+        +link('title', '#href', 'text').link
+          i.icon-right

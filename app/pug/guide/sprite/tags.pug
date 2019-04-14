@@ -1,0 +1,39 @@
+table.tb-temp
+  thead
+    tr
+      td: strong Tag Name
+      td: strong View
+  tbody
+    tr(data-handler="")
+      td: code.highlight(data-copy="")
+        | mark
+      td
+        | You can use the mark tag to #[mark highlight] text.
+    tr(data-handler="")
+      td: code.highlight(data-copy="")
+        | del
+      td
+        del This line of text is meant to be treated as deleted text.
+    tr(data-handler="")
+      td: code.highlight(data-copy="")
+        | s
+      td
+        s This line of text is meant to be treated as no longer accurate.
+    tr(data-handler="")
+      td: code.highlight(data-copy="")
+        | ins
+      td
+        ins This line of text is meant to be treated as an addition to the document.
+    tr(data-handler="")
+      td: code.highlight(data-copy="")
+        | u
+      td: u This line of text will render as underlined
+    tr(data-handler="")
+      td: code.highlight(data-copy="")
+        | small
+      td: small This line of text is meant to be treated as fine print.
+    tr(data-handler="")
+      td: code.highlight(data-copy="")
+        | strong
+      td
+        | The following snippet of text is #[strong rendered as bold text.]

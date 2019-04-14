@@ -1,0 +1,141 @@
+extends layouts/template
+
+block vars
+  -title = 'Style Sprite'
+  -bodyClass = 'template'
+
+block slideMenu
+  .navigation
+    .inner
+      ul.nav(data-collapse="")
+        +items([
+          {title: 'Breakpoint'},
+          {title: 'Grid'},
+          {title: 'Basic Colors'},
+          {title: 'Color Variables'},
+          {title: 'Background Classes'},
+          {title: 'Fonts'},
+          {title: 'Icons'},
+          {title: 'Utilities Class'},
+          {title: 'Media Queries', href: '#!', text: 'Media Queries<i class="icon-plus"></i><i class="icon-minus"></i>',
+            subList: [
+              {title: 'Mobile First'},
+              {title: 'Dekstop First'}
+            ],
+            subClass: 'sub-nav'
+          },
+          {title: 'Utilities Block', href: '#!', text: 'Utilities Block<i class="icon-plus"></i><i class="icon-minus"></i>',
+            subList: [
+              {title: 'Heading'},
+              {title: 'Link & Text'},
+              {title: 'Breadcrumbs'},
+              {title: 'Price'},
+              {title: 'Image'},
+              {title: 'Pagination'},
+              {title: 'Divider'},
+              {title: 'Blockquote'},
+              {title: 'Useful Tag'},
+              {title: 'Menu'}
+            ],
+            subClass: 'sub-nav'
+          },
+          {title: 'Form Element', href: '#!', text: 'Form Element<i class="icon-plus"></i><i class="icon-minus"></i>',
+            subList: [
+              {title: 'Form'},
+              {title: 'Label'},
+              {title: 'Textarea'},
+              {title: 'Input'},
+              {title: 'Custom Input'},
+              {title: 'Custom Select'},
+              {title: 'Custom Link Checkbox'},
+              {title: 'Custom Checkbox'},
+              {title: 'Custom Checkbox List'},
+              {title: 'Custom Radio'},
+              {title: 'Custom Radio List'},
+              {title: 'Button'}
+            ],
+            subClass: 'sub-nav'
+          },
+          {title: 'CSS Mixin', href: '#!', text: 'CSS Mixin<i class="icon-plus"></i><i class="icon-minus"></i>',
+            subList: [
+              {title: 'Position'},
+              {title: 'Triangle'}
+            ],
+            subClass: 'sub-nav'
+          },
+          {title: 'JS', href: '#!', text: 'JS<i class="icon-plus"></i><i class="icon-minus"></i>',
+            subList: [
+              {title: 'Collapse'}
+            ],
+            subClass: 'sub-nav'
+          }
+        ])
+  .right-navigation
+    .head-nav
+      +form({id: 'search_form'})(data-validates="search_form")
+        +customInput({id: 'search_btn_22', iconClass: 'icon-search'}, {id: "txt_search_22", placeholder: "Search for ..."})
+    .inner
+      ul.search-results
+        +items([
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'},
+          {title: 'Suggest Result', href: '/style-guide.html'}
+        ])
+block main
+  .tmp-main
+    include ./guide/sprite/master
+block menu
+  .tmp-main-nav-wrap
+    .tmp-main-nav
+      ul
+        +items-1([
+          {title: 'Image', href: '#image'},
+          {title: 'Heading', href: '#heading'},
+          {title: 'Link & Text', href: '#link-text'},
+          {title: 'Breadcrumbs', href: '#breadcrumbs'},
+          {title: 'Price', href: '#price'},
+          {title: 'Divider', href: '#divider'},
+          {title: 'Blockquote', href: '#blockquote'},
+          {title: 'Useful Tag', href: '#useful-tag'},
+          {title: 'Menu', href: '#menu'},
+          {title: 'Pagination', href: '#pagination'}
+        ])
+        li: +link('Style Guide', 'temp-style-guide.html').outlink
+        li: +link('Style js', 'temp-js.html').outlink
+        li: +link('Images', 'images.html').outlink
