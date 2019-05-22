@@ -95,6 +95,17 @@
        -o-box-decoration-break: @value;
           box-decoration-break: @value;
 }
+
+.columns(@columns) {
+  -webkit-columns: @columns;
+          columns: @columns;
+}
+
+.break-inside(@value: avoid) {
+  -webkit-column-break-inside: avoid;
+          break-inside: avoid;
+}
+
 // Margins
 // .margins(30px 40px 50px);
 .margins(@values) {
