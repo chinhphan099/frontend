@@ -18,7 +18,9 @@
     "url": "https://github.com/OscarDCorbalan/gulp-less-pug-skeleton/issues",
     "email": "oscardc@gmx.com"
   },
-  "scripts": {},
+  "scripts": {
+    "start": "gulp",
+  },
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "babel-cli": "^6.26.0",
