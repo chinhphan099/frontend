@@ -19,7 +19,7 @@
     "email": "oscardc@gmx.com"
   },
   "scripts": {
-    "start": "gulp",
+    "start": "gulp"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
