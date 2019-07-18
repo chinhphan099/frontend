@@ -184,7 +184,7 @@ gulp.task('webserver', () =>
 	connect.server({
 		root: PUB_DIR.root,
 		livereload: false,
-		port: 2222,
+		port: process.env.PORT || 2222,
 		host: 'localhost'
 	})
 );
