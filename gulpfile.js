@@ -187,6 +187,13 @@ gulp.task('webserver', () =>
 		port: process.env.PORT || 5000
 	})
 );
+gulp.task('serveprod', function() {
+	connect.server({
+		root: PUB_DIR.root,
+		port: process.env.PORT || 5000,
+		livereload: false
+	});
+});
 
 gulp.task('server', ['watch', 'webserver']);
 gulp.task('build', ['less', 'pug', 'pugdata', 'imagemin', 'scripts', 'jsguide', 'libs', 'copyAssets', 'watch']);
