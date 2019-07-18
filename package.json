@@ -1,27 +1,15 @@
 {
-  "name": "gulp-less-pug-skeleton",
-  "description": "Skeleton to create websites using Gulp as a task manager, LESS for CSS preprocessing and Pug to generate HTML effortlestly.",
-  "version": "1.0.4",
-  "homepage": "https://github.com/OscarDCorbalan/gulp-less-pug-skeleton",
+  "name": "Frontend Template",
+  "version": "1.0.0",
   "keywords": "gulp, less, pug, node, skeleton",
-  "license": "MIT",
-  "author": {
-    "name": "Oscar D. Corbalan",
-    "email": "oscardc@gmx.com",
-    "url": "http://www.oscardc.com"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/OscarDCorbalan/gulp-less-pug-skeleton.git"
-  },
-  "bugs": {
-    "url": "https://github.com/OscarDCorbalan/gulp-less-pug-skeleton/issues",
-    "email": "oscardc@gmx.com"
+    "url": "https://github.com/chinhphan099/frontend.git"
   },
   "scripts": {
     "start": "gulp"
   },
-  "devDependencies": {
+  "dependencies": {
     "@babel/core": "^7.3.4",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
@@ -29,7 +17,6 @@
     "gulp": "~3.9",
     "gulp-babel": "^8.0.0",
     "gulp-browserify": "^0.5.1",
-    "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.1",
     "gulp-connect": "~5.0",
     "gulp-cssmin": "~0.1",
@@ -41,5 +28,8 @@
     "gulp-rename": "~1.2",
     "gulp-uglify": "~2.1",
     "jshint": "^2.9.5"
+  },
+  "devDependencies": {
+    "gulp-clean": "^0.3.2"
   }
 }
