@@ -189,6 +189,6 @@ gulp.task('webserver', () =>
 );
 
 gulp.task('server', ['watch', 'webserver']);
-gulp.task('build', ['less', 'pug', 'pugdata', 'imagemin', 'scripts', 'jsguide', 'libs', 'copyAssets', 'watch']);
+gulp.task('build', ['less', 'pug', 'pugdata', 'imagemin', 'scripts', 'jsguide', 'libs', 'copyAssets']);
 gulp.task('default', ['clean'], () => { gulp.run(['build', 'server']); });
 gulp.task('deploy', ['webserver']);
