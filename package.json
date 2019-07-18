@@ -7,7 +7,7 @@
     "url": "https://github.com/chinhphan099/frontend.git"
   },
   "scripts": {
-    "postinstall" : "gulp deploy"
+    "postinstall" : "gulp build"
   },
   "dependencies": {
     "@babel/core": "^7.3.4",
