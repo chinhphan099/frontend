@@ -7,7 +7,6 @@
     "url": "https://github.com/chinhphan099/frontend.git"
   },
   "scripts": {
-    "start": "gulp deploy",
     "postinstall" : "gulp build"
   },
   "dependencies": {
