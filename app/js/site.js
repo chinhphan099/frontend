@@ -22,7 +22,7 @@ var Site = (function($, window, undefined) {
     tablet = /Tablet|iPad/i.test(ua),
     touch = 'ontouchstart' in document.documentElement;
 
-  var globalFct = function() {
+  var globalFct = () => {
   };
 
   var scrollTopAfterCollapse = function(elmScroll, handle, isPos) {

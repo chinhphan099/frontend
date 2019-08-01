@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * @name Site
  * @description Global variables and functions
@@ -21,9 +23,9 @@ var Site = function ($, window, undefined) {
       tablet = /Tablet|iPad/i.test(ua),
       touch = 'ontouchstart' in document.documentElement;
 
-  var globalFct = function () {};
+  var globalFct = function globalFct() {};
 
-  var scrollTopAfterCollapse = function (elmScroll, handle, isPos) {
+  var scrollTopAfterCollapse = function scrollTopAfterCollapse(elmScroll, handle, isPos) {
     var spaceToTop = 0,
         offsetHandle = isPos ? handle.position().top : handle.offset().top;
 
@@ -36,7 +38,7 @@ var Site = function ($, window, undefined) {
     }, 400);
   };
 
-  var customValid = function () {
+  var customValid = function customValid() {
     // Change default Valid message
     jQuery.extend(jQuery.validator.messages, {
       required: L10n.validateMess.required
@@ -81,7 +83,7 @@ var Site = function ($, window, undefined) {
     }, L10n.validateMess.checkValidDate);
   };
 
-  var checkDate = function (day, month, year) {
+  var checkDate = function checkDate(day, month, year) {
     var mydate = new Date();
 
     if (day === '' || month === '' || year === '') {
@@ -113,26 +115,26 @@ var Site = function ($, window, undefined) {
     return true;
   };
 
-  var callAjax = function (method, source, postData) {
+  var callAjax = function callAjax(method, source, postData) {
     var deferred = $.Deferred();
     $.ajax({
       method: method,
       url: source,
       data: !!postData ? postData : null,
-      beforeSend: function () {// Loading
+      beforeSend: function beforeSend() {// Loading
       },
-      success: function (data) {
+      success: function success(data) {
         deferred.resolve([data]);
       },
-      complete: function () {},
-      error: function (error) {
-        deferred.reject(error);
+      complete: function complete() {},
+      error: function error(_error) {
+        deferred.reject(_error);
       }
     });
     return deferred.promise();
   };
 
-  var compileHandlebar = function (method, source, datas) {
+  var compileHandlebar = function compileHandlebar(method, source, datas) {
     var deferred = $.Deferred();
     callAjax(method, source, null).done(function (source) {
       var template = Handlebars.compile(source[0]);
@@ -179,3 +181,4 @@ jQuery(function () {
     }
   });
 });
+//# sourceMappingURL=scripts.js.map
