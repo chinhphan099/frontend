@@ -12,7 +12,7 @@
     "url": "https://github.com/chinhphan099/frontend.git"
   },
   "scripts": {
-    "postinstall" : "gulp deploy"
+    "postinstall" : "gulp webserver"
   },
   "bus": {
     "url": "https://github.com/chinhphan099/frontend/issues",
