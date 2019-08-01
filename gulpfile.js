@@ -198,3 +198,4 @@ task('default',
 	series('clean', 'build', 'webserver')
 );
 task('deploy', series('build', 'webserver'));
+task('hero', parallel('less', 'pug', 'pugdata', 'scripts', 'jsguide', 'libs', 'copyAssets', 'optimized'));
