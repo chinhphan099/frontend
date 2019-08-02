@@ -12,7 +12,7 @@
     "url": "https://github.com/chinhphan099/frontend.git"
   },
   "scripts": {
-    "postinstall" : "gulp hero"
+    "postinstall": "gulp hero"
   },
   "bus": {
     "url": "https://github.com/chinhphan099/frontend/issues",
@@ -22,7 +22,7 @@
     "gulp": "4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-cssmin": "~0.1",
-    "gulp-imagemin": "~3.2",
+    "gulp-imagemin": "^6.0.0",
     "gulp-jshint": "^2.0.4",
     "gulp-less": "~3.3",
     "gulp-pug": "~3.3",
