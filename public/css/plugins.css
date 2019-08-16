@@ -2915,8 +2915,9 @@ Copyright (c) 2015 Daniel Eden
 .slick {
   position: relative;
   display: block;
-  width: 2000%;
   opacity: 0.3;
+  width: 1px;
+  min-width: 100%;
 }
 .vertical-slider .slick {
   width: 100%;
@@ -2925,8 +2926,8 @@ Copyright (c) 2015 Daniel Eden
 .slick.slick-initialized,
 .slick.no-slide {
   opacity: 1;
-  height: auto;
-  width: auto;
+  /* height: auto;
+    width: auto; */
 }
 .slick.slick-initialized + .load,
 .slick.no-slide + .load {

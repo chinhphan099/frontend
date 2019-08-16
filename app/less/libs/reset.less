@@ -10,14 +10,14 @@ html {
       -ms-text-size-adjust: 100%;
           text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
-  font-size: @font-size;
+  font-size: 62.5%;
   -webkit-backface-visibility: hidden;
   -webkit-overflow-scrolling: touch;
 }
 *, *:before, *:after {.box-sizing(inherit);}
 body {
   font-family: @font-family-base;
-  font-size: 1rem;
+  font-size: @font-size;
   color: @text-color;
   line-height: 1;
   background-color: @bgd-body;
@@ -72,6 +72,9 @@ h6 {
   h6 {
     .font-size(@h6-size-mobile);
   }
+}
+address {
+  margin-bottom: 20px;
 }
 p {
   line-height: @line-height-tag-p;
@@ -309,6 +312,7 @@ a {
 }
 img {
   max-width: 100%;
+  vertical-align: middle;
 }
 noscript {
   position: fixed;

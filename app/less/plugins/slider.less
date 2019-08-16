@@ -44,16 +44,17 @@
 .slick {
   position: relative;
   display: block;
-  width: 2000%;
   opacity: 0.3;
+  width: 1px;
+  min-width: 100%;
   .vertical-slider & {
     width: 100%;
     overflow: hidden;
   }
   &.slick-initialized, &.no-slide {
     opacity: 1;
-    height: auto;
-    width: auto;
+    /* height: auto;
+    width: auto; */
     + .load {
       display: none;
     }
