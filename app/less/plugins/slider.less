@@ -1,8 +1,10 @@
 /* My code */
 .slider {
   position: relative;
-  width: 100%;
   overflow: hidden;
+  // Fix for iframe contains slick slider
+  width: 1px;
+  min-width: 100%;
   .load {
     .position();
     background: url("../images/loading.svg") center center / 50px no-repeat;
@@ -45,16 +47,15 @@
   position: relative;
   display: block;
   opacity: 0.3;
-  width: 1px;
-  min-width: 100%;
+  width: 2000%;
   .vertical-slider & {
     width: 100%;
     overflow: hidden;
   }
   &.slick-initialized, &.no-slide {
     opacity: 1;
-    /* height: auto;
-    width: auto; */
+    height: auto;
+    width: auto;
     + .load {
       display: none;
     }
