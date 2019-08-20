@@ -43,7 +43,7 @@ PUB.fnt = PUB.root + 'fonts/';
 PUB.img = PUB.root + 'images/';
 
 task('scripts', () => {
-	return src([SRC.js + 'site.js', SRC.js + 'plugins/*.js'])
+	return src([SRC.js + 'site.js', SRC.js + 'components/*.js'])
 		.pipe(sourcemaps.init())
 		.pipe(jshint('.jshintrc'))
 		.pipe(jshint.reporter('default'))
@@ -69,7 +69,8 @@ task('scripts', () => {
 });
 
 task('jsguide', () => {
-	return src([SRC.js + 'guide/guide.js', SRC.js + 'guide/plugins/*.js'])
+	return src([SRC.js + 'guide/guide.js', SRC.js + 'guide/components/*.js'])
+		.pipe(sourcemaps.init())
 		.pipe(jshint('.jshintrc'))
 		.pipe(jshint.reporter('default'))
 		.on('error', function(err) {
@@ -78,6 +79,7 @@ task('jsguide', () => {
 			this.emit('end');
 		})
 		.pipe(concat('jsguide.js'))
+		.pipe(sourcemaps.write('.'))
 		.pipe(dest(PUB.js))
 		// .pipe(rename({ suffix: '.min' }))
 		// .pipe(uglify())
@@ -165,7 +167,7 @@ task('test', function() {
 
 task('watch', (done) => {
 	watch([SRC.less + '*.less', SRC.less + '**/*.less'], series('less'));
-	watch([SRC.js + 'site.js', SRC.js + 'plugins/*.js', SRC.js + 'guide/guide.js', SRC.js + 'guide/**/*.js'], series('scripts'));
+	watch([SRC.js + 'site.js', SRC.js + 'components/*.js', SRC.js + 'guide/guide.js', SRC.js + 'guide/**/*.js'], series('scripts'));
 	watch([SRC.pug + '**/*.pug', SRC.pug + '*.pug'], series('pug'));
 	watch(FILES.images, series('imagemin'));
 	watch(FILES.assets, series('copyAssets'));
