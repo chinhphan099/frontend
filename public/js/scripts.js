@@ -23,7 +23,46 @@ var Site = function ($, window, undefined) {
       tablet = /Tablet|iPad/i.test(ua),
       touch = 'ontouchstart' in document.documentElement;
 
-  var globalFct = function globalFct() {};
+  var globalFct = function globalFct() {}; //- Cookie
+
+
+  var createCookie = function createCookie(name, value, days) {
+    var expires = '';
+
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      expires = '; expires=' + date.toUTCString();
+    }
+
+    document.cookie = name + '=' + value + expires + '; path=/';
+  };
+
+  var readCookie = function readCookie(name) {
+    var nameEQ = name + '=',
+        ca = document.cookie.split(';');
+
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+
+      while (c.charAt(0) === ' ') {
+        c = c.substring(1, c.length);
+      }
+
+      if (c.indexOf(nameEQ) === 0) {
+        return c.substring(nameEQ.length, c.length);
+      }
+    }
+
+    return null;
+  };
+
+  var eraseCookie = function eraseCookie(name) {
+    createCookie(name, '', -1);
+  };
+
+  createCookie('ab', true, 1);
+  console.log(readCookie('ab')); // eraseCookie('ab');
 
   var scrollTopAfterCollapse = function scrollTopAfterCollapse(elmScroll, handle, isPos) {
     var spaceToTop = 0,
@@ -162,7 +201,10 @@ var Site = function ($, window, undefined) {
     customValid: customValid,
     checkDate: checkDate,
     scrollTopAfterCollapse: scrollTopAfterCollapse,
-    compileHandlebar: compileHandlebar
+    compileHandlebar: compileHandlebar,
+    createCookie: createCookie,
+    readCookie: readCookie,
+    eraseCookie: eraseCookie
   };
 }(jQuery, window);
 
