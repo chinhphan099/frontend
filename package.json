@@ -1,7 +1,7 @@
 {
-  "name": "FrontendTemplate",
-  "version": "2.0.0",
-  "keywords": "gulp, less, pug, node, skeleton",
+  "name": "PugLessJsTemplate",
+  "version": "1.0.0",
+  "keywords": "gulp, less, pug, node",
   "author": {
     "name": "Chinh Phan",
     "email": "chinhphan099@gmail.com",
@@ -10,9 +10,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/chinhphan099/frontend.git"
-  },
-  "scripts": {
-    "postinstall": "gulp hero"
   },
   "bus": {
     "url": "https://github.com/chinhphan099/frontend/issues",
@@ -26,7 +23,6 @@
     "gulp-jshint": "^2.0.4",
     "gulp-less": "~3.3",
     "gulp-pug": "~3.3",
-    "gulp-qunit": "^1.5.0",
     "gulp-rename": "~1.2",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "~2.1",
@@ -38,7 +34,7 @@
     "@babel/preset-env": "^7.5.5",
     "gulp-babel": "^8.0.0",
     "gulp-clean": "^0.3.2",
-    "gulp-connect": "^5.7.0",
+    "gulp-qunit": "^1.5.0",
     "ip": "^1.1.5"
   }
 }

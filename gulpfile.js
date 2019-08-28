@@ -146,8 +146,18 @@ task('pugdata', () =>
 
 task('imagemin', () =>
     src(FILES.images)
-        //.pipe(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
-        .pipe(dest(PUB.img))
+    .pipe(imagemin([
+        imagemin.gifsicle({interlaced: true, progressive: true, optimizationLevel: 5}),
+        imagemin.jpegtran({interlaced: true, progressive: true, optimizationLevel: 5}),
+        imagemin.optipng({interlaced: true, progressive: true, optimizationLevel: 5}),
+        imagemin.svgo({
+            plugins: [
+                {removeViewBox: true},
+                {cleanupIDs: false}
+            ]
+        })
+    ]))
+    .pipe(dest(PUB.img))
 );
 
 task('copyAssets', () =>
@@ -192,7 +202,7 @@ task('optimized',
     parallel('imagemin')
 );
 task('build',
-    parallel('less', 'pug', 'pugdata', 'scripts', 'jsguide', 'libs', 'copyAssets', 'watch', 'optimized')
+    parallel('less', 'pug', 'pugdata', 'scripts', 'jsguide', 'libs', 'copyAssets', 'optimized', 'watch')
 );
 task('default',
     series('clean', 'build', 'webserver')
