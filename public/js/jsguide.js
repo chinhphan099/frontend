@@ -1,20 +1,20 @@
+"use strict";
+
 /**
  * @name Guide
  * @description Global variables and functions
  * @version 1.0
  */
-
-var Guide = (function($, window, undefined) {
+var Guide = function ($, window, undefined) {
   'use strict';
 
   var win = $(window),
-    doc = $(document),
-    html = $('html'),
-    body = $('body'),
-    resize = ('onorientationchange' in window) ? 'orientationchange.resizeWindow' : 'resize.resizeWindow';
+      doc = $(document),
+      html = $('html'),
+      body = $('body'),
+      resize = 'onorientationchange' in window ? 'orientationchange.resizeWindow' : 'resize.resizeWindow';
 
-  var globalFct = function() {
-  };
+  var globalFct = function globalFct() {};
 
   return {
     win: win,
@@ -24,12 +24,12 @@ var Guide = (function($, window, undefined) {
     resize: resize,
     globalFct: globalFct
   };
+}(jQuery, window);
 
-})(jQuery, window);
-
-jQuery(function() {
+jQuery(function () {
   Guide.globalFct();
 });
+"use strict";
 
 /**
  *  @name collapse(both Tabs & Accordion)
@@ -57,13 +57,15 @@ jQuery(function() {
  *    close
  *    destroy
  */
+;
 
-;(function($, window, undefined) {
+(function ($, window, undefined) {
   'use strict';
+
   var pluginName = 'collapse',
-    win = $(window),
-    collapseTimeout,
-    resize = ('onorientationchange' in window) ? 'orientationchange.resize' + pluginName : 'resize.resize' + pluginName;
+      win = $(window),
+      collapseTimeout,
+      resize = 'onorientationchange' in window ? 'orientationchange.resize' + pluginName : 'resize.resize' + pluginName;
 
   function Plugin(element, options) {
     this.element = $(element);
@@ -72,7 +74,7 @@ jQuery(function() {
   }
 
   Plugin.prototype = {
-    init: function() {
+    init: function init() {
       this.activeEl = this.element.find(this.options.activeEl);
       this.handles = this.element.find(this.options.handle);
       this.initEl = this.element.find(this.options.initEl);
@@ -86,11 +88,12 @@ jQuery(function() {
       this.initCls = this.options.initCls;
       this.initSuccess = false;
 
-      if(this.options.effect === 'fade') {
+      if (this.options.effect === 'fade') {
         this.show = 'fadeIn';
         this.hide = 'fadeOut';
       }
-      if(this.options.effect === 'slide') {
+
+      if (this.options.effect === 'slide') {
         this.show = 'slideDown';
         this.hide = 'slideUp';
       }
@@ -98,91 +101,85 @@ jQuery(function() {
       this.checkEmptyContent();
       this.resizeWindow();
     },
-    checkEmptyContent: function() {
+    checkEmptyContent: function checkEmptyContent() {
       var that = this;
-      this.contents.each(function() {
+      this.contents.each(function () {
         var self = $(this),
-          handle = that.element.find('[data-handle="' + self.data('content') + '"]');
-        if(!self.text().trim().length) {
+            handle = that.element.find('[data-handle="' + self.data('content') + '"]');
+
+        if (!self.text().trim().length) {
           handle.closest('[data-active]').remove();
           self.remove();
         }
       });
       this.initialized();
     },
-    initialized: function() {
+    initialized: function initialized() {
       var that = this;
 
-      if(!!this.options.breakpoint) {
-        if(win.width() <= this.options.breakpoint) {
+      if (!!this.options.breakpoint) {
+        if (win.width() <= this.options.breakpoint) {
           this.options.type = '';
-        }
-        else {
+        } else {
           this.options.type = 'tab';
         }
       }
 
-      if(!!this.options.initUnder) {
-        if(win.width() <= this.options.initUnder) {
+      if (!!this.options.initUnder) {
+        if (win.width() <= this.options.initUnder) {
           this.listener();
-          if(this.initEl.length) {
-            if(this.options.type === 'toggleSelf') {
-              this.initEl.each(function() {
+
+          if (this.initEl.length) {
+            if (this.options.type === 'toggleSelf') {
+              this.initEl.each(function () {
                 that.toggleSelfEvent($(this));
               });
-            }
-            else {
+            } else {
               this.collapseContent(this.initEl);
             }
           }
         }
-      }
-      else {
+      } else {
         this.listener();
-        if(this.initEl.length) {
-          if(this.options.type === 'toggleSelf') {
-            this.initEl.each(function() {
+
+        if (this.initEl.length) {
+          if (this.options.type === 'toggleSelf') {
+            this.initEl.each(function () {
               that.toggleSelfEvent($(this));
             });
-          }
-          else {
+          } else {
             this.collapseContent(this.initEl);
           }
         }
       }
     },
-    listener: function() {
+    listener: function listener() {
       var that = this;
-
       this.element.addClass(this.initCls);
-
-      this.handles.off('click.changeTab' + pluginName).on('click.changeTab' + pluginName, function(e) {
+      this.handles.off('click.changeTab' + pluginName).on('click.changeTab' + pluginName, function (e) {
         var handle = $(this).closest(that.element).find('[data-handle="' + $(this).data('handle') + '"]');
 
-        if($(this).data('active') === 'linkout' && $(this).hasClass('active')) {
+        if ($(this).data('active') === 'linkout' && $(this).hasClass('active')) {
           return;
-        }
-        else if($(e.target).is('a') || $(e.target).parent().is('a')) {
+        } else if ($(e.target).is('a') || $(e.target).parent().is('a')) {
           e.preventDefault();
         }
 
-        if(!that.isAnimating) {
-          if(that.options.type === 'toggleSelf') {
+        if (!that.isAnimating) {
+          if (that.options.type === 'toggleSelf') {
             that.toggleSelfEvent(handle);
-          }
-          else {
+          } else {
             that.collapseContent(handle);
           }
         }
       });
-
-      that.contents.off('click.closeTab' + pluginName, this.closeEl).on('click.closeTab' + pluginName, this.closeEl, function(e) {
+      that.contents.off('click.closeTab' + pluginName, this.closeEl).on('click.closeTab' + pluginName, this.closeEl, function (e) {
         e.preventDefault();
 
-        if(!that.isAnimating) {
+        if (!that.isAnimating) {
           var childContentVisible = that.activeContent.find(that.options.content).not(':hidden');
 
-          if(childContentVisible.length) {
+          if (childContentVisible.length) {
             console.log('--- Close child Tabs - Button Close click ---');
             childContentVisible.closest('[data-' + pluginName + ']')[pluginName]('close');
           }
@@ -190,40 +187,41 @@ jQuery(function() {
           console.log('--- Close current tab ---');
           that.close();
         }
+
         return false;
       });
     },
-    resizeWindow: function() {
+    resizeWindow: function resizeWindow() {
       var that = this;
-      win.off(resize).on(resize, function() {
-        if(collapseTimeout) {
+      win.off(resize).on(resize, function () {
+        if (collapseTimeout) {
           clearTimeout(collapseTimeout);
         }
-        collapseTimeout = setTimeout(function() {
-          $('[data-' + pluginName + ']').each(function() {
-            var breakpoint = $(this).data(pluginName).options.breakpoint,
-              initUnder = $(this).data(pluginName).options.initUnder;
 
-            if(!!breakpoint) {
-              if(win.width() <= breakpoint) {
+        collapseTimeout = setTimeout(function () {
+          $('[data-' + pluginName + ']').each(function () {
+            var breakpoint = $(this).data(pluginName).options.breakpoint,
+                initUnder = $(this).data(pluginName).options.initUnder;
+
+            if (!!breakpoint) {
+              if (win.width() <= breakpoint) {
                 $(this).data(pluginName).options.type = '';
-              }
-              else {
+              } else {
                 $(this).data(pluginName).options.type = 'tab';
-                if(!$(this).data(pluginName).activeContent.length && $(this).data(pluginName).initEl.length) {
+
+                if (!$(this).data(pluginName).activeContent.length && $(this).data(pluginName).initEl.length) {
                   $(this).filter('[data-' + pluginName + ']')[pluginName]('collapseContent', $(this).data(pluginName).initEl);
                 }
               }
             }
 
-            if(!!initUnder) {
-              if(win.width() <= initUnder) {
-                if(!$(this).hasClass(that.initCls)) {
+            if (!!initUnder) {
+              if (win.width() <= initUnder) {
+                if (!$(this).hasClass(that.initCls)) {
                   $(this).filter('[data-' + pluginName + ']')[pluginName]('init');
                 }
-              }
-              else {
-                if($(this).hasClass(that.initCls)) {
+              } else {
+                if ($(this).hasClass(that.initCls)) {
                   $(this).filter('[data-' + pluginName + ']')[pluginName]('destroy');
                 }
               }
@@ -232,173 +230,204 @@ jQuery(function() {
         }, 300);
       });
     },
-    toggleSelfEvent: function(handle) {
+    toggleSelfEvent: function toggleSelfEvent(handle) {
       var that = this,
-        content = handle.closest(this.element).find('[data-content="' + handle.data('handle') + '"]');
-
+          content = handle.closest(this.element).find('[data-content="' + handle.data('handle') + '"]');
       that.isAnimating = true;
-      if(!handle.closest(this.activeEl).hasClass('active')) {
+
+      if (!handle.closest(this.activeEl).hasClass('active')) {
         handle.addClass('active');
-        content.addClass('active')[that.show](this.duration, function() {
-          if($.isFunction(that.options.afterOpen)) {that.options.afterOpen(content, handle, that);}
+        content.addClass('active')[that.show](this.duration, function () {
+          if ($.isFunction(that.options.afterOpen)) {
+            that.options.afterOpen(content, handle, that);
+          }
+
           that.isAnimating = false;
         });
-      }
-      else {
+      } else {
         handle.removeClass('active');
-        content.removeClass('active')[that.hide](this.duration, function() {
-          if($.isFunction(that.options.afterClose)) {that.options.afterClose(content, handle);}
+        content.removeClass('active')[that.hide](this.duration, function () {
+          if ($.isFunction(that.options.afterClose)) {
+            that.options.afterClose(content, handle);
+          }
+
           that.isAnimating = false;
         });
       }
     },
-    collapseContent: function(handle) {
+    collapseContent: function collapseContent(handle) {
       var content = handle.closest(this.element).find('[data-content="' + handle.data('handle') + '"]');
-
       handle.find('input[type="radio"]').prop('checked', true);
-      if(!content.length) {
+
+      if (!content.length) {
         this.noContent(handle);
-      }
-      else {
+      } else {
         this.hasContent(handle, content);
       }
     },
-    noContent: function(handle) {
+    noContent: function noContent(handle) {
       var that = this;
       console.log('--- No Content ---');
       this.activeEl.removeClass('active');
       handle.closest(this.activeEl).addClass('active');
 
-      if(this.activeContent.length) {
-        this.isAnimating = true;
-        //- Before Close
-        if($.isFunction(that.options.beforeClose)) {that.options.beforeClose(that.activeContent);}
-        this.activeContent.removeClass('active')[this.hide](this.duration, function() {
+      if (this.activeContent.length) {
+        this.isAnimating = true; //- Before Close
+
+        if ($.isFunction(that.options.beforeClose)) {
+          that.options.beforeClose(that.activeContent);
+        }
+
+        this.activeContent.removeClass('active')[this.hide](this.duration, function () {
           //- After Close
-          if($.isFunction(that.options.afterClose)) {that.options.afterClose(that.activeContent);}
-          //- Remove activeContent
+          if ($.isFunction(that.options.afterClose)) {
+            that.options.afterClose(that.activeContent);
+          } //- Remove activeContent
+
+
           that.activeContent = [];
           that.isAnimating = false;
         });
       }
     },
-    hasContent: function(handle, content) {
-      if(this.activeContent.length) {
-        if(this.activeContent[0] !== content[0]) {
+    hasContent: function hasContent(handle, content) {
+      if (this.activeContent.length) {
+        if (this.activeContent[0] !== content[0]) {
           this.changeTab(handle, content);
-        }
-        else if(this.options.type !== 'tab') {
+        } else if (this.options.type !== 'tab') {
           this.closeCurrentTab(handle);
         }
-      }
-      else {
+      } else {
         this.firstOpen(handle, content);
       }
     },
-    changeTab: function(handle, content) {
+    changeTab: function changeTab(handle, content) {
       var that = this,
-        childContentVisible = this.activeContent.find(this.options.content).not(':hidden');
+          childContentVisible = this.activeContent.find(this.options.content).not(':hidden');
 
-      if(childContentVisible.length) {
+      if (childContentVisible.length) {
         console.log('--- Close child Tabs - Tab click ---');
         childContentVisible.closest('[data-' + pluginName + ']')[pluginName]('close');
       }
 
-      console.log('--- Change Tab ---');
-      //- Before Close
-      if($.isFunction(that.options.beforeClose)) {that.options.beforeClose(that.activeContent);}
+      console.log('--- Change Tab ---'); //- Before Close
+
+      if ($.isFunction(that.options.beforeClose)) {
+        that.options.beforeClose(that.activeContent);
+      }
 
       this.isAnimating = true;
       this.activeEl.removeClass('active');
-      this.activeContent.removeClass('active')[this.hide](this.duration, function() {
+      this.activeContent.removeClass('active')[this.hide](this.duration, function () {
         //- After Close
-        if($.isFunction(that.options.afterClose)) {that.options.afterClose(that.activeContent);}
+        if ($.isFunction(that.options.afterClose)) {
+          that.options.afterClose(that.activeContent);
+        } //- Set new activeContent
 
-        //- Set new activeContent
-        that.activeContent = content;
-        //- Before Open
-        if($.isFunction(that.options.beforeOpen)) {that.options.beforeOpen(that.activeContent);}
+
+        that.activeContent = content; //- Before Open
+
+        if ($.isFunction(that.options.beforeOpen)) {
+          that.options.beforeOpen(that.activeContent);
+        }
 
         handle.closest(that.activeEl).addClass('active');
-        that.activeContent.addClass('active')[that.show](this.duration, function() {
+        that.activeContent.addClass('active')[that.show](this.duration, function () {
           //- After Open
-          if($.isFunction(that.options.afterOpen)) {that.options.afterOpen(that.activeContent, handle, that);}
+          if ($.isFunction(that.options.afterOpen)) {
+            that.options.afterOpen(that.activeContent, handle, that);
+          }
+
           that.isAnimating = false;
         });
       });
     },
-    closeCurrentTab: function(handle) {
+    closeCurrentTab: function closeCurrentTab(handle) {
       var that = this,
-        childContentVisible = this.activeContent.find(this.options.content).not(':hidden');
-      if(childContentVisible.length) {
+          childContentVisible = this.activeContent.find(this.options.content).not(':hidden');
+
+      if (childContentVisible.length) {
         console.log('--- Close child Tabs - Tab click ---');
         childContentVisible.closest('[data-' + pluginName + ']')[pluginName]('close');
       }
 
-      console.log('--- Close current tab ---');
-      //- Before Close
-      if($.isFunction(that.options.beforeClose)) {that.options.beforeClose(that.activeContent);}
+      console.log('--- Close current tab ---'); //- Before Close
+
+      if ($.isFunction(that.options.beforeClose)) {
+        that.options.beforeClose(that.activeContent);
+      }
 
       this.isAnimating = true;
       handle.closest(this.activeEl).removeClass('active');
-      this.activeContent.removeClass('active')[this.hide](this.duration, function() {
+      this.activeContent.removeClass('active')[this.hide](this.duration, function () {
         //- After Close
-        if($.isFunction(that.options.afterClose)) {that.options.afterClose(that.activeContent);}
-        //- Remove activeContent
+        if ($.isFunction(that.options.afterClose)) {
+          that.options.afterClose(that.activeContent);
+        } //- Remove activeContent
+
+
         that.activeContent = [];
         that.isAnimating = false;
       });
     },
-    firstOpen: function(handle, content) {
+    firstOpen: function firstOpen(handle, content) {
       var that = this;
-      console.log('--- First open ---');
+      console.log('--- First open ---'); //- Set new activeContent
 
-      //- Set new activeContent
-      that.activeContent = content;
-      //- Before Open
-      if($.isFunction(that.options.beforeOpen)) {that.options.beforeOpen(that.activeContent);}
+      that.activeContent = content; //- Before Open
+
+      if ($.isFunction(that.options.beforeOpen)) {
+        that.options.beforeOpen(that.activeContent);
+      }
 
       this.isAnimating = true;
-      this.activeEl.removeClass('active');
-      //handle.closest(this.activeEl).addClass('active');
+      this.activeEl.removeClass('active'); //handle.closest(this.activeEl).addClass('active');
+
       this.element.find('[data-handle="' + handle.data('handle') + '"]').closest(this.activeEl).addClass('active');
-      that.activeContent.addClass('active')[this.show](this.duration, function() {
+      that.activeContent.addClass('active')[this.show](this.duration, function () {
         //- After Open
-        if($.isFunction(that.options.afterOpen)) {that.options.afterOpen(that.activeContent, handle, that);}
+        if ($.isFunction(that.options.afterOpen)) {
+          that.options.afterOpen(that.activeContent, handle, that);
+        }
+
         that.isAnimating = false;
       });
     },
-    close: function() {
-      var that = this;
+    close: function close() {
+      var that = this; //- Before Close
 
-      //- Before Close
-      if($.isFunction(that.options.beforeClose)) {that.options.beforeClose(that.activeContent);}
+      if ($.isFunction(that.options.beforeClose)) {
+        that.options.beforeClose(that.activeContent);
+      }
 
       this.isAnimating = true;
       this.activeEl.removeClass('active');
-      this.activeContent.removeClass('active')[this.hide](function() {
+      this.activeContent.removeClass('active')[this.hide](function () {
         //- After Close
-        if($.isFunction(that.options.afterClose)) {that.options.afterClose(that.activeContent);}
-        //- Remove ActiveContent
+        if ($.isFunction(that.options.afterClose)) {
+          that.options.afterClose(that.activeContent);
+        } //- Remove ActiveContent
+
+
         that.activeContent = [];
         that.isAnimating = false;
       });
     },
-    destroy: function() {
+    destroy: function destroy() {
       this.element.removeClass(this.initCls);
       this.element.find(this.options.content).removeAttr('style').removeClass('active');
       this.element.find(this.options.handle).removeClass('active');
       this.activeContent = [];
       this.isAnimating = false;
-      this.handles.off('click.changeTab' + pluginName);
-      //win.off(resize);
+      this.handles.off('click.changeTab' + pluginName); //win.off(resize);
       //$.removeData(this.element[0], pluginName);
     }
   };
 
-  $.fn[pluginName] = function(options, params) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options, params) {
+    return this.each(function () {
       var instance = $.data(this, pluginName);
+
       if (!instance) {
         $.data(this, pluginName, new Plugin(this, options));
       } else if (instance[options]) {
@@ -416,46 +445,45 @@ jQuery(function() {
     initCls: 'initCollapse',
     duration: 300,
     htmlClass: '',
-    beforeClose: function(activeContent) {
+    beforeClose: function beforeClose(activeContent) {
       console.log('beforeClose');
       console.log(activeContent);
     },
-    afterClose: function(activeContent) {
+    afterClose: function afterClose(activeContent) {
       console.log('afterClose');
       console.log(activeContent);
       $('html').removeClass(this.htmlClass);
       console.log(this.htmlClass);
     },
-    beforeOpen: function(activeContent) {
+    beforeOpen: function beforeOpen(activeContent) {
       $('html').addClass(this.htmlClass);
       console.log('beforeOpen');
       console.log(activeContent);
     },
-    afterOpen: function(activeContent, handle, plugin) {
+    afterOpen: function afterOpen(activeContent, handle, plugin) {
       var topHandle = handle.offset().top,
-        topWindow = win.scrollTop();
+          topWindow = win.scrollTop();
 
-      if(activeContent.closest('.navigation .inner').length) {
+      if (activeContent.closest('.navigation .inner').length) {
         Site.scrollTopAfterCollapse(activeContent.closest('.navigation .inner'), handle, true);
       }
-      if(plugin.initSuccess) {
+
+      if (plugin.initSuccess) {
         var gotop = handle.data('active');
-        if(gotop === 'gotop' &&
-          (topHandle < topWindow || topHandle > topWindow + win.height() / 1.25)) {
+
+        if (gotop === 'gotop' && (topHandle < topWindow || topHandle > topWindow + win.height() / 1.25)) {
           Site.scrollTopAfterCollapse($('html, body'), handle, false);
         }
-      }
-      else {
+      } else {
         plugin.initSuccess = true;
       }
     }
   };
-
-  $(function() {
+  $(function () {
     $('[data-' + pluginName + ']')[pluginName]();
   });
-
-}(jQuery, window));
+})(jQuery, window);
+"use strict";
 
 /**
  *  @name cookies
@@ -470,7 +498,9 @@ jQuery(function() {
  *    publicMethod
  *    destroy
  */
-;(function($, window, undefined) {
+;
+
+(function ($, window, undefined) {
   'use strict';
 
   var pluginName = 'cookies';
@@ -482,57 +512,62 @@ jQuery(function() {
   }
 
   Plugin.prototype = {
-    init: function() {
+    init: function init() {
       this.initialize();
       this.listener();
     },
-    initialize: function() {
+    initialize: function initialize() {
       // Check Cookie
-      if(this.readCookie('showSticky')) {
-        // Show sticky
+      if (this.readCookie('showSticky')) {// Show sticky
       }
     },
-    listener: function() {
+    listener: function listener() {
       var that = this;
-      $('.close').off('click.' + pluginName).on('click.' + pluginName, function() {
+      $('.close').off('click.' + pluginName).on('click.' + pluginName, function () {
         that.createCookie('showSticky');
       });
-      $(window).off('unload.' + pluginName).on('unload.' + pluginName, function() {
+      $(window).off('unload.' + pluginName).on('unload.' + pluginName, function () {
         that.eraseCookie('showSticky');
       });
     },
-    createCookie: function(name, value, days) {
+    createCookie: function createCookie(name, value, days) {
       var expires = '';
-      if(days) {
+
+      if (days) {
         var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
         expires = '; expires=' + date.toGMTString();
       }
+
       document.cookie = name + '=' + value + expires + '; path=/';
     },
-    readCookie: function(name) {
+    readCookie: function readCookie(name) {
       var nameEQ = name + '=',
-        ca = document.cookie.split(';');
+          ca = document.cookie.split(';');
 
-      for(var i = 0; i < ca.length; i++) {
+      for (var i = 0; i < ca.length; i++) {
         var c = ca[i];
+
         while (c.charAt(0) === ' ') {
-          c = c.substring(1,c.length);
+          c = c.substring(1, c.length);
         }
+
         if (c.indexOf(nameEQ) === 0) {
-          return c.substring(nameEQ.length,c.length);
+          return c.substring(nameEQ.length, c.length);
         }
       }
+
       return null;
     },
-    eraseCookie: function(name) {
+    eraseCookie: function eraseCookie(name) {
       this.createCookie(name, '', -1);
     }
   };
 
-  $.fn[pluginName] = function(options, params) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options, params) {
+    return this.each(function () {
       var instance = $.data(this, pluginName);
+
       if (!instance) {
         $.data(this, pluginName, new Plugin(this, options));
       } else if (instance[options]) {
@@ -541,11 +576,11 @@ jQuery(function() {
     });
   };
 
-  $(function() {
+  $(function () {
     $('[data-' + pluginName + ']')[pluginName]();
   });
-
-}(jQuery, window));
+})(jQuery, window);
+"use strict";
 
 /**
  *  @name copies
@@ -560,7 +595,9 @@ jQuery(function() {
  *    selectContent
  *    destroy
  */
-;(function($, window, undefined) {
+;
+
+(function ($, window, undefined) {
   'use strict';
 
   var pluginName = 'copies';
@@ -572,42 +609,41 @@ jQuery(function() {
   }
 
   Plugin.prototype = {
-    init: function() {
+    init: function init() {
       var that = this;
       this.handle = this.element.find(this.options.handle);
       this.copy = this.options.copy;
       this.isAnimating = false;
-
-      this.handle.off('click.copies').on('click.copies', function() {
-        if(!that.isAnimating) {
+      this.handle.off('click.copies').on('click.copies', function () {
+        if (!that.isAnimating) {
           that.selectContent($(this).find(that.copy));
         }
       });
     },
-    selectContent: function(element) {
+    selectContent: function selectContent(element) {
       var $temp = $('<input>'),
-        that = this,
-        value = element.data('copy') || element.text();
-
+          that = this,
+          value = element.data('copy') || element.text();
       this.isAnimating = true;
       element.after($temp);
       $temp.val(value);
       $temp.focus();
       document.execCommand('SelectAll');
       document.execCommand('Copy', false, null);
-      $('.copied').html(value).show().delay(1000).fadeOut(300, function() {
+      $('.copied').html(value).show().delay(1000).fadeOut(300, function () {
         that.isAnimating = false;
       });
       $temp.remove();
     },
-    destroy: function() {
+    destroy: function destroy() {
       $.removeData(this.element[0], pluginName);
     }
   };
 
-  $.fn[pluginName] = function(options, params) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options, params) {
+    return this.each(function () {
       var instance = $.data(this, pluginName);
+
       if (!instance) {
         $.data(this, pluginName, new Plugin(this, options));
       } else if (instance[options]) {
@@ -620,12 +656,11 @@ jQuery(function() {
     handle: '[data-handler]',
     copy: '[data-copy]'
   };
-
-  $(function() {
+  $(function () {
     $('[data-' + pluginName + ']')[pluginName]();
   });
-
-}(jQuery, window));
+})(jQuery, window);
+"use strict";
 
 /**
  *  @name date
@@ -639,17 +674,26 @@ jQuery(function() {
  *    updateValue
  *    destroy
  */
-;(function($, window, undefined) {
+;
+
+(function ($, window, undefined) {
   'use strict';
 
   var pluginName = 'date';
-  var convertToDMY = function(date) {
-    var day = date.getDate(),
-      month = date.getMonth() + 1,
-      year = date.getFullYear();
 
-    if(day < 10) {day = '0' + day;}
-    if(month < 10) {month = '0' + month;}
+  var convertToDMY = function convertToDMY(date) {
+    var day = date.getDate(),
+        month = date.getMonth() + 1,
+        year = date.getFullYear();
+
+    if (day < 10) {
+      day = '0' + day;
+    }
+
+    if (month < 10) {
+      month = '0' + month;
+    }
+
     return day + '/' + month + '/' + year;
   };
 
@@ -660,39 +704,40 @@ jQuery(function() {
   }
 
   Plugin.prototype = {
-    init: function() {
+    init: function init() {
       var that = this;
-        this.valueContainer = this.element.find(this.options.valueContainer);
-        this.inputElm = this.element.find(this.options.inputElm);
-
+      this.valueContainer = this.element.find(this.options.valueContainer);
+      this.inputElm = this.element.find(this.options.inputElm);
       this.updateValue();
-      this.inputElm.off('change.changeValue').on('change.changeValue', function() {
+      this.inputElm.off('change.changeValue').on('change.changeValue', function () {
         var idDate = $(this).attr('id');
         that.updateValue();
-        if($(this).prop('required')) {
+
+        if ($(this).prop('required')) {
           $(this).closest('form').validate().element('#' + idDate);
         }
       });
     },
-    updateValue: function() {
+    updateValue: function updateValue() {
       var date = this.inputElm.val();
-      if(date === '') {
+
+      if (date === '') {
         this.valueContainer.text(this.inputElm.attr('placeholder'));
         this.element.removeClass(this.options.selectedCls);
-      }
-      else {
+      } else {
         this.valueContainer.text(convertToDMY.call(this, new Date(date)));
         this.element.addClass(this.options.selectedCls);
       }
     },
-    destroy: function() {
+    destroy: function destroy() {
       $.removeData(this.element[0], pluginName);
     }
   };
 
-  $.fn[pluginName] = function(options, params) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options, params) {
+    return this.each(function () {
       var instance = $.data(this, pluginName);
+
       if (!instance) {
         $.data(this, pluginName, new Plugin(this, options));
       } else if (instance[options]) {
@@ -706,12 +751,11 @@ jQuery(function() {
     inputElm: 'input',
     selectedCls: 'selected'
   };
-
-  $(function() {
+  $(function () {
     $('[data-' + pluginName + ']')[pluginName]();
   });
-
-}(jQuery, window));
+})(jQuery, window);
+"use strict";
 
 /**
  *  @name plugin
@@ -726,61 +770,64 @@ jQuery(function() {
  *    publicMethod
  *    destroy
  */
-;(function($, window, undefined) {
+;
+
+(function ($, window, undefined) {
   'use strict';
 
   var pluginName = 'gmap',
-    body = $('body'),
-    win = $(window),
-    styles = L10n.styles;
+      body = $('body'),
+      win = $(window),
+      styles = L10n.styles;
 
-  var setScrollMap = function(isScroll) {
+  var setScrollMap = function setScrollMap(isScroll) {
     if (this.vars.map) {
-      this.vars.map.setOptions({scrollwheel: isScroll});
+      this.vars.map.setOptions({
+        scrollwheel: isScroll
+      });
     }
   };
 
-  var checkScrollMap = function() {
+  var checkScrollMap = function checkScrollMap() {
     var that = this;
-    google.maps.event.addDomListener(document.getElementById(this.options.id), 'click', function() {
+    google.maps.event.addDomListener(document.getElementById(this.options.id), 'click', function () {
       setScrollMap.call(that, true);
     });
-    google.maps.event.addDomListener(document.getElementById(this.options.id).childNodes, 'click', function() {
+    google.maps.event.addDomListener(document.getElementById(this.options.id).childNodes, 'click', function () {
       setScrollMap.call(that, true);
     });
-    google.maps.event.addListener(that.vars.map, 'mousedown', function(){
+    google.maps.event.addListener(that.vars.map, 'mousedown', function () {
       setScrollMap.call(that, true);
     });
-    body.on('mousedown.' + pluginName, function(e) {
+    body.on('mousedown.' + pluginName, function (e) {
       if (!$(e.target).closest('#' + that.options.id).length) {
         setScrollMap.call(that, false);
       }
     });
-    win.on('scroll.' + pluginName, function() {
+    win.on('scroll.' + pluginName, function () {
       setScrollMap.call(that, false);
     });
   };
 
-  var changeZoom = function() {
+  var changeZoom = function changeZoom() {
     var that = this;
-    this.vars.map.addListener('zoom_changed', function() {
+    this.vars.map.addListener('zoom_changed', function () {
       that.vars.zoomchanged = that.vars.map.getZoom();
     });
   };
 
-  var initAutocomplete = function() {
+  var initAutocomplete = function initAutocomplete() {
     var that = this;
     var input = document.getElementById(this.options.input);
-    if(input) {
+
+    if (input) {
       var searchBox = new google.maps.places.SearchBox(input);
       this.vars.map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-      this.vars.map.addListener('bounds_changed', function() {
+      this.vars.map.addListener('bounds_changed', function () {
         searchBox.setBounds(that.vars.map.getBounds());
       });
-
       var markers = [];
-      searchBox.addListener('places_changed', function() {
+      searchBox.addListener('places_changed', function () {
         var places = searchBox.getPlaces();
         var bounds = new google.maps.LatLngBounds();
         var infos;
@@ -789,35 +836,32 @@ jQuery(function() {
           return;
         }
 
-        markers.forEach(function(marker) {
+        markers.forEach(function (marker) {
           marker.setMap(null);
         });
         markers = [];
-
-        places.forEach(function(place, i) {
+        places.forEach(function (place, i) {
           if (!place.geometry) {
             console.log('Returned place contains no geometry');
             return;
           }
+
           var icon = {
             url: place.icon,
             size: new google.maps.Size(71, 71),
             origin: new google.maps.Point(0, 0),
             anchoPoint: new google.maps.Point(17, 34),
             scaledSize: new google.maps.Size(25, 25)
-          };
+          }; // Create a marker for each place.
 
-          // Create a marker for each place.
           markers.push(new google.maps.Marker({
             map: that.vars.map,
             icon: icon,
             title: place.name,
             position: place.geometry.location
           }));
-
           infos = '<strong style="display: block; text-align: center;">' + place.name + '</strong>' + place.formatted_address;
-
-          google.maps.event.addListener(markers[i], 'click', function() {
+          google.maps.event.addListener(markers[i], 'click', function () {
             that.setCenter(markers[i]);
             that.showInfoWindow(markers[i], '<div class="noscrollbar">' + infos + '</>');
           });
@@ -841,12 +885,14 @@ jQuery(function() {
   }
 
   Plugin.prototype = {
-    init: function() {
+    init: function init() {
       this.vars = {};
-      this.vars.marker = [],
-      this.vars.locations = window[this.options.locations];
+      this.vars.marker = [], this.vars.locations = window[this.options.locations];
       this.vars.optMap = {
-        center: {lat: this.vars.locations[0].lat, lng: this.vars.locations[0].lng},
+        center: {
+          lat: this.vars.locations[0].lat,
+          lng: this.vars.locations[0].lng
+        },
         zoom: this.options.zoom[0],
         styles: styles,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -862,52 +908,49 @@ jQuery(function() {
         //draggable: Modernizr.mobile || Modernizr.tablet ? false : true,
         gestureHandling: 'cooperative'
       };
-
       this.initGmap();
     },
-    initGmap: function() {
+    initGmap: function initGmap() {
       this.vars.map = new google.maps.Map(document.getElementById(this.options.id), this.vars.optMap);
-
       this.setMarkers();
       this.listener();
     },
-    listener: function() {
+    listener: function listener() {
       checkScrollMap.call(this);
       initAutocomplete.call(this);
       this.changeLocation(this.vars.locations, this.options.initValue);
     },
-    setMarkers: function() {
+    setMarkers: function setMarkers() {
       var that = this,
-        circle,
-        position;
-        this.vars.bound = new google.maps.LatLngBounds();
-
+          circle,
+          position;
+      this.vars.bound = new google.maps.LatLngBounds();
       this.vars.infowindow = new google.maps.InfoWindow();
+
       for (var i = 0, n = this.vars.locations.length; i < n; ++i) {
         that.vars.icon = {
           url: that.vars.locations[i].marker || that.options.icon //https://developers.google.com/maps/documentation/javascript/examples/icon-complex
+
         };
         this.vars.bound.extend(new google.maps.LatLng(that.vars.locations[i].lat, that.vars.locations[i].lng));
         position = new google.maps.LatLng(that.vars.locations[i].lat, that.vars.locations[i].lng);
-
         that.vars.marker[i] = new google.maps.Marker({
           position: position,
           title: that.vars.locations[i].name,
           map: that.vars.map,
           icon: that.vars.icon,
           animation: google.maps.Animation.DROP //https://developers.google.com/maps/documentation/javascript/examples/marker-animations
-        });
 
-        google.maps.event.addListener(that.vars.marker[i], 'click', (function(marker, mess) {
-          return function() {
+        });
+        google.maps.event.addListener(that.vars.marker[i], 'click', function (marker, mess) {
+          return function () {
             changeZoom.call(that);
             that.setCenter(marker);
             that.showInfoWindow(marker, mess);
             $('#' + that.options.dropdown).val(marker.title);
             $('#' + that.options.dropdown).closest('[data-select]').addClass('selected').find('span').html(marker.title);
           };
-        })(that.vars.marker[i], this.vars.locations[i].mess));
-
+        }(that.vars.marker[i], this.vars.locations[i].mess));
         circle = new google.maps.Circle({
           map: that.vars.map,
           radius: 4000,
@@ -916,59 +959,67 @@ jQuery(function() {
         });
         circle.bindTo('center', that.vars.marker[i], 'position');
       }
+
       this.boundAllPosition();
     },
-    boundAllPosition: function() {
+    boundAllPosition: function boundAllPosition() {
       this.vars.map.setCenter(this.vars.bound.getCenter());
       this.vars.map.fitBounds(this.vars.bound);
     },
-    changeLocation: function(locations, initValue) {
+    changeLocation: function changeLocation(locations, initValue) {
       var that = this,
-        opt = '';
+          opt = '';
+
       for (var i = 0, n = locations.length; i < n; ++i) {
-        if(initValue === locations[i].name) {
+        if (initValue === locations[i].name) {
           opt = '<option value="' + locations[i].name + '" selected="selected">' + locations[i].name + '</option>';
-        }
-        else {
+        } else {
           opt = '<option value="' + locations[i].name + '">' + locations[i].name + '</option>';
         }
+
         $('#' + this.options.dropdown).append(opt);
       }
 
-      $('#' + this.options.dropdown).on('change.' + pluginName, function() {
+      $('#' + this.options.dropdown).on('change.' + pluginName, function () {
         var name = $(this).val();
+
         for (var i = 0, n = that.vars.locations.length; i < n; ++i) {
-          if(name === that.vars.locations[i].name) {
+          if (name === that.vars.locations[i].name) {
             google.maps.event.trigger(that.vars.marker[i], 'click');
           }
         }
-        if(!name) {
+
+        if (!name) {
           that.boundAllPosition();
           that.vars.infowindow.close();
           that.vars.zoomchanged = undefined;
         }
-      });//.change();
-      google.maps.event.addListenerOnce(this.vars.map, 'idle', function() {
+      }); //.change();
+
+      google.maps.event.addListenerOnce(this.vars.map, 'idle', function () {
         $('#' + that.options.dropdown).change();
       });
     },
-    setCenter: function(marker) {
+    setCenter: function setCenter(marker) {
       var zoomchanged = this.options.zoom[1];
-      if(!!this.vars.zoomchanged) {
+
+      if (!!this.vars.zoomchanged) {
         zoomchanged = this.vars.zoomchanged;
       }
+
       this.vars.map.setZoom(zoomchanged);
       this.vars.map.panTo(marker.getPosition());
     },
-    showInfoWindow: function(marker, mess) {
+    showInfoWindow: function showInfoWindow(marker, mess) {
       this.vars.infowindow.setContent(mess);
       this.vars.infowindow.open(this.vars.map, marker);
     }
   };
 
-  $.fn[pluginName] = function(options, params) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options, params) {
+    return this.each(function () {
       var instance = $.data(this, pluginName);
+
       if (!instance) {
         $.data(this, pluginName, new Plugin(this, options));
       } else if (instance[options]) {
@@ -977,16 +1028,14 @@ jQuery(function() {
     });
   };
 
-  $.fn[pluginName].defaults = {
-  };
-
-  $(function() {
+  $.fn[pluginName].defaults = {};
+  $(function () {
     $('[data-' + pluginName + ']')[pluginName]({
       icon: 'images/pink-marker.png'
     });
   });
-
-}(jQuery, window));
+})(jQuery, window);
+"use strict";
 
 /**
  *  @name number
@@ -998,7 +1047,9 @@ jQuery(function() {
  *  @methods
  *    init
  */
-;(function($, window, undefined) {
+;
+
+(function ($, window, undefined) {
   'use strict';
 
   var pluginName = 'number';
@@ -1010,72 +1061,61 @@ jQuery(function() {
   }
 
   Plugin.prototype = {
-    init: function() {
+    init: function init() {
       this.input = this.element.find(this.options.input);
       this.increase = this.element.find(this.options.increase);
       this.decrease = this.element.find(this.options.decrease);
-
       this.listener();
     },
-    listener: function() {
+    listener: function listener() {
       var that = this;
       this.handle = this.options[pluginName].handle;
       this.maxLength = this.options[pluginName].maxLength;
-      this.input.off('keydown.typeText').on('keydown.typeText', function(e) {
-        if(!(
-          (e.keyCode > 95 && e.keyCode < 106) ||
-          (e.keyCode > 47 && e.keyCode < 58) ||
-          e.keyCode === 8 ||
-          e.keyCode === 9 ||
-          e.keyCode === 13 ||
-          e.keyCode === 37 ||
-          e.keyCode === 38 ||
-          e.keyCode === 39 ||
-          e.keyCode === 40 ||
-          e.keyCode === 46)) {
+      this.input.off('keydown.typeText').on('keydown.typeText', function (e) {
+        if (!(e.keyCode > 95 && e.keyCode < 106 || e.keyCode > 47 && e.keyCode < 58 || e.keyCode === 8 || e.keyCode === 9 || e.keyCode === 13 || e.keyCode === 37 || e.keyCode === 38 || e.keyCode === 39 || e.keyCode === 40 || e.keyCode === 46)) {
           return false;
         }
-        if($(this).val().length === that.maxLength) {
-          if((e.keyCode > 95 && e.keyCode < 106) || (e.keyCode > 47 && e.keyCode < 58)) {
+
+        if ($(this).val().length === that.maxLength) {
+          if (e.keyCode > 95 && e.keyCode < 106 || e.keyCode > 47 && e.keyCode < 58) {
             return false;
           }
         }
       });
-
-      this.input.off('keyup.typeText, change.changeValue').on('keyup.typeText, change.changeValue', function() {
-        if(that.val !== $(this).val()) {
+      this.input.off('keyup.typeText, change.changeValue').on('keyup.typeText, change.changeValue', function () {
+        if (that.val !== $(this).val()) {
           that.val = $(this).val();
           that.updateValue(that.val < 1 ? 1 : that.val, that.handle);
         }
       });
-
-      this.increase.off('click.increase' + pluginName).on('click.increase' + pluginName, function() {
+      this.increase.off('click.increase' + pluginName).on('click.increase' + pluginName, function () {
         that.val = that.input.val();
         that.updateValue(++that.val, that.handle);
       });
-
-      this.decrease.off('click.decrease' + pluginName).on('click.decrease' + pluginName, function() {
+      this.decrease.off('click.decrease' + pluginName).on('click.decrease' + pluginName, function () {
         that.val = that.input.val();
-        if(that.val > 1) {
+
+        if (that.val > 1) {
           that.updateValue(--that.val, that.handle);
         }
       });
     },
-    updateValue: function(value, handle) {
-      if(!!handle) {
-        $('[data-' + pluginName + ']').filter(function() {
+    updateValue: function updateValue(value, handle) {
+      if (!!handle) {
+        $('[data-' + pluginName + ']').filter(function () {
           return $(this).data()[pluginName].options[pluginName].handle === handle;
         }).find(this.options.input).val(value);
       }
     },
-    destroy: function() {
+    destroy: function destroy() {
       $.removeData(this.element[0], pluginName);
     }
   };
 
-  $.fn[pluginName] = function(options, params) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options, params) {
+    return this.each(function () {
       var instance = $.data(this, pluginName);
+
       if (!instance) {
         $.data(this, pluginName, new Plugin(this, options));
       } else if (instance[options]) {
@@ -1089,12 +1129,11 @@ jQuery(function() {
     increase: '[data-increase]',
     decrease: '[data-decrease]'
   };
-
-  $(function() {
+  $(function () {
     $('[data-' + pluginName + ']')[pluginName]();
   });
-
-}(jQuery, window));
+})(jQuery, window);
+"use strict";
 
 /**
  *  @name pinchzoom
@@ -1109,13 +1148,15 @@ jQuery(function() {
  *    publicMethod
  *    destroy
  */
-;(function($, window, undefined) {
+;
+
+(function ($, window, undefined) {
   'use strict';
 
   var pluginName = 'pinchzoom',
-    timeResize,
-    win = $(window),
-    resize = ('onorientationchange' in window) ? 'orientationchange.resize' + pluginName : 'resize.resize' + pluginName;
+      timeResize,
+      win = $(window),
+      resize = 'onorientationchange' in window ? 'orientationchange.resize' + pluginName : 'resize.resize' + pluginName;
 
   function Plugin(element, options) {
     this.element = $(element);
@@ -1124,26 +1165,26 @@ jQuery(function() {
   }
 
   Plugin.prototype = {
-    init: function() {
+    init: function init() {
       this.handle = this.element.find(this.options.handle);
       this.closezoom = this.element.find(this.options.closezoom);
       this.img = this.options.img;
       this.initialize(this.options.img);
       this.listener();
     },
-    listener: function() {
+    listener: function listener() {
       var that = this;
-      this.closezoom.off('mousedown.close' + pluginName).on('mousedown.close' + pluginName, function() {
+      this.closezoom.off('mousedown.close' + pluginName).on('mousedown.close' + pluginName, function () {
         that.destroy();
       });
-
-      win.on(resize, function() {
-        if(timeResize) {
+      win.on(resize, function () {
+        if (timeResize) {
           clearTimeout(timeResize);
         }
-        timeResize = setTimeout(function() {
-          $('[data-' + pluginName + ']').each(function() {
-            if($(this).css('opacity') !== '0') {
+
+        timeResize = setTimeout(function () {
+          $('[data-' + pluginName + ']').each(function () {
+            if ($(this).css('opacity') !== '0') {
               $(this)[pluginName]('destroy');
               $(this)[pluginName]('initialize');
             }
@@ -1151,41 +1192,36 @@ jQuery(function() {
         }, 300);
       });
     },
-    initialize: function(imgSrc) {
-      if(this.img) {
-        this.img = (imgSrc && this.img !== imgSrc) ? imgSrc : this.img;
-      }
-      else {
+    initialize: function initialize(imgSrc) {
+      if (this.img) {
+        this.img = imgSrc && this.img !== imgSrc ? imgSrc : this.img;
+      } else {
         this.img = imgSrc;
       }
-      if(!!this.img) {
-        if(this.options.initUnder) {
-          if(win.width() < this.options.initUnder) {
+
+      if (!!this.img) {
+        if (this.options.initUnder) {
+          if (win.width() < this.options.initUnder) {
             this.element.addClass('showZoomContainer');
             this.initSmoothZoom();
-          }
-          else {
+          } else {
             this.destroy();
           }
-        }
-        else if (this.options.initUpper) {
-          if(win.width() > this.options.initUpper) {
+        } else if (this.options.initUpper) {
+          if (win.width() > this.options.initUpper) {
             this.element.addClass('showZoomContainer');
             this.initSmoothZoom();
-          }
-          else {
+          } else {
             this.destroy();
           }
-        }
-        else {
+        } else {
           this.element.addClass('showZoomContainer');
           this.initSmoothZoom();
         }
       }
     },
-    initSmoothZoom: function() {
+    initSmoothZoom: function initSmoothZoom() {
       var that = this;
-
       this.handle.smoothZoom({
         image_url: that.img,
         initial_ZOOM: 500,
@@ -1197,7 +1233,7 @@ jQuery(function() {
         height: '100%'
       });
     },
-    destroy: function() {
+    destroy: function destroy() {
       this.handle.smoothZoom('destroy');
       this.handle.removeAttr('style');
       this.handle.removeAttr('class');
@@ -1205,9 +1241,10 @@ jQuery(function() {
     }
   };
 
-  $.fn[pluginName] = function(options, params) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options, params) {
+    return this.each(function () {
       var instance = $.data(this, pluginName);
+
       if (!instance) {
         $.data(this, pluginName, new Plugin(this, options));
       } else if (instance[options]) {
@@ -1220,12 +1257,11 @@ jQuery(function() {
     handle: '[data-handle]',
     closezoom: '[data-closezoom]'
   };
-
-  $(function() {
+  $(function () {
     $('[data-' + pluginName + ']')[pluginName]();
   });
-
-}(jQuery, window));
+})(jQuery, window);
+"use strict";
 
 /**
  *  @name popup
@@ -1240,7 +1276,9 @@ jQuery(function() {
  *    publicMethod
  *    destroy
  */
-;(function($, window, undefined) {
+;
+
+(function ($, window, undefined) {
   'use strict';
 
   var pluginName = 'popup';
@@ -1252,15 +1290,14 @@ jQuery(function() {
   }
 
   Plugin.prototype = {
-    init: function() {
+    init: function init() {
       this.vars = {
         handle: $(this.options.handle)
       };
-
       this.defineOption();
       this.listener();
     },
-    defineOption: function() {
+    defineOption: function defineOption() {
       this.vars.config = {
         type: this.options.type ? this.options.type : 'image',
         autoFocus: false,
@@ -1274,30 +1311,28 @@ jQuery(function() {
         beforeClose: this.beforeClose
       };
     },
-    listener: function() {
+    listener: function listener() {
       var that = this;
-      this.vars.handle.off('click.open' + pluginName).on('click.open' + pluginName, function() {
+      this.vars.handle.off('click.open' + pluginName).on('click.open' + pluginName, function () {
         $.fancybox.open(that.vars.handle, that.vars.config, that.vars.handle.index(this));
         return false;
       });
     },
-    beforeShow: function() {
-    },
-    beforeLoad: function() {
-    },
-    afterLoad: function() {
+    beforeShow: function beforeShow() {},
+    beforeLoad: function beforeLoad() {},
+    afterLoad: function afterLoad() {
       $('[data-cslider]', '.fancybox-container').cslider('init');
     },
-    beforeClose: function() {
-    },
-    closePopup: function() {
+    beforeClose: function beforeClose() {},
+    closePopup: function closePopup() {
       $.fancybox.close('all');
     }
   };
 
-  $.fn[pluginName] = function(options, params) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options, params) {
+    return this.each(function () {
       var instance = $.data(this, pluginName);
+
       if (!instance) {
         $.data(this, pluginName, new Plugin(this, options));
       } else if (instance[options]) {
@@ -1307,12 +1342,11 @@ jQuery(function() {
   };
 
   $.fn[pluginName].defaults = {};
-
-  $(function() {
+  $(function () {
     $('[data-' + pluginName + ']')[pluginName]();
   });
-
-}(jQuery, window));
+})(jQuery, window);
+"use strict";
 
 /**
  *  @name sameheight
@@ -1330,12 +1364,14 @@ jQuery(function() {
  *    setSameHeight
  *    destroy
  */
-;(function($, window, undefined) {
+;
+
+(function ($, window, undefined) {
   'use strict';
 
   var pluginName = 'sameheight',
-    win = $(window),
-    resize = ('onorientationchange' in window) ? 'orientationchange.resize' + pluginName : 'resize.resize' + pluginName;
+      win = $(window),
+      resize = 'onorientationchange' in window ? 'orientationchange.resize' + pluginName : 'resize.resize' + pluginName;
 
   function Plugin(element, options) {
     this.element = $(element);
@@ -1344,89 +1380,90 @@ jQuery(function() {
   }
 
   Plugin.prototype = {
-    init: function() {
+    init: function init() {
       this.parent = this.element.find(this.options.parent);
       this.childs = this.element.find(this.options.child);
-      if(!this.parent.length) {return;}
+
+      if (!this.parent.length) {
+        return;
+      }
+
       this.initialize();
-      win.off(resize).on(resize, function() {
+      win.off(resize).on(resize, function () {
         $('[data-' + pluginName + ']')[pluginName]('initialize');
       });
     },
-    initialize: function() {
-      if(this.element.find('img').length) {
+    initialize: function initialize() {
+      if (this.element.find('img').length) {
         this.checkImgLoad();
-      }
-      else {
+      } else {
         this.setSameHeight();
       }
     },
-    checkImgLoad: function() {
+    checkImgLoad: function checkImgLoad() {
       var that = this,
-        imagesLoaded = 0,
-        totalImages = this.element.find('img').length;
-
-      this.element.find('img').each(function() {
+          imagesLoaded = 0,
+          totalImages = this.element.find('img').length;
+      this.element.find('img').each(function () {
         var fakeSrc = $(this).attr('src');
+        $('<img />').attr('src', fakeSrc).css('display', 'none').on('load.' + pluginName, function () {
+          ++imagesLoaded;
 
-        $('<img />')
-          .attr('src', fakeSrc).css('display', 'none')
-          .on('load.' + pluginName, function() {
-            ++imagesLoaded;
-            if (imagesLoaded === totalImages) {
-              $.isFunction(that.setSameHeight) && that.setSameHeight();
-            }
-          })
-          .on('error.' + pluginName, function() {
-            ++imagesLoaded;
-            if (imagesLoaded === totalImages) {
-              $.isFunction(that.setSameHeight) && that.setSameHeight();
-            }
-          });
+          if (imagesLoaded === totalImages) {
+            $.isFunction(that.setSameHeight) && that.setSameHeight();
+          }
+        }).on('error.' + pluginName, function () {
+          ++imagesLoaded;
+
+          if (imagesLoaded === totalImages) {
+            $.isFunction(that.setSameHeight) && that.setSameHeight();
+          }
+        });
       });
     },
-    setSameHeight: function() {
+    setSameHeight: function setSameHeight() {
       var perRow = Math.floor(this.element.width() / this.parent.width());
-
       this.parent.css('height', 'auto');
       this.childs.css('height', 'auto');
 
-      if(perRow > 1) {
-        for(var i = 0, n = this.parent.length; i < n; i += perRow) {
+      if (perRow > 1) {
+        for (var i = 0, n = this.parent.length; i < n; i += perRow) {
           var itemPerRow = this.parent.slice(i, i + perRow),
-            totalPerRow = itemPerRow.length,
-            child = '',
-            maxHeight = 0,
-            idx = 0,
-            obj = {};
-
-          itemPerRow.each(function(index) {
+              totalPerRow = itemPerRow.length,
+              child = '',
+              maxHeight = 0,
+              idx = 0,
+              obj = {};
+          itemPerRow.each(function (index) {
             idx = index;
-            $(this).find('[data-child]').each(function() {
+            $(this).find('[data-child]').each(function () {
               child = $(this).attr('data-child');
-              if(index % totalPerRow === 0 || obj[child] === undefined) {
+
+              if (index % totalPerRow === 0 || obj[child] === undefined) {
                 obj[child] = 0;
               }
+
               obj[child] = Math.max(obj[child], $(this).outerHeight());
             });
           });
 
-          if(idx === totalPerRow - 1) {
-            itemPerRow.each(function() {
+          if (idx === totalPerRow - 1) {
+            itemPerRow.each(function () {
               for (var key in obj) {
                 $(this).find('[data-child="' + key + '"]').css('height', obj[key]);
               }
+
               maxHeight = Math.max(maxHeight, $(this).outerHeight());
             });
 
-            if(this.options[pluginName] !== 'no4parent') {
+            if (this.options[pluginName] !== 'no4parent') {
               itemPerRow.css('height', maxHeight);
             }
           }
         }
       }
     },
-    destroy: function() {
+    destroy: function destroy() {
       this.parent.css('height', 'auto');
       this.childs.css('height', 'auto');
       win.off(resize);
@@ -1434,9 +1471,10 @@ jQuery(function() {
     }
   };
 
-  $.fn[pluginName] = function(options, params) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options, params) {
+    return this.each(function () {
       var instance = $.data(this, pluginName);
+
       if (!instance) {
         $.data(this, pluginName, new Plugin(this, options));
       } else if (instance[options]) {
@@ -1449,12 +1487,11 @@ jQuery(function() {
     parent: '[data-parent]',
     child: '[data-child]'
   };
-
-  $(function() {
+  $(function () {
     $('[data-' + pluginName + ']')[pluginName]();
   });
-
-}(jQuery, window));
+})(jQuery, window);
+"use strict";
 
 /**
  *  @name scrollbar
@@ -1470,11 +1507,13 @@ jQuery(function() {
  *    resizeEvent
  *    destroy
  */
-;(function($, window, undefined) {
+;
+
+(function ($, window, undefined) {
   'use strict';
 
   var pluginName = 'scrollbar',
-    isTouch = 'ontouchstart' in document.documentElement;
+      isTouch = 'ontouchstart' in document.documentElement;
 
   function Plugin(element, options) {
     this.element = $(element);
@@ -1483,20 +1522,20 @@ jQuery(function() {
   }
 
   Plugin.prototype = {
-    init: function() {
+    init: function init() {
       var that = this;
-        this.vars = {
-          theme: that.options.theme || 'dark',
-          axis: that.options.axis || 'y',
-          autoHideScrollbar: that.options.autoHideScrollbar || false,
-          scrollAmount: that.options.scrollAmount || 'auto'
-        };
+      this.vars = {
+        theme: that.options.theme || 'dark',
+        axis: that.options.axis || 'y',
+        autoHideScrollbar: that.options.autoHideScrollbar || false,
+        scrollAmount: that.options.scrollAmount || 'auto'
+      };
 
-      if(!isTouch) {
+      if (!isTouch) {
         this.defineOption();
       }
     },
-    defineOption: function() {
+    defineOption: function defineOption() {
       var that = this;
       this.option = {
         theme: this.vars.theme,
@@ -1512,13 +1551,13 @@ jQuery(function() {
         }
       };
 
-      if(!!this.options.scrollAmount) {
+      if (!!this.options.scrollAmount) {
         this.option = $.extend({}, this.option, {
           snapAmount: this.vars.scrollAmount
         });
       }
 
-      if(this.options.scrollButtons) {
+      if (this.options.scrollButtons) {
         this.option = $.extend({}, this.option, {
           scrollButtons: {
             enable: true,
@@ -1527,35 +1566,36 @@ jQuery(function() {
         });
       }
 
-      if(this.options.autoHorizontal) {
+      if (this.options.autoHorizontal) {
         this.option = $.extend({}, this.option, {
           advanced: {
             autoExpandHorizontalScroll: true
           }
         });
-      }
+      } // Call mCustomScrollbar
 
-      // Call mCustomScrollbar
+
       this.initialized(this.option);
     },
-    initialized: function(option) {
+    initialized: function initialized(option) {
       this.element.mCustomScrollbar(option);
     },
-    onCreate: function() {
+    onCreate: function onCreate() {
       console.log('onCreate');
     },
-    onUpdate: function() {
+    onUpdate: function onUpdate() {
       console.log('onUpdate');
     },
-    destroy: function() {
+    destroy: function destroy() {
       this.element.mCustomScrollbar('destroy');
       $.removeData(this.element[0], pluginName);
     }
   };
 
-  $.fn[pluginName] = function(options, params) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options, params) {
+    return this.each(function () {
       var instance = $.data(this, pluginName);
+
       if (!instance) {
         $.data(this, pluginName, new Plugin(this, options));
       } else if (instance[options]) {
@@ -1565,12 +1605,11 @@ jQuery(function() {
   };
 
   $.fn[pluginName].defaults = {};
-
-  $(function() {
+  $(function () {
     $('[data-' + pluginName + ']')[pluginName]();
   });
-
-}(jQuery, window));
+})(jQuery, window);
+"use strict";
 
 /**
  *  @name scrollto
@@ -1585,11 +1624,13 @@ jQuery(function() {
  *    publicMethod
  *    destroy
  */
-;(function($, window, undefined) {
+;
+
+(function ($, window, undefined) {
   'use strict';
 
   var pluginName = 'scrollto',
-    win = $(window);
+      win = $(window);
 
   function Plugin(element, options) {
     this.element = $(element);
@@ -1598,51 +1639,50 @@ jQuery(function() {
   }
 
   Plugin.prototype = {
-    init: function() {
+    init: function init() {
       var that = this,
-        el = this.element,
-        destination = this.options.handle,
-        initUnder = this.options.initUnder;
-
+          el = this.element,
+          destination = this.options.handle,
+          initUnder = this.options.initUnder;
       this.toggleShow();
-      win.off('scroll.' + pluginName).on('scroll.' + pluginName, function() {
+      win.off('scroll.' + pluginName).on('scroll.' + pluginName, function () {
         that.toggleShow();
       });
-      el.off('click.' + pluginName).on('click.' + pluginName, function(e) {
+      el.off('click.' + pluginName).on('click.' + pluginName, function (e) {
         e.preventDefault();
         e.stopPropagation();
-        if(win.width() < initUnder && $(destination).length) {
+
+        if (win.width() < initUnder && $(destination).length) {
           that.scrollTo(destination);
         }
       });
     },
-    toggleShow: function() {
-      if(this.options[pluginName].handle === 'body') {
-        if(win.scrollTop() > 500) {
+    toggleShow: function toggleShow() {
+      if (this.options[pluginName].handle === 'body') {
+        if (win.scrollTop() > 500) {
           this.element.fadeIn('slow');
-        }
-        else {
+        } else {
           this.element.fadeOut('slow');
         }
       }
     },
-    scrollTo: function(elm) {
+    scrollTo: function scrollTo(elm) {
       var that = this,
-        scrollTo = !!$(elm).length ? $(elm).offset().top : 0;
-
+          scrollTo = !!$(elm).length ? $(elm).offset().top : 0;
       $('html, body').animate({
         scrollTop: scrollTo
       }, that.options.duration, 'easeOutCubic'); // jquery.easing.1.3.js
     },
-    destroy: function() {
+    destroy: function destroy() {
       this.element.off('click.' + pluginName);
       $.removeData(this.element[0], pluginName);
     }
   };
 
-  $.fn[pluginName] = function(options, params) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options, params) {
+    return this.each(function () {
       var instance = $.data(this, pluginName);
+
       if (!instance) {
         $.data(this, pluginName, new Plugin(this, options));
       } else if (instance[options]) {
@@ -1655,12 +1695,11 @@ jQuery(function() {
     duration: 600,
     initUnder: 9999
   };
-
-  $(function() {
+  $(function () {
     $('[data-' + pluginName + ']')[pluginName]();
   });
-
-}(jQuery, window));
+})(jQuery, window);
+"use strict";
 
 /**
  *  @name select
@@ -1674,7 +1713,9 @@ jQuery(function() {
  *    updateValue
  *    destroy
  */
-;(function($, window, undefined) {
+;
+
+(function ($, window, undefined) {
   'use strict';
 
   var pluginName = 'select';
@@ -1686,40 +1727,40 @@ jQuery(function() {
   }
 
   Plugin.prototype = {
-    init: function() {
+    init: function init() {
       var that = this;
-        this.valueContainer = this.element.find(this.options.valueContainer);
-        this.selectElm = this.element.find(this.options.selectElm);
-
+      this.valueContainer = this.element.find(this.options.valueContainer);
+      this.selectElm = this.element.find(this.options.selectElm);
       this.updateValue();
-      this.selectElm.off('change.changeValue').on('change.changeValue', function() {
+      this.selectElm.off('change.changeValue').on('change.changeValue', function () {
         var idSelectbox = $(this).attr('id');
         that.updateValue();
-        if($(this).prop('required') && $(this).is('[aria-describedby]')) {
+
+        if ($(this).prop('required') && $(this).is('[aria-describedby]')) {
           $(this).closest('form').validate().element('#' + idSelectbox);
         }
       });
     },
-    updateValue: function() {
+    updateValue: function updateValue() {
       var getValue = this.selectElm.find('option:selected').text();
-
       this.valueContainer.text(getValue);
-      if(this.selectElm.val() !== '') {
+
+      if (this.selectElm.val() !== '') {
         this.element.addClass(this.options.selectedCls);
-      }
-      else {
+      } else {
         this.element.removeClass(this.options.selectedCls);
       }
     },
-    destroy: function() {
+    destroy: function destroy() {
       this.fileInput.off('click.' + pluginName);
       $.removeData(this.element[0], pluginName);
     }
   };
 
-  $.fn[pluginName] = function(options, params) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options, params) {
+    return this.each(function () {
       var instance = $.data(this, pluginName);
+
       if (!instance) {
         $.data(this, pluginName, new Plugin(this, options));
       } else if (instance[options]) {
@@ -1733,12 +1774,11 @@ jQuery(function() {
     selectElm: 'select',
     selectedCls: 'selected'
   };
-
-  $(function() {
+  $(function () {
     $('[data-' + pluginName + ']')[pluginName]();
   });
-
-}(jQuery, window));
+})(jQuery, window);
+"use strict";
 
 /**
  *  @name slidemenu
@@ -1751,13 +1791,15 @@ jQuery(function() {
  *    init
  *    destroy
  */
-;(function($, window, undefined) {
+;
+
+(function ($, window, undefined) {
   'use strict';
 
   var pluginName = 'slidemenu',
-    win = $(window),
-    userAgent = navigator.userAgent,
-    isDevice = /IEMobile|Windows Phone|Lumia|iPhone|iP[oa]d|Android|BlackBerry|PlayBook|BB10|Mobile Safari|webOS|Mobile|Tablet|Opera Mini|\bCrMo\/|Opera Mobi/i.test(userAgent) ? 1 : 0;
+      win = $(window),
+      userAgent = navigator.userAgent,
+      isDevice = /IEMobile|Windows Phone|Lumia|iPhone|iP[oa]d|Android|BlackBerry|PlayBook|BB10|Mobile Safari|webOS|Mobile|Tablet|Opera Mini|\bCrMo\/|Opera Mobi/i.test(userAgent) ? 1 : 0;
 
   function Plugin(element, options) {
     this.element = $(element);
@@ -1766,7 +1808,7 @@ jQuery(function() {
   }
 
   Plugin.prototype = {
-    init: function() {
+    init: function init() {
       this.vars = {
         isAnimating: false,
         isClose: true,
@@ -1786,46 +1828,48 @@ jQuery(function() {
       };
       this.listener();
     },
-    listener: function() {
+    listener: function listener() {
       var that = this;
 
-      if(this.options[pluginName].headerFixedOnFocus) {
+      if (this.options[pluginName].headerFixedOnFocus) {
         this.handleInputFocusAndBlur();
       }
 
-      this.vars.handler.off('click.toggle' + pluginName).on('click.toggle' + pluginName, function() {
-        if(!that.vars.isAnimating) {
+      this.vars.handler.off('click.toggle' + pluginName).on('click.toggle' + pluginName, function () {
+        if (!that.vars.isAnimating) {
           that.vars.openingCls = $(this).data('nav');
           that.vars.isAnimating = true;
-          if(that.vars.isClose) {
-            that.openMenu(that.vars.openingCls);
-          }
-          else {
-            that.closeMenu(that.vars.openingCls);
-          }
 
-          // dummyLayer Event
-          that.vars.dummyLayer.off('touchstart.' + pluginName).on('touchstart.' + pluginName, function() {
+          if (that.vars.isClose) {
+            that.openMenu(that.vars.openingCls);
+          } else {
+            that.closeMenu(that.vars.openingCls);
+          } // dummyLayer Event
+
+
+          that.vars.dummyLayer.off('touchstart.' + pluginName).on('touchstart.' + pluginName, function () {
             that.closeMenu(that.vars.openingCls);
           });
         }
       });
     },
-    openMenu: function(openingCls) {
+    openMenu: function openMenu(openingCls) {
       var that = this;
 
-      if($.isFunction(that.options.beforeOpen)) {that.options.beforeOpen();}
+      if ($.isFunction(that.options.beforeOpen)) {
+        that.options.beforeOpen();
+      }
+
       this.vars.topInner = win.scrollTop();
       this.vars.inner.css('top', -(this.vars.topInner - this.vars.header.height()));
       $('html').addClass(this.vars.openingCls);
       that.vars.dummyLayer.fadeIn(that.vars.duration);
 
-      switch(openingCls) {
+      switch (openingCls) {
         case this.vars.leftNavCls:
           //Slide Hide Main Container
-          this.hideMainContainer('100%', this.vars.sizePush);
+          this.hideMainContainer('100%', this.vars.sizePush); //Slide Open Left Navigation
 
-          //Slide Open Left Navigation
           this.vars.lNav.animate({
             left: '0%',
             right: '0%',
@@ -1836,9 +1880,8 @@ jQuery(function() {
 
         case this.vars.rightNavCls:
           //Slide Hide Main Container
-          this.hideMainContainer('-100%', this.vars.sizePull);
+          this.hideMainContainer('-100%', this.vars.sizePull); //Slide Open Right Navigation
 
-          //Slide Open Right Navigation
           this.vars.rNav.animate({
             left: '0%',
             right: '0%',
@@ -1846,20 +1889,21 @@ jQuery(function() {
             marginLeft: this.vars.sizePull
           }, this.vars.duration);
           break;
+
         default:
       }
 
-      this.vars.dummyLayer.on('touchstart.' + pluginName + ' click.' + pluginName, function() {
+      this.vars.dummyLayer.on('touchstart.' + pluginName + ' click.' + pluginName, function () {
         that.closeMenu(openingCls);
       });
     },
-    closeMenu: function(openingCls) {
+    closeMenu: function closeMenu(openingCls) {
       var that = this;
-      that.vars.dummyLayer.fadeOut(that.vars.duration);
+      that.vars.dummyLayer.fadeOut(that.vars.duration); // Show Main Container
 
-      // Show Main Container
       this.showMainContainer();
-      switch(openingCls) {
+
+      switch (openingCls) {
         case this.vars.leftNavCls:
           //Slide Close Left Navigation
           this.vars.lNav.animate({
@@ -1869,11 +1913,12 @@ jQuery(function() {
             marginRight: 0
           }, {
             duration: this.vars.duration,
-            complete: function() {
+            complete: function complete() {
               $(this).removeAttr('style');
             }
           });
           break;
+
         case this.vars.rightNavCls:
           //Slide Close Right Navigation
           this.vars.rNav.animate({
@@ -1883,57 +1928,59 @@ jQuery(function() {
             marginLeft: 0
           }, {
             duration: this.vars.duration,
-            complete: function() {
+            complete: function complete() {
               $(this).removeAttr('style');
             }
           });
           break;
+
         default:
       }
 
       that.vars.dummyLayer.off('touchstart.' + pluginName + ' click.' + pluginName);
     },
-    hideMainContainer: function(leftValue, marginLeft) {
+    hideMainContainer: function hideMainContainer(leftValue, marginLeft) {
       var that = this;
       this.vars.mainContainer.animate({
         left: leftValue,
         marginLeft: marginLeft
-      },
-      {
+      }, {
         duration: that.vars.duration,
-        complete: function() {
+        complete: function complete() {
           that.afterAnimate(false);
         }
       });
     },
-    showMainContainer: function() {
+    showMainContainer: function showMainContainer() {
       var that = this;
       this.vars.mainContainer.animate({
         left: '0%',
         marginLeft: '0%'
-      },
-      {
+      }, {
         duration: this.vars.duration,
-        complete: function() {
+        complete: function complete() {
           $('html').removeClass(that.vars.openingCls);
           $(this).removeAttr('style');
           that.vars.inner.removeAttr('style');
           window.scrollBy(0, that.vars.topInner);
           that.afterAnimate(true);
-          if($.isFunction(that.options.afterClose)) {that.options.afterClose();}
+
+          if ($.isFunction(that.options.afterClose)) {
+            that.options.afterClose();
+          }
         }
       });
     },
-    afterAnimate: function(isClose) {
+    afterAnimate: function afterAnimate(isClose) {
       this.vars.isClose = isClose;
       this.vars.isAnimating = false;
     },
-    handleInputFocusAndBlur: function() {
-      if(isDevice) {
-      // if(Detectizr.device.type === 'tablet' || Detectizr.device.type === 'mobile') {
-        var that = this, focusing;
-
-        $('input[type="text"], input[type="number"], input[type="tel"], input[type="email"], input[type="search"], select, textarea').off('focus.' + pluginName).on('focus.' + pluginName, function() {
+    handleInputFocusAndBlur: function handleInputFocusAndBlur() {
+      if (isDevice) {
+        // if(Detectizr.device.type === 'tablet' || Detectizr.device.type === 'mobile') {
+        var that = this,
+            focusing;
+        $('input[type="text"], input[type="number"], input[type="tel"], input[type="email"], input[type="search"], select, textarea').off('focus.' + pluginName).on('focus.' + pluginName, function () {
           that.vars.header.find('.header-inner').css('position', 'relative');
           that.vars.header.css({
             //'position': 'absolute',
@@ -1942,23 +1989,22 @@ jQuery(function() {
           $('html').addClass('inputFocusing');
           focusing = true;
         });
-
-        $('input[type="text"], input[type="number"], input[type="tel"], input[type="email"], input[type="search"], select, textarea').off('blur.' + pluginName).on('blur.' + pluginName, function() {
+        $('input[type="text"], input[type="number"], input[type="tel"], input[type="email"], input[type="search"], select, textarea').off('blur.' + pluginName).on('blur.' + pluginName, function () {
           that.vars.header.find('.header-inner').removeAttr('style');
           that.vars.header.removeAttr('style');
           $('html').removeClass('inputFocusing');
           focusing = false;
         });
-
-        win.off('scroll.scroll' + pluginName).on('scroll.scroll' + pluginName, function() {
+        win.off('scroll.scroll' + pluginName).on('scroll.scroll' + pluginName, function () {
           if (focusing) {
             that.vars.header.css({
               'opacity': 0,
               'top': $(document).scrollTop()
             });
           }
-          clearTimeout($.data( this, 'scrollCheck' ));
-          $.data(this, 'scrollCheck', setTimeout(function() {
+
+          clearTimeout($.data(this, 'scrollCheck'));
+          $.data(this, 'scrollCheck', setTimeout(function () {
             if (focusing) {
               that.vars.header.css('opacity', 1);
               that.vars.lNav.css('opacity', 1);
@@ -1967,7 +2013,7 @@ jQuery(function() {
         });
       }
     },
-    destroy: function() {
+    destroy: function destroy() {
       $('html').removeClass(this.vars.openingCls);
       this.vars.mainContainer.removeAttr('style');
       this.vars.dummyLayer.removeAttr('style');
@@ -1980,9 +2026,10 @@ jQuery(function() {
     }
   };
 
-  $.fn[pluginName] = function(options, params) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options, params) {
+    return this.each(function () {
       var instance = $.data(this, pluginName);
+
       if (!instance) {
         $.data(this, pluginName, new Plugin(this, options));
       } else if (instance[options]) {
@@ -2007,12 +2054,13 @@ jQuery(function() {
     beforeOpen: $.noop,
     afterClose: $.noop
   };
-
-  $(function() {
+  $(function () {
     $('[data-' + pluginName + ']')[pluginName]();
   });
+})(jQuery, window);
+"use strict";
 
-}(jQuery, window));
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /**
  *  @name slider
@@ -2029,27 +2077,29 @@ jQuery(function() {
  *    slickPlay
  *    destroy
  */
-;(function($, window, undefined) {
+;
+
+(function ($, window, undefined) {
   'use strict';
 
   var pluginName = 'cslider',
-    timeResize,
-    win = $(window),
-    resize = ('onorientationchange' in window) ? 'orientationchange.resize' + pluginName : 'resize.resize' + pluginName,
-    TypeSliders = {
-      SINGLE: 'single',
-      CAROUSEL: 'carousel',
-      CENTERMODE: 'centerMode',
-      VIDEOSLIDE: 'videoSlide',
-      VARIABLEWIDTH: 'variableWidth',
-      VERTICAL: 'vertical',
-      SYNCING: 'syncing'
-    },
-    States = {
-      BEFORECHANGE: 'beforechange',
-      AFTERCHANGE: 'afterchange',
-      RESIZE: 'resize'
-    };
+      timeResize,
+      win = $(window),
+      resize = 'onorientationchange' in window ? 'orientationchange.resize' + pluginName : 'resize.resize' + pluginName,
+      TypeSliders = {
+    SINGLE: 'single',
+    CAROUSEL: 'carousel',
+    CENTERMODE: 'centerMode',
+    VIDEOSLIDE: 'videoSlide',
+    VARIABLEWIDTH: 'variableWidth',
+    VERTICAL: 'vertical',
+    SYNCING: 'syncing'
+  },
+      States = {
+    BEFORECHANGE: 'beforechange',
+    AFTERCHANGE: 'afterchange',
+    RESIZE: 'resize'
+  };
 
   function Plugin(element, options) {
     this.element = $(element);
@@ -2058,54 +2108,52 @@ jQuery(function() {
   }
 
   Plugin.prototype = {
-    init: function() {
+    init: function init() {
       this.handle = this.element.find(this.options.handle);
       this.smoothZoom = this.element.find(this.options.smoothZoom);
-      if(this.handle.is(':visible')) {
-        if(this.options.initUnder) {
-          if(win.width() <= this.options.initUnder) {
+
+      if (this.handle.is(':visible')) {
+        if (this.options.initUnder) {
+          if (win.width() <= this.options.initUnder) {
             this.handle.removeClass('no-slide');
             this.initialize();
-          }
-          else {
+          } else {
             this.handle.addClass('no-slide');
           }
-        }
-        else {
+        } else {
           this.initialize();
         }
 
-        win.on(resize, function() {
-          if(timeResize) {
+        win.on(resize, function () {
+          if (timeResize) {
             clearTimeout(timeResize);
           }
-          timeResize = setTimeout(function() {
-            $('[data-' + pluginName + ']').each(function() {
-              if($(this).data()[pluginName].options[pluginName].hasZoom) {
+
+          timeResize = setTimeout(function () {
+            $('[data-' + pluginName + ']').each(function () {
+              if ($(this).data()[pluginName].options[pluginName].hasZoom) {
                 $(this)[pluginName]('zoomEffect', States.RESIZE);
               }
-              if($('.slick', this).is(':visible')) {
-                if($(this).data()[pluginName].options[pluginName].initUnder) {
-                  if(win.width() < $(this).data()[pluginName].options[pluginName].initUnder) {
+
+              if ($('.slick', this).is(':visible')) {
+                if ($(this).data()[pluginName].options[pluginName].initUnder) {
+                  if (win.width() < $(this).data()[pluginName].options[pluginName].initUnder) {
                     $('.slick', this).removeClass('no-slide');
-                    if(!$('.slick', this).hasClass('slick-initialized')) {
+
+                    if (!$('.slick', this).hasClass('slick-initialized')) {
                       $(this)[pluginName]('initialize');
-                    }
-                    else {
+                    } else {
                       $(this)[pluginName]('setPositionArrows');
                     }
-                  }
-                  else if($('.slick', this).hasClass('slick-initialized')) {
+                  } else if ($('.slick', this).hasClass('slick-initialized')) {
                     $('.slick', this).addClass('no-slide');
                     $(this)[pluginName]('destroy');
                   }
-                }
-                else {
+                } else {
                   $(this)[pluginName]('setPositionArrows');
-                  $(this)[pluginName]('slickNoSlide');
+                  $(this)[pluginName]('slickNoSlide'); // Just only have on Resize event.
 
-                  // Just only have on Resize event.
-                  if($('.slick', this).hasClass('no-slide')) {
+                  if ($('.slick', this).hasClass('no-slide')) {
                     $(this)[pluginName]('destroy');
                     $(this)[pluginName]('init');
                   }
@@ -2116,106 +2164,116 @@ jQuery(function() {
         });
       }
     },
-    initialize: function() {
-      if(this.element.find('img').length) {
+    initialize: function initialize() {
+      if (this.element.find('img').length) {
         this.checkImgLoad();
-      }
-      else {
+      } else {
         this.initSlider();
       }
     },
-    checkImgLoad: function() {
+    checkImgLoad: function checkImgLoad() {
       var that = this,
-        fakeSrc = this.element.find('img:visible').first().attr('src');
-
-      $('<img />')
-        .attr('src', fakeSrc).css('display', 'none')
-        .on('load.' + pluginName, function() {
-          that.initSlider();
-        })
-        .on('error.' + pluginName, function() {
-          that.initSlider();
-        });
+          fakeSrc = this.element.find('img:visible').first().attr('src');
+      $('<img />').attr('src', fakeSrc).css('display', 'none').on('load.' + pluginName, function () {
+        that.initSlider();
+      }).on('error.' + pluginName, function () {
+        that.initSlider();
+      });
     },
-    initSlider: function() {
+    initSlider: function initSlider() {
       var that = this,
-        option,
-        navFor = {};
-
-      this.handle.on('init.' + pluginName, function(event, slick) {
+          option,
+          navFor = {};
+      this.handle.on('init.' + pluginName, function (event, slick) {
         that.onInitSlick(event, slick);
       });
 
-      switch(this.options.type) {
+      switch (this.options.type) {
         case TypeSliders.SINGLE:
           option = this.options.singleSlider;
           break;
+
         case TypeSliders.CAROUSEL:
           option = this.options.carousel;
           break;
+
         case TypeSliders.CENTERMODE:
           option = this.options.centerMode;
           break;
+
         case TypeSliders.VIDEOSLIDE:
           option = this.options.videoSlide;
           break;
+
         case TypeSliders.VARIABLEWIDTH:
           option = $.extend(this.options.variableWidth, {
             slidesToShow: that.element.find('.item').length - 1
           });
           break;
+
         case TypeSliders.VERTICAL:
           option = this.options.vertical;
           break;
+
         case TypeSliders.SYNCING:
-          if(this.options.view) {
+          if (this.options.view) {
             navFor.asNavFor = this.options.navFor;
             option = $.extend(this.options.sycingView, navFor);
-          }
-          else {
+          } else {
             navFor.asNavFor = this.options.navFor;
             option = $.extend(this.options.sycingThumb, navFor);
           }
+
           break;
+
         default:
           option = this.options.singleSlider;
-      }
-      // Dots
-      if(typeof this.options.dots !== 'undefined') {
-        option = $.extend(option, {dots: this.options.dots});
-      }
-      // Arrows
-      if(typeof this.options.arrows !== 'undefined') {
-        option = $.extend(option, {arrows: this.options.arrows});
-      }
-      // fade : true / false
-      if(typeof this.options.fade !== 'undefined') {
-        option = $.extend(option, {fade: this.options.fade});
-      }
-      // Autoplay
-      if(typeof this.options.autoplay !== 'undefined') {
+      } // Dots
+
+
+      if (typeof this.options.dots !== 'undefined') {
+        option = $.extend(option, {
+          dots: this.options.dots
+        });
+      } // Arrows
+
+
+      if (typeof this.options.arrows !== 'undefined') {
+        option = $.extend(option, {
+          arrows: this.options.arrows
+        });
+      } // fade : true / false
+
+
+      if (typeof this.options.fade !== 'undefined') {
+        option = $.extend(option, {
+          fade: this.options.fade
+        });
+      } // Autoplay
+
+
+      if (typeof this.options.autoplay !== 'undefined') {
         option = $.extend(option, {
           autoplay: this.options.autoplay,
-          autoplaySpeed: 3000,
+          autoplaySpeed: 3000
         });
-      }
-      // Control
-      this.handle.slick(option);
+      } // Control
 
-      this.handle.on('beforeChange.' + pluginName, function() {
+
+      this.handle.slick(option);
+      this.handle.on('beforeChange.' + pluginName, function () {
         that.zoomEffect(States.BEFORECHANGE);
 
-        if(typeof YT === 'object') {
+        if ((typeof YT === "undefined" ? "undefined" : _typeof(YT)) === 'object') {
           that.element.find('[data-youtube]').youtube('pauseClip');
           that.element.find('[data-video]').video('pauseClip');
         }
       });
-      this.handle.on('afterChange.' + pluginName, function() {
+      this.handle.on('afterChange.' + pluginName, function () {
         that.setPositionArrows();
-        that.zoomEffect(States.AFTERCHANGE);
+        that.zoomEffect(States.AFTERCHANGE); // Auto play after Paused youtube/video
 
-        // Auto play after Paused youtube/video
-        if(typeof YT === 'object') {
+        if ((typeof YT === "undefined" ? "undefined" : _typeof(YT)) === 'object') {
           $('.slick-current', that.element).find('[data-youtube]').youtube('playClip');
           $('.slick-current', that.element).find('[data-video]').video('playClip');
         }
@@ -2224,120 +2282,121 @@ jQuery(function() {
       this.setPositionArrows();
       this.slickNoSlide();
     },
-    onInitSlick: function() {
+    onInitSlick: function onInitSlick() {
       var that = this;
       this.zoomEffect();
-      this.handle.off('click.currentItemEvents', '.slick-current').on('click.currentItemEvents', '.slick-current', function() {
-        if(that.options.hasPopup && win.width() > 767) {
+      this.handle.off('click.currentItemEvents', '.slick-current').on('click.currentItemEvents', '.slick-current', function () {
+        if (that.options.hasPopup && win.width() > 767) {
           that.turnOnPopup($(this));
           return false;
         }
-        if(that.options.smoothZoom && win.width() < 768) {
+
+        if (that.options.smoothZoom && win.width() < 768) {
           that.callSmoothZoom($(this).find('img').data('zoomImage'));
         }
       });
     },
-    callSmoothZoom: function(imgSrc) {
+    callSmoothZoom: function callSmoothZoom(imgSrc) {
       this.element.find('[data-pinchzoom]').pinchzoom('initialize', imgSrc);
     },
-    turnOnPopup: function(currentSlide) {
-      $.fancybox.open(
-        this.getGalleryList(currentSlide),
-        {
-          loop: false,
-          slideShow: false,
-          fullScreen: false,
-          thumbs: false
-        }
-      );
+    turnOnPopup: function turnOnPopup(currentSlide) {
+      $.fancybox.open(this.getGalleryList(currentSlide), {
+        loop: false,
+        slideShow: false,
+        fullScreen: false,
+        thumbs: false
+      });
     },
-    getGalleryList: function(currentSlide) {
+    getGalleryList: function getGalleryList(currentSlide) {
       var galleryList = [],
-        imgSrc,
-        list = this.handle.find('.slick-slide').not('.slick-cloned').find('img'),
-        currentImage = currentSlide.find('img').data('zoomImage'),
-        obj;
-
-      list.each(function() {
+          imgSrc,
+          list = this.handle.find('.slick-slide').not('.slick-cloned').find('img'),
+          currentImage = currentSlide.find('img').data('zoomImage'),
+          obj;
+      list.each(function () {
         obj = {};
         imgSrc = $(this).data('zoomImage');
         obj.src = imgSrc;
-        if(imgSrc === currentImage) {
+
+        if (imgSrc === currentImage) {
           galleryList.unshift(obj);
-        }
-        else {
+        } else {
           galleryList.push(obj);
         }
       });
       return galleryList;
     },
-    zoomEffect: function(stateSlider) {
-      if(this.options.hasZoom) {
-        switch(stateSlider) {
+    zoomEffect: function zoomEffect(stateSlider) {
+      if (this.options.hasZoom) {
+        switch (stateSlider) {
           case States.BEFORECHANGE:
             $('.slick-current', this.element).zoomer('destroy');
             break;
+
           case States.AFTERCHANGE:
             $('.slick-current', this.element).zoomer('destroy');
             $('.slick-current', this.element).zoomer('init');
             break;
+
           case States.RESIZE:
             $('.slick-current', this.element).zoomer('destroy');
             $('.slick-current', this.element).zoomer('init');
             break;
+
           default:
             $('.slick-current', this.element).zoomer('init'); // First call zoomer of slider
+
             break;
         }
       }
     },
-    hoverBulletEvent: function() {
-      if(this.options[pluginName].slideOnHover) {
-        this.handle.find('.slick-dots').on('mouseenter.bullet', 'li', function() {
+    hoverBulletEvent: function hoverBulletEvent() {
+      if (this.options[pluginName].slideOnHover) {
+        this.handle.find('.slick-dots').on('mouseenter.bullet', 'li', function () {
           $(this).trigger('click');
         });
       }
     },
-    setPositionArrows: function() {
+    setPositionArrows: function setPositionArrows() {
       var arrowControl = this.handle.find('.slick-arrow'),
-        imgVisible = this.handle.find('[aria-hidden="false"] .img-view'),
-        maxHeight = 0,
-        posTop = 0;
+          imgVisible = this.handle.find('[aria-hidden="false"] .img-view'),
+          maxHeight = 0,
+          posTop = 0;
 
-      if(this.options.setPositionArrows) {
-        $(imgVisible).each(function() {
+      if (this.options.setPositionArrows) {
+        $(imgVisible).each(function () {
           maxHeight = Math.max($(this).height(), maxHeight);
         });
-        posTop = (maxHeight / 2);
-        arrowControl.animate({'top': posTop}, 300);
+        posTop = maxHeight / 2;
+        arrowControl.animate({
+          'top': posTop
+        }, 300);
       }
     },
-    slickNoSlide: function() {
+    slickNoSlide: function slickNoSlide() {
       var getSlick = this.handle.slick('getSlick');
 
-      if(getSlick.slideCount <= getSlick.options.slidesToShow) {
+      if (getSlick.slideCount <= getSlick.options.slidesToShow) {
         this.element.addClass('no-slide');
-      }
-      else {
+      } else {
         this.element.removeClass('no-slide');
       }
     },
-    slickPause: function() {
+    slickPause: function slickPause() {
       this.handle.slickPause();
     },
-    slickPlay: function() {
+    slickPlay: function slickPlay() {
       this.handle.slickPlay();
     },
-    destroy: function() {
-      this.handle
-        .slick('unslick')
-        .off('afterChange.' + pluginName);
+    destroy: function destroy() {
+      this.handle.slick('unslick').off('afterChange.' + pluginName);
     }
   };
 
-  $.fn[pluginName] = function(options, params) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options, params) {
+    return this.each(function () {
       var instance = $.data(this, pluginName);
+
       if (!instance) {
         $.data(this, pluginName, new Plugin(this, options));
       } else if (instance[options]) {
@@ -2353,7 +2412,8 @@ jQuery(function() {
       speed: 600,
       slidesToShow: 1,
       zIndex: 5,
-      accessibility: false, // Disable Slide go to top on after change
+      accessibility: false,
+      // Disable Slide go to top on after change
       rtl: $('html').attr('dir') === 'rtl' ? true : false
     },
     carousel: {
@@ -2365,26 +2425,22 @@ jQuery(function() {
       // autoplaySpeed: 3000,
       zIndex: 5,
       rtl: $('html').attr('dir') === 'rtl' ? true : false,
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 4
-          }
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 3
-          }
-        },
-        {
-          breakpoint: 544,
-          settings: {
-            slidesToShow: 2
-          }
+      responsive: [{
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4
         }
-      ]
+      }, {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3
+        }
+      }, {
+        breakpoint: 544,
+        settings: {
+          slidesToShow: 2
+        }
+      }]
     },
     centerMode: {
       centerMode: true,
@@ -2393,22 +2449,19 @@ jQuery(function() {
       centerPadding: '0',
       zIndex: 5,
       rtl: $('html').attr('dir') === 'rtl' ? true : false,
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 1,
-            centerPadding: '25%'
-          }
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 1,
-            centerPadding: 0
-          }
+      responsive: [{
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          centerPadding: '25%'
         }
-      ]
+      }, {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          centerPadding: 0
+        }
+      }]
     },
     videoSlide: {
       centerMode: true,
@@ -2417,22 +2470,19 @@ jQuery(function() {
       centerPadding: '0',
       zIndex: 5,
       rtl: $('html').attr('dir') === 'rtl' ? true : false,
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 1,
-            centerPadding: 0
-          }
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 1,
-            centerPadding: 0
-          }
+      responsive: [{
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          centerPadding: 0
         }
-      ]
+      }, {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          centerPadding: 0
+        }
+      }]
     },
     sycingView: {
       infinite: true,
@@ -2453,15 +2503,13 @@ jQuery(function() {
       // autoplaySpeed: 3000,
       zIndex: 5,
       rtl: $('html').attr('dir') === 'rtl' ? true : false,
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 1
-          }
+      responsive: [{
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1
         }
-      ]
+      }]
     },
     variableWidth: {
       speed: 600,
@@ -2477,12 +2525,11 @@ jQuery(function() {
       zIndex: 5
     }
   };
-
-  $(function() {
+  $(function () {
     $('[data-' + pluginName + ']')[pluginName]();
   });
-
-}(jQuery, window));
+})(jQuery, window);
+"use strict";
 
 /**
  *  @name sticky
@@ -2497,13 +2544,15 @@ jQuery(function() {
  *    publicMethod
  *    destroy
  */
-;(function($, window, undefined) {
+;
+
+(function ($, window, undefined) {
   'use strict';
 
   var pluginName = 'sticky',
-    win = $(window),
-    resizeTimeout,
-    resize = ('onorientationchange' in window) ? 'orientationchange.resize' + pluginName : 'resize.resize' + pluginName;
+      win = $(window),
+      resizeTimeout,
+      resize = 'onorientationchange' in window ? 'orientationchange.resize' + pluginName : 'resize.resize' + pluginName;
 
   function Plugin(element, options) {
     this.element = $(element);
@@ -2512,47 +2561,49 @@ jQuery(function() {
   }
 
   Plugin.prototype = {
-    init: function() {
+    init: function init() {
       this.status = false;
       this.option = {
         offset_top: $('.nav-container').height()
       };
-      if(win.width() > 767) {
+
+      if (win.width() > 767) {
         this.initialized();
       }
+
       this.listener();
     },
-    listener: function() {
-      win.off(resize).on(resize, function() {
-        if(resizeTimeout) {
+    listener: function listener() {
+      win.off(resize).on(resize, function () {
+        if (resizeTimeout) {
           clearTimeout(resizeTimeout);
         }
-        resizeTimeout = setTimeout(function() {
-          $('[data-' + pluginName + ']').each(function() {
-            if(win.width() > 767 && !$(this).data()[pluginName].status) {
+
+        resizeTimeout = setTimeout(function () {
+          $('[data-' + pluginName + ']').each(function () {
+            if (win.width() > 767 && !$(this).data()[pluginName].status) {
               $(this)[pluginName]('init');
-            }
-            else if(win.width() < 767 && $(this).data()[pluginName].status) {
+            } else if (win.width() < 767 && $(this).data()[pluginName].status) {
               $(this)[pluginName]('destroy');
             }
           });
         }, 300);
       });
     },
-    initialized: function() {
+    initialized: function initialized() {
       this.status = true;
       this.element.stick_in_parent(this.option);
     },
-    destroy: function() {
+    destroy: function destroy() {
       this.status = false;
-      this.element.trigger('sticky_kit:detach');
-      //$.removeData(this.element[0], pluginName);
+      this.element.trigger('sticky_kit:detach'); //$.removeData(this.element[0], pluginName);
     }
   };
 
-  $.fn[pluginName] = function(options, params) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options, params) {
+    return this.each(function () {
       var instance = $.data(this, pluginName);
+
       if (!instance) {
         $.data(this, pluginName, new Plugin(this, options));
       } else if (instance[options]) {
@@ -2561,15 +2612,15 @@ jQuery(function() {
     });
   };
 
-  $.fn[pluginName].defaults = {
-  };
-
-  $(function() {
-    if($('body').hasClass('catalog-category-view') || $('body').hasClass('catalogsearch-result-index')) {
+  $.fn[pluginName].defaults = {};
+  $(function () {
+    if ($('body').hasClass('catalog-category-view') || $('body').hasClass('catalogsearch-result-index')) {
       $('[data-' + pluginName + ']')[pluginName]();
     }
   });
-}(jQuery, window));
+})(jQuery, window);
+"use strict";
+
 /**
  *  @name table
  *  @description description
@@ -2583,7 +2634,9 @@ jQuery(function() {
  *    initialized
  *    destroy
  */
-;(function($, window, undefined) {
+;
+
+(function ($, window, undefined) {
   'use strict';
 
   var pluginName = 'table';
@@ -2595,85 +2648,72 @@ jQuery(function() {
   }
 
   Plugin.prototype = {
-    init: function() {
-      if(this.element.find('tr').eq(0).find('td').length > 2) {
+    init: function init() {
+      if (this.element.find('tr').eq(0).find('td').length > 2) {
         this.initialized();
         this.listener();
       }
     },
-    initialized: function() {
-      this.element
-        .find('tr')
-        .find('td:last-child')
-        .addClass('last');
-      this.element
-        .find('tr')
-        .find('td:first-child')
-        .next()
-        .addClass('first');
-      this.element
-        .find('tr')
-        .eq(0)
-        .append('<td class="' + this.options.emptyTdCls + ' next-btn" data-next=""><a class="icon-angle-right"></a></td>')
-        .find('.head-title')
-        .after('<td class="' + this.options.emptyTdCls + ' prev-btn disabled" data-prev=""><a class="icon-angle-left"></a></td>');
-      this.element
-        .find('tr')
-        .eq(0)
-        .nextAll()
-        .append('<td class="' + this.options.emptyTdCls + '"></td>')
-        .find('.head-title')
-        .after('<td class="' + this.options.emptyTdCls + '"></td>');
-
+    initialized: function initialized() {
+      this.element.find('tr').find('td:last-child').addClass('last');
+      this.element.find('tr').find('td:first-child').next().addClass('first');
+      this.element.find('tr').eq(0).append('<td class="' + this.options.emptyTdCls + ' next-btn" data-next=""><a class="icon-angle-right"></a></td>').find('.head-title').after('<td class="' + this.options.emptyTdCls + ' prev-btn disabled" data-prev=""><a class="icon-angle-left"></a></td>');
+      this.element.find('tr').eq(0).nextAll().append('<td class="' + this.options.emptyTdCls + '"></td>').find('.head-title').after('<td class="' + this.options.emptyTdCls + '"></td>');
       this.curentItems = [];
-      for(var i = 2, n = 2 + this.options.items; i < n; i++) {
+
+      for (var i = 2, n = 2 + this.options.items; i < n; i++) {
         this.curentItems.push(i);
       }
+
       this.addClassHandler(this.curentItems);
     },
-    listener: function() {
+    listener: function listener() {
       this.element.find(this.options.prevBtn).off('click.prev' + pluginName).on('click.prev' + pluginName, $.proxy(this.prevEvent, this));
       this.element.find(this.options.nextBtn).off('click.next' + pluginName).on('click.next' + pluginName, $.proxy(this.nextEvent, this));
     },
-    prevEvent: function() {
-      if(!$(this.options.prevBtn).hasClass(this.options.disabledCls)) {
-        $(this.options.nextBtn).removeClass(this.options.disabledCls);
-        // Remove end
-        this.curentItems.pop();
-        // Add first
+    prevEvent: function prevEvent() {
+      if (!$(this.options.prevBtn).hasClass(this.options.disabledCls)) {
+        $(this.options.nextBtn).removeClass(this.options.disabledCls); // Remove end
+
+        this.curentItems.pop(); // Add first
+
         this.curentItems.unshift(this.curentItems[0] - 1);
         this.addClassHandler(this.curentItems);
-        if(this.element.find('td').eq(this.curentItems[0]).hasClass('first')) {
+
+        if (this.element.find('td').eq(this.curentItems[0]).hasClass('first')) {
           $(this.options.prevBtn).addClass(this.options.disabledCls);
         }
       }
     },
-    nextEvent: function() {
-      if(!$(this.options.nextBtn).hasClass(this.options.disabledCls)) {
-        $(this.options.prevBtn).removeClass(this.options.disabledCls);
-        // Remove first
-        this.curentItems.shift();
-        // Add end
+    nextEvent: function nextEvent() {
+      if (!$(this.options.nextBtn).hasClass(this.options.disabledCls)) {
+        $(this.options.prevBtn).removeClass(this.options.disabledCls); // Remove first
+
+        this.curentItems.shift(); // Add end
+
         this.curentItems.push(this.curentItems[this.curentItems.length - 1] + 1);
         this.addClassHandler(this.curentItems);
-        if(this.element.find('td').eq(this.curentItems[this.curentItems.length-1]).hasClass('last')) {
+
+        if (this.element.find('td').eq(this.curentItems[this.curentItems.length - 1]).hasClass('last')) {
           $(this.options.nextBtn).addClass(this.options.disabledCls);
         }
       }
     },
-    addClassHandler: function(arr) {
+    addClassHandler: function addClassHandler(arr) {
       this.element.find('td.active').removeClass(this.options.activeCls);
-      for(var i = 0, n = this.element.find('tr').length; i < n; i++) {
-        for(var j = 0, m = arr.length; j < m; j++) {
+
+      for (var i = 0, n = this.element.find('tr').length; i < n; i++) {
+        for (var j = 0, m = arr.length; j < m; j++) {
           this.element.find('tr').eq(i).find('td').eq(arr[j]).addClass(this.options.activeCls);
         }
       }
     }
   };
 
-  $.fn[pluginName] = function(options, params) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options, params) {
+    return this.each(function () {
       var instance = $.data(this, pluginName);
+
       if (!instance) {
         $.data(this, pluginName, new Plugin(this, options));
       } else if (instance[options]) {
@@ -2689,12 +2729,11 @@ jQuery(function() {
     prevBtn: '[data-prev]',
     nextBtn: '[data-next]'
   };
-
-  $(function() {
+  $(function () {
     $('[data-' + pluginName + ']')[pluginName]();
   });
-
-}(jQuery, window));
+})(jQuery, window);
+"use strict";
 
 /**
  *  @name validates
@@ -2703,13 +2742,16 @@ jQuery(function() {
  *    init
  *    reset
  */
+;
 
-;(function($, window, undefined) {
+(function ($, window, undefined) {
   'use strict';
 
   var pluginName = 'validates';
-  var getRules = function(formId) {
+
+  var getRules = function getRules(formId) {
     var rules = {};
+
     switch (formId) {
       case 'guide':
         rules = $.extend(rules, {
@@ -2723,21 +2765,30 @@ jQuery(function() {
           }
         });
         break;
+
       default:
     }
+
     return rules;
   },
-  messages = function(formId) {
+      messages = function messages(formId) {
     var messages = {};
+
     switch (formId) {
       case 'guide':
         messages = $.extend(messages, {
-          guide_cb_group: {minlength: L10n.validateMess.minlengthcheckbox},
-          horizontal_guide_cb_group: {minlength: L10n.validateMess.minlengthcheckbox}
+          guide_cb_group: {
+            minlength: L10n.validateMess.minlengthcheckbox
+          },
+          horizontal_guide_cb_group: {
+            minlength: L10n.validateMess.minlengthcheckbox
+          }
         });
         break;
+
       default:
     }
+
     return messages;
   };
 
@@ -2748,67 +2799,60 @@ jQuery(function() {
   }
 
   Plugin.prototype = {
-    init: function() {
+    init: function init() {
       var that = this;
       this.formId = this.element.find('form').attr('id');
       this.isHideMessage = this.options.isHideMessage;
-
       $('#' + this.formId).validate({
         rules: getRules.call(that, that.formId),
         messages: messages.call(that, that.formId),
         errorElement: 'p',
-        highlight: function(element) {
+        highlight: function highlight(element) {
           $(element).addClass('error').closest('.fieldset').addClass('errors');
         },
-        unhighlight: function(element) {
+        unhighlight: function unhighlight(element) {
           $(element).removeClass('error');
-          if(!$(element).closest('.fieldset').find(that.options.groupCls).hasClass('error')) {
+
+          if (!$(element).closest('.fieldset').find(that.options.groupCls).hasClass('error')) {
             $(element).removeClass('error').closest('.fieldset').removeClass('errors');
           }
         },
-        invalidHandler: function(event, validator) {
+        invalidHandler: function invalidHandler(event, validator) {
           var errors = validator.numberOfInvalids();
           console.log(errors);
         },
-        errorPlacement: function(error, element) {
-          if(!that.isHideMessage) {
+        errorPlacement: function errorPlacement(error, element) {
+          if (!that.isHideMessage) {
             if ($(element).is('select')) {
               error.insertAfter(element.closest('.custom-select'));
-            }
-            else if ($(element).closest('.custom-input').length) {
+            } else if ($(element).closest('.custom-input').length) {
               error.insertAfter(element.closest('.custom-input'));
-            }
-            else if ($(element).closest('.radio-list').length) {
+            } else if ($(element).closest('.radio-list').length) {
               error.insertAfter(element.closest('.radio-list'));
-            }
-            else if ($(element).closest('.checkbox-list').length) {
+            } else if ($(element).closest('.checkbox-list').length) {
               error.insertAfter(element.closest('.checkbox-list'));
-            }
-            else if($(element).attr('type') === 'date') {
+            } else if ($(element).attr('type') === 'date') {
               error.insertAfter(element.closest('.custom-date'));
               return false;
-            }
-            else if($(element).attr('type') === 'file') {
+            } else if ($(element).attr('type') === 'file') {
               error.insertAfter(element.closest('.custom-file'));
               return false;
-            }
-            else if($(element).is(':checkbox')) {
+            } else if ($(element).is(':checkbox')) {
               error.insertAfter(element.closest('.checkbox'));
-            }
-            else if($(element).is(':radio')) {
+            } else if ($(element).is(':radio')) {
               error.insertAfter(element.closest('.radio'));
-            }
-            else {
+            } else {
               error.insertAfter(element);
             }
           }
         },
-        submitHandler: function(form) {
+        submitHandler: function submitHandler(form) {
           switch (that.formId) {
             case 'guide':
               console.log(123);
               form.submit();
               break;
+
             default:
               form.submit();
               return false;
@@ -2816,14 +2860,15 @@ jQuery(function() {
         }
       });
     },
-    reset: function() {
+    reset: function reset() {
       $('#' + this.formId).resetForm();
     }
   };
 
-  $.fn[pluginName] = function(options, params) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options, params) {
+    return this.each(function () {
       var instance = $.data(this, pluginName);
+
       if (!instance) {
         $.data(this, pluginName, new Plugin(this, options));
       } else if (instance[options]) {
@@ -2835,19 +2880,20 @@ jQuery(function() {
   $.fn[pluginName].defaults = {
     groupCls: '.valid-group'
   };
-
-  $(function() {
+  $(function () {
     $('[data-' + pluginName + ']')[pluginName]();
   });
-
-}(jQuery, window));
+})(jQuery, window);
+"use strict";
 
 /**
  *  @name Video
  *  @description Control Play/Pause/Ended Video HTML5
  *  @version 1.0
  */
-;(function($, window, undefined) {
+;
+
+(function ($, window, undefined) {
   'use strict';
 
   var pluginName = 'video';
@@ -2871,41 +2917,41 @@ jQuery(function() {
   }
 
   Plugin.prototype = {
-    init: function() {
+    init: function init() {
       var that = this;
       this.status = Statuses.PAUSED;
       this.handle = this.element.find(this.options.handle);
       this.video = this.element.find('video');
       var isClick = false;
-      this.handle
-      .off('mousedown.' + pluginName).on('mousedown.' + pluginName, function() {
+      this.handle.off('mousedown.' + pluginName).on('mousedown.' + pluginName, function () {
         isClick = true;
-      }).off('mousemove.' + pluginName).on('mousemove.' + pluginName, function() {
+      }).off('mousemove.' + pluginName).on('mousemove.' + pluginName, function () {
         isClick = false;
-      }).off('click.' + pluginName).on('click.' + pluginName, function(e) {
+      }).off('click.' + pluginName).on('click.' + pluginName, function (e) {
         e.preventDefault();
         e.stopPropagation();
-        if(isClick) {
-          switch(that.status) {
+
+        if (isClick) {
+          switch (that.status) {
             case Statuses.PAUSED:
             case Statuses.ENDED:
               that.firstPlay = true;
               that.playClip(that.firstPlay);
               break;
+
             case Statuses.PLAYING:
               that.pauseClip();
               break;
           }
         }
       });
-
       this.video.get(0).addEventListener('waiting', this.waitingLoad, false);
       this.video.get(0).addEventListener('pause', this.onPausing, false);
       this.video.get(0).addEventListener('playing', this.onPlaying, false);
       this.video.get(0).addEventListener('ended', this.endVideo, false);
     },
-    playClip: function() {
-      if(this.firstPlay) {
+    playClip: function playClip() {
+      if (this.firstPlay) {
         $('[data-youtube]').length && $('[data-youtube]').youtube('pauseClip');
         $('[data-video]').video('pauseClip');
         this.element.removeClass(ClassNames.PAUSED + ' ' + ClassNames.LOADING + ' ' + ClassNames.ENDED).addClass(ClassNames.PLAYING);
@@ -2913,34 +2959,35 @@ jQuery(function() {
         this.video.get(0).play();
       }
     },
-    pauseClip: function() {
-      if(this.status === Statuses.PLAYING) {
+    pauseClip: function pauseClip() {
+      if (this.status === Statuses.PLAYING) {
         this.element.removeClass(ClassNames.PLAYING + ' ' + ClassNames.LOADING + ' ' + ClassNames.ENDED).addClass(ClassNames.PAUSED);
         this.status = Statuses.PAUSED;
         this.video.get(0).pause();
       }
     },
-    waitingLoad: function() {
+    waitingLoad: function waitingLoad() {
       $(this).closest('[data-' + pluginName + ']').addClass(ClassNames.LOADING);
       $(this).closest('[data-' + pluginName + ']').data('video').status = Statuses.LOADING;
     },
-    onPausing: function() {
+    onPausing: function onPausing() {
       $(this).closest('[data-' + pluginName + ']').removeClass(ClassNames.PLAYING + ' ' + ClassNames.LOADING + ' ' + ClassNames.ENDED).addClass(ClassNames.PAUSED);
       $(this).closest('[data-' + pluginName + ']').data('video').status = Statuses.PAUSED;
     },
-    onPlaying: function() {
+    onPlaying: function onPlaying() {
       $(this).closest('[data-' + pluginName + ']').removeClass(ClassNames.PAUSED + ' ' + ClassNames.LOADING + ' ' + ClassNames.ENDED).addClass(ClassNames.PLAYING);
       $(this).closest('[data-' + pluginName + ']').data('video').status = Statuses.PLAYING;
     },
-    endVideo: function() {
+    endVideo: function endVideo() {
       $(this).closest('[data-' + pluginName + ']').removeClass(ClassNames.PAUSED + ' ' + ClassNames.PLAYING).addClass(ClassNames.ENDED);
       $(this).closest('[data-' + pluginName + ']').data('video').status = Statuses.ENDED;
     }
   };
 
-  $.fn[pluginName] = function(options, params) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options, params) {
+    return this.each(function () {
       var instance = $.data(this, pluginName);
+
       if (!instance) {
         $.data(this, pluginName, new Plugin(this, options));
       } else if (instance[options]) {
@@ -2952,19 +2999,22 @@ jQuery(function() {
   $.fn[pluginName].defaults = {
     handle: '[data-handle]'
   };
-
-  $(function() {
+  $(function () {
     $('[data-' + pluginName + ']')[pluginName]();
   });
+})(jQuery, window);
+"use strict";
 
-}(jQuery, window));
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /**
  *  @name youtube
  *  @description Control play/pause/end youtube, using youtube API
  *  @version 1.0
  */
-;(function($, window, undefined) {
+;
+
+(function ($, window, undefined) {
   'use strict';
 
   var pluginName = 'youtube';
@@ -2981,10 +3031,11 @@ jQuery(function() {
     LOADING: 'loading',
     ENDED: 'ended'
   };
-  var getYoutubeId = function(url) {
+
+  var getYoutubeId = function getYoutubeId(url) {
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/,
-      match = url.match(regExp);
-    return (match && match[7].length === 11) ? match[7] : false;
+        match = url.match(regExp);
+    return match && match[7].length === 11 ? match[7] : false;
   };
 
   function Plugin(element, options) {
@@ -2994,19 +3045,19 @@ jQuery(function() {
   }
 
   Plugin.prototype = {
-    init: function() {
+    init: function init() {
       this.handle = this.element.find(this.options.handle);
       this.iframeCls = this.element.find(this.options.iframeCls);
       this.idVideo = !!getYoutubeId.call(this, this.options.idOrLink) ? getYoutubeId.call(this, this.options.idOrLink) : this.options.idOrLink;
       this.status = Statuses.UNLOAD;
       this.autoplay = this.options.autoplay ? this.options.autoplay : 0;
-      if(typeof YT === 'object') {
+
+      if ((typeof YT === "undefined" ? "undefined" : _typeof(YT)) === 'object') {
         this.initYoutube();
       }
     },
-    initYoutube: function() {
+    initYoutube: function initYoutube() {
       var that = this;
-
       that.player = new YT.Player(this.iframeCls.get(0), {
         videoId: that.idVideo,
         playerVars: {
@@ -3017,92 +3068,92 @@ jQuery(function() {
           'modestbranding': 0
         },
         events: {
-          onReady: function() {
+          onReady: function onReady() {
             that.listener();
           },
-          onStateChange: function(event) {
+          onStateChange: function onStateChange(event) {
             that.onPlayerStateChange(event, that);
           }
         }
       });
     },
-    listener: function() {
+    listener: function listener() {
       var that = this,
-        isClick = false;
-      this.handle
-      .off('mousedown.' + pluginName).on('mousedown.' + pluginName, function() {
+          isClick = false;
+      this.handle.off('mousedown.' + pluginName).on('mousedown.' + pluginName, function () {
         isClick = true;
-      }).off('mousemove.' + pluginName).on('mousemove.' + pluginName, function() {
+      }).off('mousemove.' + pluginName).on('mousemove.' + pluginName, function () {
         isClick = false;
-      }).off('click.' + pluginName).on('click.' + pluginName, function(e) {
+      }).off('click.' + pluginName).on('click.' + pluginName, function (e) {
         e.preventDefault();
         e.stopPropagation();
-        if(isClick) { // Check for touchmouve on slider
-          switch(that.status) {
+
+        if (isClick) {
+          // Check for touchmouve on slider
+          switch (that.status) {
             case Statuses.UNLOAD:
             case Statuses.ENDED:
               that.playClip(true);
               break;
+
             case Statuses.PAUSED:
               that.playClip();
               break;
+
             case Statuses.PLAYING:
               that.pauseClip();
               break;
+
             case Statuses.LOADING:
               break;
           }
         }
       });
     },
-    playClip: function(isUnload) {
-      if(isUnload || this.status === Statuses.PAUSED) {// Use on case use: $('[data-youtube]').youtube('pauseClip');
+    playClip: function playClip(isUnload) {
+      if (isUnload || this.status === Statuses.PAUSED) {
+        // Use on case use: $('[data-youtube]').youtube('pauseClip');
         $('[data-video]').length && $('[data-video]').video('pauseClip');
         $('[data-youtube]').youtube('pauseClip');
         this.player.playVideo();
-        this.element
-          .addClass(ClassNames.PLAYING)
-          .removeClass(ClassNames.PAUSED + ' ' + ClassNames.LOADING + ' ' + ClassNames.ENDED);
+        this.element.addClass(ClassNames.PLAYING).removeClass(ClassNames.PAUSED + ' ' + ClassNames.LOADING + ' ' + ClassNames.ENDED);
       }
     },
-    pauseClip: function() {
-      if(this.status === Statuses.PLAYING) {// Use on case use: $('[data-youtube]').youtube('pauseClip');
+    pauseClip: function pauseClip() {
+      if (this.status === Statuses.PLAYING) {
+        // Use on case use: $('[data-youtube]').youtube('pauseClip');
         this.player.pauseVideo();
-        this.element
-          .addClass(ClassNames.PAUSED)
-          .removeClass(ClassNames.PLAYING + ' ' + ClassNames.LOADING + ' ' + ClassNames.ENDED);
+        this.element.addClass(ClassNames.PAUSED).removeClass(ClassNames.PLAYING + ' ' + ClassNames.LOADING + ' ' + ClassNames.ENDED);
       }
     },
-    onPlayerStateChange: function(event, plugin) {
+    onPlayerStateChange: function onPlayerStateChange(event, plugin) {
       switch (event.data) {
         case YT.PlayerState.PAUSED:
           plugin.status = Statuses.PAUSED;
-          plugin.element
-            .addClass(ClassNames.PAUSED)
-            .removeClass(ClassNames.PLAYING + ' ' + ClassNames.LOADING + ' ' + ClassNames.ENDED);
+          plugin.element.addClass(ClassNames.PAUSED).removeClass(ClassNames.PLAYING + ' ' + ClassNames.LOADING + ' ' + ClassNames.ENDED);
           break;
+
         case YT.PlayerState.PLAYING:
           plugin.status = Statuses.PLAYING;
-          plugin.element
-            .addClass(ClassNames.PLAYING)
-            .removeClass(ClassNames.PAUSED + ' ' + ClassNames.LOADING + ' ' + ClassNames.ENDED);
+          plugin.element.addClass(ClassNames.PLAYING).removeClass(ClassNames.PAUSED + ' ' + ClassNames.LOADING + ' ' + ClassNames.ENDED);
           break;
+
         case YT.PlayerState.BUFFERING:
           plugin.status = Statuses.LOADING;
           break;
+
         case YT.PlayerState.ENDED:
           plugin.status = Statuses.ENDED;
-          plugin.element
-            .addClass(ClassNames.ENDED)
-            .removeClass(ClassNames.PLAYING + ' ' + ClassNames.LOADING + ' ' + ClassNames.PAUSED);
+          plugin.element.addClass(ClassNames.ENDED).removeClass(ClassNames.PLAYING + ' ' + ClassNames.LOADING + ' ' + ClassNames.PAUSED);
           break;
       }
     }
   };
 
-  $.fn[pluginName] = function(options, params) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options, params) {
+    return this.each(function () {
       var instance = $.data(this, pluginName);
+
       if (!instance) {
         $.data(this, pluginName, new Plugin(this, options));
       } else if (instance[options]) {
@@ -3115,18 +3166,18 @@ jQuery(function() {
     handle: '[data-handle]',
     iframeCls: '.iframeYoutube'
   };
-
-  $(function() {
+  $(function () {
     var tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    window.onYouTubeIframeAPIReady = function() {
+
+    window.onYouTubeIframeAPIReady = function () {
       $('[data-' + pluginName + ']')[pluginName]();
     };
   });
-
-}(jQuery, window));
+})(jQuery, window);
+"use strict";
 
 /**
  *  @name plugin
@@ -3141,13 +3192,15 @@ jQuery(function() {
  *    publicMethod
  *    destroy
  */
-;(function($, window, undefined) {
+;
+
+(function ($, window, undefined) {
   'use strict';
 
   var pluginName = 'zoomer',
-    win = $(window),
-    zoomTimer,
-    resize = ('onorientationchange' in window) ? 'orientationchange.resize' + pluginName : 'resize.resize' + pluginName;
+      win = $(window),
+      zoomTimer,
+      resize = 'onorientationchange' in window ? 'orientationchange.resize' + pluginName : 'resize.resize' + pluginName;
 
   function Plugin(element, options) {
     this.element = $(element);
@@ -3156,55 +3209,52 @@ jQuery(function() {
   }
 
   Plugin.prototype = {
-    init: function() {
+    init: function init() {
       this.handle = this.element.find(this.options.handle);
 
-      if(this.element.is(':visible') && win.width() > 767) {
+      if (this.element.is(':visible') && win.width() > 767) {
         this.checkImgLoad();
       }
-      win.off(resize).on(resize, function() {
-        if(zoomTimer) {
+
+      win.off(resize).on(resize, function () {
+        if (zoomTimer) {
           clearTimeout(zoomTimer);
         }
-        zoomTimer = setTimeout(function() {
-          if($('[data-' + pluginName + ']').is(':visible') && win.width() > 767) {
+
+        zoomTimer = setTimeout(function () {
+          if ($('[data-' + pluginName + ']').is(':visible') && win.width() > 767) {
             $('[data-' + pluginName + ']')[pluginName]('destroy');
             $('[data-' + pluginName + ']')[pluginName]('init');
-          }
-          else {
+          } else {
             $('[data-' + pluginName + ']')[pluginName]('destroy');
           }
         }, 300);
       });
     },
-    checkImgLoad: function() {
+    checkImgLoad: function checkImgLoad() {
       var that = this,
-        imagesLoaded = 0,
-        totalImages = this.element.find('img').length;
-
-      this.element.find('img').each(function() {
+          imagesLoaded = 0,
+          totalImages = this.element.find('img').length;
+      this.element.find('img').each(function () {
         var fakeSrc = $(this).attr('src');
+        $('<img />').attr('src', fakeSrc).css('display', 'none').on('load.' + pluginName, function () {
+          ++imagesLoaded;
 
-        $('<img />')
-          .attr('src', fakeSrc).css('display', 'none')
-          .on('load.' + pluginName, function() {
-            ++imagesLoaded;
-            if (imagesLoaded === totalImages) {
-              $.isFunction(that.defineOption) && that.defineOption();
-            }
-          })
-          .on('error.' + pluginName, function() {
-            ++imagesLoaded;
-            if (imagesLoaded === totalImages) {
-              $.isFunction(that.defineOption) && that.defineOption();
-            }
-          });
+          if (imagesLoaded === totalImages) {
+            $.isFunction(that.defineOption) && that.defineOption();
+          }
+        }).on('error.' + pluginName, function () {
+          ++imagesLoaded;
+
+          if (imagesLoaded === totalImages) {
+            $.isFunction(that.defineOption) && that.defineOption();
+          }
+        });
       });
     },
-    defineOption: function() {
+    defineOption: function defineOption() {
       var windowZoom = {},
-        that = this;
-
+          that = this;
       this.option = {
         borderSize: 1,
         borderColour: '#ddd',
@@ -3216,28 +3266,23 @@ jQuery(function() {
         lensColour: '#fff',
         lensOpacity: 0.4,
         zoomId: this.options.zoomId,
-        onDestroy: function() {
-          //console.log('onDestroy');
+        onDestroy: function onDestroy() {//console.log('onDestroy');
         },
-        onImageClick: function() {
-          //console.log('onImageClick');
+        onImageClick: function onImageClick() {//console.log('onImageClick');
         },
-        onShow: function() {
-          //console.log('onShow');
+        onShow: function onShow() {//console.log('onShow');
         },
-        onZoomedImageLoaded: function() {
+        onZoomedImageLoaded: function onZoomedImageLoaded() {
           //console.log('onZoomedImageLoaded');
           that.element.addClass('zoomLoaded');
         },
-        onImageSwap: function() {
-          //console.log('onImageSwap');
+        onImageSwap: function onImageSwap() {//console.log('onImageSwap');
         },
-        onImageSwapComplete: function() {
-          //console.log('onImageSwapComplete');
+        onImageSwapComplete: function onImageSwapComplete() {//console.log('onImageSwapComplete');
         }
       };
 
-      if(win.width() > 1023) {
+      if (win.width() > 1023) {
         windowZoom = {
           zoomType: 'window',
           zoomWindowWidth: this.options.zoomWindowWidth,
@@ -3246,28 +3291,31 @@ jQuery(function() {
           scrollZoom: true
         };
       }
-      if(win.width() < 1024 && win.width() > 767) {// tablet
+
+      if (win.width() < 1024 && win.width() > 767) {
+        // tablet
         windowZoom = {};
       }
+
       this.option = $.extend({}, this.option, windowZoom);
       this.initialized(this.option);
     },
-    initialized: function(opts) {
+    initialized: function initialized(opts) {
       this.handle.ezPlus(opts);
     },
-    destroy: function() {
+    destroy: function destroy() {
       this.element.removeClass('zoomLoaded');
       this.handle.removeData('ezPlus');
       this.handle.removeData('zoomImage');
       this.handle.off('mouseleave mouseenter mouseover mousemove mouseout mousewheel touchend touchmove click DOMMouseScroll MozMousePixelScroll');
-      $('.zoomContainer').filter('[uuid="' + this.options.zoomId + '"]').remove();
-      // $.removeData(this.element[0], pluginName);
+      $('.zoomContainer').filter('[uuid="' + this.options.zoomId + '"]').remove(); // $.removeData(this.element[0], pluginName);
     }
   };
 
-  $.fn[pluginName] = function(options, params) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options, params) {
+    return this.each(function () {
       var instance = $.data(this, pluginName);
+
       if (!instance) {
         $.data(this, pluginName, new Plugin(this, options));
       } else if (instance[options]) {
@@ -3282,11 +3330,8 @@ jQuery(function() {
     zoomWindowHeight: 400,
     zoomWindowOffetx: 100
   };
-
-  $(function() {
+  $(function () {
     $('[data-' + pluginName + ']')[pluginName]();
   });
-
-}(jQuery, window));
-
+})(jQuery, window);
 //# sourceMappingURL=jsguide.js.map

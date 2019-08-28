@@ -3060,7 +3060,7 @@ Copyright (c) 2015 Daniel Eden
 .slick-arrow:before {
   font-family: "icomoon";
   font-size: 50px;
-  font-size: 3.571rem;
+  font-size: 5rem;
   color: #000;
 }
 .vertical-slider .slick-arrow {
@@ -5350,7 +5350,7 @@ yx-axis
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   font-size: 70px;
-  font-size: 5rem;
+  font-size: 7rem;
   z-index: 2;
   color: white;
   -webkit-transition: all 0.25s ease;
@@ -5441,7 +5441,7 @@ yx-axis
   cursor: pointer;
   color: #fff;
   font-size: 30px;
-  font-size: 2.143rem;
+  font-size: 3rem;
 }
 .showZoomContainer.pinchZoomWrap [data-closezoom] {
   opacity: 1;

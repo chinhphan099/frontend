@@ -104,7 +104,7 @@ html {
 }
 body {
   font-family: Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 1.4rem;
   color: #333;
   line-height: 1;
   background-color: #fff;
@@ -150,52 +150,52 @@ h6 a {
 }
 h1 {
   font-size: 20px;
-  font-size: 1.429rem;
+  font-size: 2rem;
 }
 h2 {
   font-size: 18px;
-  font-size: 1.286rem;
+  font-size: 1.8rem;
 }
 h3 {
   font-size: 16px;
-  font-size: 1.143rem;
+  font-size: 1.6rem;
 }
 h4 {
   font-size: 14px;
-  font-size: 1rem;
+  font-size: 1.4rem;
 }
 h5 {
   font-size: 12px;
-  font-size: 0.857rem;
+  font-size: 1.2rem;
 }
 h6 {
   font-size: 10px;
-  font-size: 0.714rem;
+  font-size: 1rem;
 }
 @media (max-width: 767px) {
   h1 {
     font-size: 20px;
-    font-size: 1.429rem;
+    font-size: 2rem;
   }
   h2 {
     font-size: 18px;
-    font-size: 1.286rem;
+    font-size: 1.8rem;
   }
   h3 {
     font-size: 16px;
-    font-size: 1.143rem;
+    font-size: 1.6rem;
   }
   h4 {
     font-size: 14px;
-    font-size: 1rem;
+    font-size: 1.4rem;
   }
   h5 {
     font-size: 12px;
-    font-size: 0.857rem;
+    font-size: 1.2rem;
   }
   h6 {
     font-size: 10px;
-    font-size: 0.714rem;
+    font-size: 1rem;
   }
 }
 address {
@@ -303,7 +303,7 @@ kbd,
 pre,
 samp {
   font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
-  font-size: 1rem;
+  font-size: 1.4rem;
 }
 hr {
   display: block;
@@ -389,8 +389,7 @@ input[type="date"] {
   -moz-appearance: textfield;
   appearance: none;
   color: #333;
-  font-size: 14px;
-  font-size: 1rem;
+  font-size: 1.4rem;
   -webkit-border-radius: 0;
   border-radius: 0;
 }
@@ -501,8 +500,7 @@ textarea {
   width: 100%;
   padding: 10px;
   overflow: auto;
-  font-size: 14px;
-  font-size: 1rem;
+  font-size: 1.4rem;
   color: #333;
   vertical-align: top;
   resize: none;
@@ -574,192 +572,6 @@ noscript {
   background: gray;
 }
 /* End Reset */
-/* Begin Common */
-.relative {
-  position: relative;
-}
-.bgd-silver {
-  background-color: silver !important;
-}
-.bgd-light-grey {
-  background-color: #f1f1f1 !important;
-}
-.bgd-dark-grey {
-  background-color: #666 !important;
-}
-.red-text {
-  color: red !important;
-}
-.link {
-  position: relative;
-  font-size: 20px;
-  font-size: 1.429rem;
-  text-decoration: underline;
-  color: #ff0000;
-  -webkit-transition: all 0.25s ease;
-  -moz-transition: all 0.25s ease;
-  -ms-transition: all 0.25s ease;
-  -o-transition: all 0.25s ease;
-  transition: all 0.25s ease;
-}
-.link:hover {
-  color: #ff0000;
-}
-.link:hover {
-  text-decoration: none;
-}
-.link i {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-38%);
-  -moz-transform: translateY(-38%);
-  -ms-transform: translateY(-38%);
-  -o-transform: translateY(-38%);
-  transform: translateY(-38%);
-  font-size: .8em;
-}
-.pagination {
-  display: inline-block;
-}
-.pagination li {
-  float: left;
-  margin: 0 5px;
-  text-align: center;
-}
-.pagination li.number ul {
-  margin: 0 -5px;
-}
-.pagination li.active a {
-  color: #fff;
-  background-color: #ccc;
-}
-.pagination li a {
-  display: block;
-  width: 30px;
-  height: 30px;
-  font-size: 14px;
-  font-size: 1rem;
-  color: #333;
-  border: 1px solid #666;
-  line-height: 30px;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-.pagination li a:hover {
-  color: #fff;
-  background-color: #c0c0c0;
-}
-.pagination li a i {
-  line-height: 30px;
-}
-.pagination li.unavailable {
-  pointer-events: none;
-}
-.pagination li.unavailable span {
-  line-height: 24px;
-}
-.pagination .number a span {
-  display: none;
-}
-@media (max-width: 767px) {
-  .pagination {
-    width: 100%;
-  }
-  .pagination .prev-page {
-    float: left;
-  }
-  .pagination .next-page {
-    float: right;
-  }
-  .pagination .number {
-    display: block;
-    float: none;
-    overflow: hidden;
-  }
-  .pagination .number li {
-    display: none;
-  }
-  .pagination .number li.active {
-    display: inline-block;
-    float: none;
-  }
-  .pagination .number a span {
-    display: inline;
-  }
-}
-.price {
-  display: block;
-}
-.price .new-price,
-.price .old-price {
-  display: inline-block;
-  color: #333;
-}
-.price .new-price {
-  font-weight: bold;
-}
-.price .old-price {
-  color: #999;
-}
-.breadcrumbs li {
-  display: inline-block;
-}
-.breadcrumbs i {
-  position: relative;
-  top: 2px;
-}
-.divider {
-  position: relative;
-  text-align: center;
-  overflow: hidden;
-  clear: both;
-}
-.divider span {
-  position: relative;
-  display: inline-block;
-  padding: 0 10px;
-}
-.divider span:before,
-.divider span:after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 1000px;
-  border-top: 1px solid #ddd;
-}
-.divider span:before {
-  right: 100%;
-}
-.divider span:after {
-  left: 100%;
-}
-.divider span.empty {
-  font-size: 0;
-  padding: 0;
-}
-blockquote {
-  quotes: "\201C" "\201D" "\2018" "\2019";
-}
-blockquote:before,
-blockquote:after {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 4em;
-  line-height: 0;
-}
-blockquote:before {
-  content: open-quote;
-  margin-right: 0.15em;
-  vertical-align: -0.4em;
-}
-blockquote:after {
-  content: close-quote;
-  margin-left: 0.15em;
-  vertical-align: -0.6em;
-}
-/* End Common */
 /* Begin Keyframes */
 /* End Keyframes */
 /* Begin Util */
@@ -769,10 +581,6 @@ blockquote:after {
 }
 .clearfix:before,
 .clearfix:after,
-.pagination:before,
-.pagination:after,
-.price:before,
-.price:after,
 .form-group:before,
 .form-group:after {
   display: table;
@@ -1289,12 +1097,12 @@ label.label {
 }
 .custom-number i {
   font-size: 10px;
-  font-size: 0.714rem;
+  font-size: 1rem;
 }
 @media (min-width: 992px) {
   .custom-number i {
     font-size: 5px;
-    font-size: 0.357rem;
+    font-size: 0.5rem;
   }
 }
 .custom-date {
@@ -1340,7 +1148,7 @@ label.label {
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
   font-size: 18px;
-  font-size: 1.286rem;
+  font-size: 1.8rem;
   color: #aaa;
 }
 .custom-select {
@@ -1382,7 +1190,7 @@ label.label {
   top: 50%;
   right: 10px;
   font-size: 18px;
-  font-size: 1.286rem;
+  font-size: 1.8rem;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -1424,7 +1232,7 @@ label.label {
   height: 26px;
   padding-left: 36px;
   font-size: 13px;
-  font-size: 0.929rem;
+  font-size: 1.3rem;
   color: #333;
   vertical-align: middle;
   cursor: pointer;
@@ -1438,7 +1246,7 @@ label.label {
   width: 26px;
   height: 26px;
   font-size: 18px;
-  font-size: 1.286rem;
+  font-size: 1.8rem;
   color: #fff;
   text-align: center;
 }
@@ -1569,8 +1377,8 @@ label.label {
 .button {
   padding: 0.7em 1em;
   margin: 0;
-  font-size: 14px;
-  font-size: 1rem;
+  font-size: 1.4rem;
+  font-size: 0.14rem;
   line-height: 1;
   border: 1px solid transparent;
   background: none;
@@ -1594,15 +1402,15 @@ label.label {
 }
 .button.btn-primary.tiny {
   font-size: 11px;
-  font-size: 0.786rem;
+  font-size: 1.1rem;
 }
 .button.btn-primary.small {
   font-size: 13px;
-  font-size: 0.929rem;
+  font-size: 1.3rem;
 }
 .button.btn-primary.larger {
   font-size: 16px;
-  font-size: 1.143rem;
+  font-size: 1.6rem;
 }
 .button.btn-primary:hover {
   border-color: #666;
@@ -1615,15 +1423,15 @@ label.label {
 }
 .button.btn-secondary.tiny {
   font-size: 11px;
-  font-size: 0.786rem;
+  font-size: 1.1rem;
 }
 .button.btn-secondary.small {
   font-size: 14px;
-  font-size: 1rem;
+  font-size: 1.4rem;
 }
 .button.btn-secondary.larger {
   font-size: 16px;
-  font-size: 1.143rem;
+  font-size: 1.6rem;
 }
 .button.btn-secondary:hover {
   border-color: #666;
@@ -1636,15 +1444,15 @@ label.label {
 }
 .button.btn-tertiary.tiny {
   font-size: 11px;
-  font-size: 0.786rem;
+  font-size: 1.1rem;
 }
 .button.btn-tertiary.small {
   font-size: 14px;
-  font-size: 1rem;
+  font-size: 1.4rem;
 }
 .button.btn-tertiary.larger {
   font-size: 16px;
-  font-size: 1.143rem;
+  font-size: 1.6rem;
 }
 .button.btn-tertiary:hover {
   border-color: #666;
@@ -1659,15 +1467,15 @@ label.label {
 }
 .button.btn-disabled.tiny {
   font-size: 11px;
-  font-size: 0.786rem;
+  font-size: 1.1rem;
 }
 .button.btn-disabled.small {
   font-size: 14px;
-  font-size: 1rem;
+  font-size: 1.4rem;
 }
 .button.btn-disabled.larger {
   font-size: 16px;
-  font-size: 1.143rem;
+  font-size: 1.6rem;
 }
 .button.hollow {
   background-color: transparent;
@@ -1705,15 +1513,15 @@ label.label {
 @media (max-width: 767px) {
   .button.tiny {
     font-size: 11px;
-    font-size: 0.786rem;
+    font-size: 1.1rem;
   }
   .button.small {
     font-size: 12px;
-    font-size: 0.857rem;
+    font-size: 1.2rem;
   }
   .button.larger {
     font-size: 16px;
-    font-size: 1.143rem;
+    font-size: 1.6rem;
   }
 }
 .errors label {
@@ -1724,7 +1532,7 @@ label.label {
   padding-top: 3px;
   color: #ff0000;
   font-size: 12px;
-  font-size: 0.857rem;
+  font-size: 1.2rem;
 }
 .errors input.error,
 .errors textarea.error {

@@ -159,7 +159,7 @@ dfn[title] {
 }
 code, kbd, pre, samp {
   font-family: @monospace;
-  font-size: 1rem;
+  font-size: @font-size;
 }
 hr {
   display: block;
@@ -233,7 +233,7 @@ input[type="date"] {
   -moz-appearance: textfield;
   appearance: none;
   color: @color-input;
-  .font-size(14px);
+  font-size: @font-size;
   .border-radius(0);
   .placeholder(@placeholder);
   &::-ms-clear {
@@ -273,7 +273,7 @@ textarea {
   width: 100%;
   padding: 10px;
   overflow: auto;
-  .font-size(14px);
+  font-size: @font-size;
   color: @color-input;
   vertical-align: top;
   resize: none;
