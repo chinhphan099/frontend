@@ -8,7 +8,7 @@ mixin rowContent(no, obj)
   tr.template&attributes(attributes)
     td.number!=no
     td.psd!=obj.name
-    td.file: a(href=obj.link, target="_blank")!=obj.link
+    td.file: a(href=obj.link, target="_blank")!=obj.link.substr(1)
     td.progress!=obj.progress+'%'
 mixin rowContentList(arr)
   each obj, index in arr
