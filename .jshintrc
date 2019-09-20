@@ -15,7 +15,7 @@
   "devel": true,
   "expr": true,
   "quotmark": "single",
-  "esversion": 6,
+  "esversion": 8,
   "globals": {
     "Modernizr": true,
     "Detectizr": true,
