@@ -190,7 +190,7 @@ task('webserver', (done) => {
     src(PUB.root)
     .pipe(webserver({
         host: ip.address(),
-        port: process.env.PORT || 3000,
+        port: process.env.PORT || 2222,
         directoryListing: true,
         open: '/sitemap.html',
         fallback: '/sitemap.html'
