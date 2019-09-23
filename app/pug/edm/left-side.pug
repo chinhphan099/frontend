@@ -1,10 +1,7 @@
 tr
   td.textCenter.leftSide(colspan="3")
-    <!--[if (gte mso 9)|(IE)]>
-    <table align="center" cellpadding="0" cellspacing="0" border="0" width="100%">
-    <tr>
-    <td width="100">
-    <![endif]--><div class="column left">
+    +ie('<table align="center" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td width="100">')
+    .column.left
       table(align="center" cellpadding="0" cellspacing="0" border="0" width="100%")
         tr
           +spacerWidth(10)
@@ -15,21 +12,16 @@ tr
           // Padding Right
         +spacerHeight(10, 3)
         // Padding Bottom
-    </div><!--[if (gte mso 9)|(IE)]>
-    </td><td width="530">
-    <![endif]--><div class="column right">
+    +ie('</td><td width="530">')
+    .column.right
       table(align="center" cellpadding="0" cellspacing="0" border="0" width="100%")
         tr
           +spacerWidth(10)
           // Padding Left
           td.wrap
-            p.text Praesent laoreet malesuada cursus. Maecenas scelerisque congue eros eu posuere. Praesent in felis ut velit pretium lobortis rhoncus ut erat. <a href="#" title="Read on"><span>Read on</span></a> Praesent laoreet malesuada cursus. Maecenas scelerisque congue eros eu posuere. Praesent in felis ut velit pretium lobortis rhoncus ut erat.
+            p.text Praesent laoreet malesuada cursus. Maecenas scelerisque congue eros eu posuere. Praesent in felis ut velit pretium lobortis rhoncus ut erat. <a href="#" title="Read on" class="link"><span>Read on</span></a> Praesent laoreet malesuada cursus. Maecenas scelerisque congue eros eu posuere. Praesent in felis ut velit pretium lobortis rhoncus ut erat.
           +spacerWidth(10)
           // Padding Right
         +spacerHeight(10, 3)
         // Padding Bottom
-    </div><!--[if (gte mso 9)|(IE)]>
-    </td>
-    </tr>
-    </table>
-    <![endif]-->
+    +ie('</td></tr></table>')

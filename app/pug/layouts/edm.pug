@@ -8,11 +8,11 @@ mixin spacerWidth(width, color)
 mixin spacerHeight(height, colspan, color)
   tr: td(colspan!=colspan height!=height bgcolor!=color class="makeSpacer") &nbsp;
 
-mixin ie(condition, content)
-  | <!--[if !{condition}]>!{content}<![endif]-->
+mixin ie(content)
+  | <!--[if (gte mso 9)|(IE)]>!{content}<![endif]-->
 
 mixin meta_ie(condition)
-  | <!--[if !{condition}]><!-->
+  | <!--[if (gte mso 9)|(IE)]><!-->
   block
   | <!--<![endif]-->
 

@@ -36,7 +36,7 @@ a[x-apple-data-detectors] {
   font-weight: inherit !important;
   line-height: inherit !important;
 }
-.ExternalClass{
+.ExternalClass {
   width:100%;
 }
 .ExternalClass,
@@ -44,7 +44,7 @@ a[x-apple-data-detectors] {
 .ExternalClass span,
 .ExternalClass font,
 .ExternalClass td,
-.ExternalClass div{
+.ExternalClass div {
   line-height: 100%;
 }
 div[style*="margin: 16px 0;"] { Margin: 0 !important; }
@@ -61,6 +61,7 @@ div[style*="margin: 16px 0;"] { Margin: 0 !important; }
 .wrapper {
   width: 100% !important;
   max-width: 100% !important;
+  Margin: 0 auto;
 }
 .webkit {
   max-width: 634px;
@@ -74,11 +75,12 @@ div[style*="margin: 16px 0;"] { Margin: 0 !important; }
   max-width: 630px;
   Margin: 0 auto;
 }
-.wrapper a {
+.wrapper .link {
   color: #0000ff;
   text-decoration: none;
+  cursor: pointer;
 }
-.wrapper a span {
+.wrapper .link span {
   color: #0000ff;
   text-decoration: none;
 }
@@ -189,7 +191,7 @@ div[style*="margin: 16px 0;"] { Margin: 0 !important; }
   display: block;
   Margin: 0 auto;
 }
-@media screen and (min-width: 415px) and (max-width: 640px) {
+@media screen and (min-width: 600px) and (max-width: 640px) {
   .twoColumn .column {
     max-width: 50% !important;
   }
@@ -212,7 +214,7 @@ div[style*="margin: 16px 0;"] { Margin: 0 !important; }
     max-width: 29% !important;
   }
 }
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 599px) {
   .header .column,
   .leftSide .column,
   .twoColumn .column,
@@ -220,6 +222,9 @@ div[style*="margin: 16px 0;"] { Margin: 0 !important; }
     display: block !important;
     width: 100% !important;
     max-width: 100% !important;
+    .text {
+      text-align: center !important;
+    }
   }
   .twoColumn img,
   .threeColumn img {
@@ -227,3 +232,36 @@ div[style*="margin: 16px 0;"] { Margin: 0 !important; }
     max-width: 100% !important;
   }
 }
+
+
+
+//- Email template v1
+.bgBlock {
+  background-image: url("https://i.gyazo.com/dd97e1d44208c519d8775320c870d082.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+.primaryButton {
+  .button {
+    display: block !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    text-decoration: none !important;
+    color: white !important;
+    span {
+      display: block !important;
+      text-decoration: none !important;
+      color: white !important;
+      text-align: center !important;
+    }
+  }
+}
+@media screen and (max-width: 599px) {
+  .column-td {
+    width: 100% !important;
+    float: left !important;
+    display: block !important;
+  }
+}
+//- End Email template v1

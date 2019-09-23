@@ -1,7 +1,6 @@
 tr
   td.textCenter.header(colspan="3")
-    +ie('(gte mso 9)|(IE)',
-      '<table align="center" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td width="248" valign="top">')
+    +ie('<table align="center" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td width="248" valign="top">')
     .column.left
       table(align="center" cellpadding="0" cellspacing="0" border="0" width="100%")
         tr
@@ -12,19 +11,19 @@ tr
           // Padding Left
         +spacerHeight(5, 3)
         // Padding Bottom
-    +ie('(gte mso 9)|(IE)', '</td><td width="182">')
+    +ie('</td><td width="182">')
     .column.center
       table(align="center" cellpadding="0" cellspacing="0" border="0" width="100%")
-        .spacerHeight(5)
+        +spacerHeight(5)
         // Padding Bottom
-    +ie('(gte mso 9)|(IE)', '</td><td width="200">')
+    +ie('</td><td width="200">')
     .column.right
       table(align="center" cellpadding="0" cellspacing="0" border="0" width="100%")
         tr
           +spacerWidth(10)
           // Padding Left
           td.wrap
-            table(align="center" border="0" cellpadding="0" cellspacing="0")
+            table(align="center" cellpadding="0" cellspacing="0" border="0" width="180")
               tr
                 td(align="center" valign="top")
                   a(target="_blank" title="Facebook" href="https://www.facebook.com/chinhphan099")
@@ -42,4 +41,4 @@ tr
           // Padding Left
         +spacerHeight(5, 3)
         // Padding Bottom
-    +ie('(gte mso 9)|(IE)', '</td></tr></table>')
+    +ie('</td></tr></table>')
