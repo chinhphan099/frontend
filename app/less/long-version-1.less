@@ -1,0 +1,137 @@
+body, table, td, a, .wraper {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+table {
+  mso-table-lspace: 0pt;
+  mso-table-rspace: 0pt;
+  border-spacing: 0;
+  border-collapse: collapse !important;
+}
+img {
+  -ms-interpolation-mode: bicubic;
+  line-height: 100%;
+  outline: none;
+  text-decoration: none;
+}
+a[x-apple-data-detectors] {
+  color: inherit !important;
+  text-decoration: none !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+}
+a[href^=tel],
+a[href^=sms] {
+  cursor: default;
+  text-decoration: none;
+  color:#000000;
+  pointer-events:none;
+}
+@media only screen and (max-width: 599px) {
+  .logo {
+    width: 195px !important;
+    height: 40px !important;
+  }
+  img {
+    height: auto !important;
+  }
+  .tdWrap {
+    width: auto !important;
+    max-width: 100%;
+  }
+  .makeSpacer {
+    &--w25,
+    &--w30,
+    &--w35,
+    &--w40,
+    &--w45,
+    &--w50,
+    &--w60 {
+      width: 15px !important;
+    }
+    &--w250 {
+      width: 100px !important;
+    }
+    &--h30 {
+      height: 15px;
+    }
+    &--h40 {
+      height: 25px !important;
+    }
+    &--h50 {
+      height: 30px !important;
+    }
+    &--h400 {
+      height: 250px !important;
+    }
+  }
+  .mainButton {
+    width: 100% !important;
+    &__td {
+      height: 50px !important;
+      padding: 0 15px !important;
+    }
+    &__a, &__span {
+      font-size: 18px !important;
+    }
+  }
+  .bodyText {
+    &--h1 {
+      font-size: 40px !important;
+      line-height: 40px !important;
+    }
+    &--h3 {
+      font-size: 18px !important;
+      line-height: 24px !important
+    }
+    &--f20 {
+      font-size: 18px !important;
+      line-height: 24px !important;
+    }
+  }
+  .margin {
+    &--b20 {
+      Margin: 0 0 10px !important;
+    }
+  }
+  .fullWidthImage {
+    &__img {
+      width: 100% !important;
+      height: auto !important;
+    }
+  }
+  .leftSide {
+    &__thumb {
+      width: 90px !important;
+      vertical-align: top !important;
+    }
+    &__img {
+      width: 90px !important;
+    }
+    &__desc {
+      width: auto !important;
+      padding-left: 15px !important;
+    }
+  }
+  .block-8 {
+    &__h2 {
+      font-size: 19px !important;
+      line-height: 27px !important;
+    }
+  }
+  .bgBlock {
+    &__h2 {
+      font-size: 23px !important;
+      line-height: 32px !important;
+    }
+  }
+  .comment {
+    &__h3 {
+      font-size: 24px !important;
+      line-height: 27px !important;
+    }
+  }
+}

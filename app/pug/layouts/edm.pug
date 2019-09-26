@@ -2,28 +2,18 @@ block vars
   - title = '';
   - subtitle = '';
 
-mixin spacerWidth(width, color)
-  td(width!=width bgcolor!=color class="makeSpacer"): table(border="0" cellpadding="0" cellspacing="0"): tr: td
-
-mixin spacerHeight(height, colspan, color)
-  tr: td(colspan!=colspan height!=height bgcolor!=color class="makeSpacer") &nbsp;
-
-mixin ie(content)
-  | <!--[if (gte mso 9)|(IE)]>!{content}<![endif]-->
-
-mixin meta_ie(condition)
-  | <!--[if (gte mso 9)|(IE)]><!-->
-  block
-  | <!--<![endif]-->
+include ../dfo/mixin
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 html(xmlns="http://www.w3.org/1999/xhtml")
   head
-    meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
-    +meta_ie('!mso')
-      meta(http-equiv="X-UA-Compatible" content="IE=edge")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
-    meta(name="format-detection" content="telephone=no")
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700,800,900%7CPlayfair+Display:400,700,900&amp;display=swap" rel="stylesheet">
+    <!--[if !mso]><!-->
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <!--<![endif]-->
+    <meta name="format-detection" content="telephone=no">
     title=title
     block style
     style

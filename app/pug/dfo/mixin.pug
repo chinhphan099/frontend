@@ -1,0 +1,45 @@
+mixin spacerWidth(width, color)
+  - var classname = 'makeSpacer makeSpacer--w' + width;
+  <!-- Spacer Width --><td width="!{width}" bgcolor="!{color}" class="!{classname}"><table border="0" cellpadding="0" cellspacing="0"><tr><td></td></tr></table></td><!-- End -->
+
+mixin spacerHeight(height, colspan, color)
+  - var classname = 'makeSpacer makeSpacer--h' + height;
+  <!-- Spacer Height --><tr><td colspan="!{colspan}" height="!{height}" bgcolor="!{color}" class="!{classname}">&nbsp;</td></tr><!-- End -->
+
+mixin ie(content)
+  | <!--[if (gte mso 9)|(IE)]>!{content}<![endif]-->
+
+mixin meta_ie(condition)
+  | <!--[if !{condition}]><!-->
+  block
+  | <!--<![endif]-->
+
+mixin table()
+  table(align="center" cellpadding="0" cellspacing="0" border="0" width="100%")&attributes(attributes)
+    if block
+      block
+
+mixin mainButton(buttonText)
+  table(align="center" cellpadding="0" cellspacing="0" border="0" width="370" bgcolor="#19AF42").mainButton.cheatRadius
+    tr
+      td.mainButton__td(align="center" valign="center" bgcolor="#19AF42")
+        a.mainButton__a(href="#" target="_blank")
+          span.mainButton__span !{buttonText}
+
+
+mixin comment(title, bodytext, name)
+  tr
+    +spacerWidth(35)
+    td(width="530").tdWrap
+      +table(style="border: 2px solid #cbcbcb")
+        +spacerHeight(20, 3)
+        tr
+          +spacerWidth(30)
+          td.comment.tdWrap(align="left" width="466")
+            h3.comment__h3: i=title
+            p.bodyText--small.margin--b20=bodytext
+            p.star.margin--b10: img(src="https://i.gyazo.com/d61167c4d6fca842297d7e02f52fde5c.png" width="141" height="28")
+            p.bodyText: b=name
+          +spacerWidth(30)
+        +spacerHeight(20, 3)
+    +spacerWidth(35)
