@@ -28,9 +28,8 @@ mixin mainButton(buttonText)
 
 
 mixin comment(title, bodytext, name)
-  tr
-    +spacerWidth(35)
-    td(width="530").tdWrap
+  tr.block-comment
+    td(style="padding: 0 35px;").tdWrap
       +table(style="border: 2px solid #cbcbcb")
         +spacerHeight(20, 3)
         tr
@@ -42,4 +41,3 @@ mixin comment(title, bodytext, name)
             p.bodyText: b=name
           +spacerWidth(30)
         +spacerHeight(20, 3)
-    +spacerWidth(35)

@@ -1,17 +1,21 @@
-tr
-  td.bgBlock--v0(colspan="3" bgcolor="#17516d" background="https://i.gyazo.com/3f2e41013775b586116e42c87ebe3281.jpg")
+tr.block-1
+  td.bgBlock--v0(bgcolor="#17516d" background="https://i.gyazo.com/3f2e41013775b586116e42c87ebe3281.jpg")
+    <!--[if gte mso 9]>
+    <v:image xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style=" border: 0;display: inline-block; width: 600px; height: 422px;" src="images/hero.jpg" />
+    <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style=" border: 0;display: inline-block;position: absolute; width: 600px; height: 422px;">
+    <v:fill opacity="0%" color="#f7901e" />
+    <v:textbox inset="0,0,0,0">
+    <![endif]-->
     +table()
       +spacerHeight(40, 3)
       tr
         td(align="center" colspan="3" height="40" style="font-size:0;mso-line-height-rule:exactly;")
-          | &nbsp;
           <!--[if mso 16]>
           <v:image src="images/logo.png" style="position:relative;top:20;left:200;width:195px;height:40px"></v:image>
           <![endif]-->
           <!--[if !mso 16]><!-- -->
           img.logo(src="https://i.gyazo.com/becc595c4e736436b5118790bde51fae.png" width="195" height="40")
           <!--<![endif]-->
-          | &nbsp;
       +spacerHeight(10, 3)
       tr
         td(align="center" colspan="3" style="padding: 0 15px;")
@@ -32,3 +36,6 @@ tr
             +spacerHeight(25, 3)
         +spacerWidth(25)
       +spacerHeight(25, 3)
+    <!--[if gte mso 9]>
+    </v:textbox></v:fill></v:rect></v:image>
+    <![endif]-->
