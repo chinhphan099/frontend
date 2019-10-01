@@ -30,6 +30,23 @@ a[href^=sms] {
   color:#000000;
   pointer-events:none;
 }
+.blueLink, .blueLink span {
+  color: #027ec6 !important;
+}
+div[style*='margin: 16px 0;'] {
+  Margin: 0 !important;
+}
+.ExternalClass {
+  width:100%;
+}
+.ExternalClass,
+.ExternalClass p,
+.ExternalClass span,
+.ExternalClass font,
+.ExternalClass td,
+.ExternalClass div {
+  line-height: 100%;
+}
 @media only screen and (max-width: 599px) {
   .logo {
     width: 195px !important;
@@ -40,6 +57,8 @@ a[href^=sms] {
   }
   .tdWrap {
     width: auto !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
     max-width: 100%;
   }
   .makeSpacer {
@@ -113,7 +132,6 @@ a[href^=sms] {
     }
     &__desc {
       width: auto !important;
-      padding-left: 15px !important;
     }
   }
   .block-8 {
@@ -133,5 +151,8 @@ a[href^=sms] {
       font-size: 24px !important;
       line-height: 27px !important;
     }
+  }
+  .bgText {
+    width: auto !important;
   }
 }

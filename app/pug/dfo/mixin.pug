@@ -28,16 +28,14 @@ mixin mainButton(buttonText)
 
 
 mixin comment(title, bodytext, name)
-  tr.block-comment
+  tr
     td(style="padding: 0 35px;").tdWrap
       +table(style="border: 2px solid #cbcbcb")
-        +spacerHeight(20, 3)
+        +spacerHeight(20)
         tr
-          +spacerWidth(30)
-          td.comment.tdWrap(align="left" width="466")
+          td.comment.tdWrap(align="left" style="padding: 0 30px;")
             h3.comment__h3: i=title
             p.bodyText--small.margin--b20=bodytext
             p.star.margin--b10: img(src="https://i.gyazo.com/d61167c4d6fca842297d7e02f52fde5c.png" width="141" height="28")
             p.bodyText: b=name
-          +spacerWidth(30)
-        +spacerHeight(20, 3)
+        +spacerHeight(20)
