@@ -89,10 +89,11 @@ Document
 
 ## Responsive approach
   - Breakpoints
-    + Large screen: 1200 and above
-    + Medium screen: 1024 to 1199
-    + Small screen: 768 to 1023
-    + Extra small screen: below 768
+    + Extra Large screen: 1200 and above
+    + Large screen: 1024 to 1199
+    + Medium screen: 768 to 1023
+    + Small screen: 576 to 767
+    + Extra small screen: below 575
 
 ## Code standards
   - Follow Frontend code conventions
