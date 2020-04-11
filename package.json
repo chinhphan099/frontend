@@ -19,7 +19,7 @@
     "gulp": "4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-cssmin": "~0.1",
-    "gulp-imagemin": "^6.0.0",
+    "gulp-imagemin": "^6.2.0",
     "gulp-jshint": "^2.0.4",
     "gulp-less": "~3.3",
     "gulp-pug": "~3.3",
@@ -27,12 +27,12 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "~2.1",
     "gulp-webserver": "^0.9.1",
-    "jshint": "^2.9.5"
+    "jshint": "^2.11.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.5.5",
-    "gulp-babel": "^8.0.0-beta.2",
+    "@babel/preset-env": "^7.9.5",
+    "gulp-babel": "^8.0.0",
     "gulp-clean": "^0.4.0",
     "gulp-qunit": "^1.5.0",
     "ip": "^1.1.5"

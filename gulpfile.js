@@ -53,9 +53,7 @@ task('scripts', () => {
             gutil.log(displayErr);
             this.emit('end');
         })
-        .pipe(babel({
-            presets: ['@babel/env']
-        }))
+        .pipe(babel())
         .pipe(concat('scripts.js'))
         .pipe(dest(PUB.js))
         /*.pipe(uglify())
@@ -80,9 +78,7 @@ task('jsguide', () => {
             gutil.log(displayErr);
             this.emit('end');
         })
-        .pipe(babel({
-            presets: ['@babel/env']
-        }))
+        .pipe(babel())
         .pipe(concat('jsguide.js'))
         .pipe(dest(PUB.js))
         .pipe(sourcemaps.write('.'))
