@@ -29,6 +29,7 @@ Document
     + File validation demo @ [http://jqueryvalidation.org/files/demo/file_input.html](http://jqueryvalidation.org/files/demo/file_input.html)
     + Slider @ [http://bxslider.com](http://bxslider.com)
     + Lightbox @ [http://fancybox.net](http://fancybox.net)
+    + Photowipe @ [https://github.com/dimsemenov/photoswipe](https://github.com/dimsemenov/photoswipe)
     + Custome scroll @ [http://manos.malihu.gr/jquery-custom-content-scroller/](http://manos.malihu.gr/jquery-custom-content-scroller/)
     + Custom scroll @ [http://jscrollpane.kelvinluck.com](http://jscrollpane.kelvinluck.com)
     + Uploader @ [http://blueimp.github.io/jQuery-File-Upload](http://blueimp.github.io/jQuery-File-Upload)
