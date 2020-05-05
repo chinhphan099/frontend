@@ -28,6 +28,7 @@ Document
     + Form validation @ [http://jqueryvalidation.org](http://jqueryvalidation.org)
     + File validation demo @ [http://jqueryvalidation.org/files/demo/file_input.html](http://jqueryvalidation.org/files/demo/file_input.html)
     + Slider @ [http://bxslider.com](http://bxslider.com)
+    + Swiper Slider @ [https://swiperjs.com/](https://swiperjs.com/)
     + Lightbox @ [http://fancybox.net](http://fancybox.net)
     + Photowipe @ [https://github.com/dimsemenov/photoswipe](https://github.com/dimsemenov/photoswipe)
     + Custome scroll @ [http://manos.malihu.gr/jquery-custom-content-scroller/](http://manos.malihu.gr/jquery-custom-content-scroller/)
@@ -242,4 +243,3 @@ frontend-template
             qunit-1.13.0.js
     /node_modules                <!-- All modules listed as dependencies -->
 ```
-
