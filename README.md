@@ -4,8 +4,6 @@
     * [Jade](http://jade-lang.com)
     * [Less](http://lesscss.org)
     * [jQuery](http://jquery.com)
-    * [Handlebars](http://handlebarsjs.com)
-    * [Grunt](http://gruntjs.com)
     * [Node.js](http://nodejs.org)
 
 ## IDE Configuration
@@ -58,3 +56,22 @@
 
 ## Notes
   - Use **rimraf** to delete **node_modules** folder. See [rimraf](https://github.com/isaacs/rimraf)
+
+## VS Code plugins
+  - [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag)
+  - [Babel JavaScript](https://marketplace.visualstudio.com/items?itemName=mgmcdermott.vscode-language-babel)
+  - [Bracket Pair Colorizer](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer)
+  - [css snippet](https://marketplace.visualstudio.com/items?itemName=PriyankPatel.csssnippet)
+  - [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+  - [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+  - [HTML Snippets](https://marketplace.visualstudio.com/items?itemName=abusaidm.html-snippets)
+  - [JS-CSS-HTML Formatter](https://marketplace.visualstudio.com/items?itemName=lonefy.vscode-JS-CSS-HTML-formatter)
+  - [Monokai Theme](https://marketplace.visualstudio.com/items?itemName=gerane.Theme-Monokai)
+  - [open in browser](https://marketplace.visualstudio.com/items?itemName=techer.open-in-browser)
+  - [Pug](https://marketplace.visualstudio.com/items?itemName=amandeepmittal.pug&ssr=false#overview)
+  - [Reactjs code snippets](https://marketplace.visualstudio.com/items?itemName=xabikos.ReactSnippets)
+  - [Reload](https://marketplace.visualstudio.com/items?itemName=natqe.reload)
+  - [Sublime Text Keymap and Settings Importer](https://marketplace.visualstudio.com/items?itemName=ms-vscode.sublime-keybindings)
+  - [TODO Highlight](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight)
+  - [Velocity](https://marketplace.visualstudio.com/items?itemName=sodatea.velocity)
+  - [vscode-icons](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)
