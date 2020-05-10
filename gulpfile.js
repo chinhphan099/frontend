@@ -11,6 +11,7 @@ const {task, watch, src, dest, parallel, series} = require('gulp'),
     rename = require('gulp-rename'),
     clean = require('gulp-clean'),
     webserver = require('gulp-webserver'),
+    autoprefixer = require('gulp-autoprefixer'),
     gutil = require('gulp-util'),
     babel = require('gulp-babel'),
     sourcemaps = require('gulp-sourcemaps'),
@@ -104,6 +105,7 @@ task('less', () =>
             gutil.log(displayErr);
             this.emit('end');
         }))
+        .pipe(autoprefixer('last 3 versions', 'ie 10'))
         .pipe(dest(PUB.css))
         // .pipe(cssmin())
         // .pipe(rename({suffix: '.min'}))
@@ -176,6 +178,7 @@ task('watch', (done) => {
     watch([SRC.less + '*.less', SRC.less + '**/*.less'], series('less'));
     watch([SRC.js + 'site.js', SRC.js + 'components/*.js'], series('scripts'));
     watch([SRC.js + 'guide/guide.js', SRC.js + 'guide/**/*.js'], series('jsguide'));
+    watch(SRC.js + 'libs/*.js', series('libs'));
     watch([SRC.pug + '**/*.pug', SRC.pug + '*.pug'], series('pug'));
     watch(FILES.images, series('imagemin'));
     watch(FILES.assets, series('copyAssets'));
