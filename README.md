@@ -1,42 +1,22 @@
 ## Frontend template
   - Default HTML5/CSS3/JavaScript template
   - Technologies used:
-    * [Jade](http://jade-lang.com)
+    * [Pug](https://pugjs.org/)
     * [Less](http://lesscss.org)
-    * [jQuery](http://jquery.com)
     * [Node.js](http://nodejs.org)
 
 ## IDE Configuration
-- Open Sublime Text
-- Choose Preferences -> Settings - User
-- The number of spaces a tab is considered equal to "tab_size": 2
-- Set to true to insert spaces when tab is pressed "translate_tabs_to_spaces": true
-- Set to true to removing trailing white space on save "trim_trailing_white_space_on_save": true
-- Set to true to ensure the last line of the file ends in a newline character when saving "ensure_newline_at_eof_on_save": true
-- Preferences.sublime-settings example:
+- Visual Studio Code
+- .editorconfig settup:
   ```
-  {
-    "tab_size": 2,
-    "translate_tabs_to_spaces": true,
-    "trim_trailing_white_space_on_save": true,
-    "ensure_newline_at_eof_on_save": true,
-    "word_wrap": true,
-    "highlight_line": true,
-    "folder_exclude_patterns":
-    [
-      ".svn",
-      ".git",
-      ".hg",
-      "CVS",
-      "node_modules/"
-    ],
-    "font_size": 11,
-    "ignored_packages":
-    [
-      "Markdown",
-      "Vintage"
-    ]
-  }
+  root = true
+  [*]
+  indent_style = space
+  indent_size = 2
+  charset = utf-8
+  trim_trailing_whitespace = true
+  insert_final_newline = true
+  tab_width = 2
   ```
 
 ## Installation
@@ -46,8 +26,7 @@
 
 ### Install Grunt
   - Open Command Line and run
-    * npm install grunt-cli -g
-    * npm install
+    * npm install gulp-cli -g
     * npm install -g gulp
     * npm install
 
