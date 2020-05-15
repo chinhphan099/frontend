@@ -1,21 +1,20 @@
 'use strict';
 
-const {task, watch, src, dest, parallel, series} = require('gulp'),
+const { task, watch, src, dest, parallel, series } = require('gulp'),
   less = require('gulp-less'),
   pug = require('gulp-pug'),
   jshint = require('gulp-jshint'),
   cssmin = require('gulp-cssmin'),
   concat = require('gulp-concat'),
-  imagemin = require('gulp-imagemin'),
   uglify = require('gulp-uglify'),
   rename = require('gulp-rename'),
   clean = require('gulp-clean'),
   webserver = require('gulp-webserver'),
-  autoprefixer = require('gulp-autoprefixer'),
   gutil = require('gulp-util'),
   babel = require('gulp-babel'),
   sourcemaps = require('gulp-sourcemaps'),
   qunit = require('gulp-qunit'),
+  autoprefixer = require('gulp-autoprefixer'),
   ip = require('ip');
 
 // Source folder configuration
@@ -44,12 +43,12 @@ PUB.css = PUB.root + 'css/';
 PUB.fnt = PUB.root + 'fonts/';
 PUB.img = PUB.root + 'images/';
 
-task('scripts', () => {
-  return src([SRC.js + 'site.js', SRC.js + 'components/*.js'])
+task('scripts', () =>
+  src([SRC.js + 'site.js', SRC.js + 'components/*.js'])
     .pipe(sourcemaps.init())
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
-    .on('error', function(err) {
+    .on('error', function (err) {
       let displayErr = gutil.colors.red(err.message);
       gutil.log(displayErr);
       this.emit('end');
@@ -59,24 +58,24 @@ task('scripts', () => {
     }))
     .pipe(concat('scripts.js'))
     .pipe(dest(PUB.js))
-    /*.pipe(uglify())
-    .pipe(rename({ suffix: '.min' }))
-    .on('error', function(err) {
-      let displayErr = gutil.colors.red(err.message);
-      gutil.log(displayErr);
-      this.emit('end');
-    })
-    .pipe(dest(PUB.js))*/
+    // .pipe(uglify())
+    // .pipe(rename({suffix: '.min'}))
+    // .on('error', function(err) {
+    //   let displayErr = gutil.colors.red(err.message);
+    //   gutil.log(displayErr);
+    //   this.emit('end');
+    // })
+    // .pipe(dest(PUB.js))
     .pipe(sourcemaps.write('.'))
     .pipe(dest(PUB.js))
-});
+);
 
-task('jsguide', () => {
-  return src([SRC.js + 'guide/guide.js', SRC.js + 'guide/components/*.js'])
+task('jsguide', () =>
+  src([SRC.js + 'guide/guide.js', SRC.js + 'guide/components/*.js'])
     .pipe(sourcemaps.init())
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
-    .on('error', function(err) {
+    .on('error', function (err) {
       let displayErr = gutil.colors.red(err.message);
       gutil.log(displayErr);
       this.emit('end');
@@ -85,31 +84,38 @@ task('jsguide', () => {
       "presets": ["@babel/preset-env"]
     }))
     .pipe(concat('jsguide.js'))
+    // .pipe(uglify())
+    // .pipe(rename({suffix: '.min'}))
+    // .on('error', function(err) {
+    //   let displayErr = gutil.colors.red(err.message);
+    //   gutil.log(displayErr);
+    //   this.emit('end');
+    // })
     .pipe(dest(PUB.js))
     .pipe(sourcemaps.write('.'))
     .pipe(dest(PUB.js))
-});
+);
 
-task('libs', () => {
-  return src(SRC.js + 'libs/*.js')
-    .pipe(sourcemaps.init())
+task('libs', () =>
+  src(SRC.js + 'libs/*.js')
     .pipe(concat('libs.js'))
-    .pipe(sourcemaps.write('.'))
+    .pipe(uglify())
+    // .pipe(rename({suffix: '.min'}))
     .pipe(dest(PUB.js))
-});
+);
 
 task('less', () =>
   src(FILES.less)
-    .pipe(less().on('error', function(err) {
+    .pipe(less().on('error', function (err) {
       let displayErr = gutil.colors.red(err.message);
       gutil.log(displayErr);
       this.emit('end');
     }))
     .pipe(autoprefixer('last 3 versions', 'ie 10'))
     .pipe(dest(PUB.css))
-    // .pipe(cssmin())
-    // .pipe(rename({suffix: '.min'}))
-    // .pipe(dest(PUB.css))
+  //.pipe(cssmin())
+  //.pipe(rename({ suffix: '.min' }))
+  //.pipe(dest(PUB.css))
 );
 
 task('pug', () =>
@@ -117,14 +123,14 @@ task('pug', () =>
     .pipe(pug({
       pretty: true
     })
-    .on('error', function(err) {
-      let displayErr = gutil.colors.red(err.message);
-      gutil.log(displayErr);
-      this.emit('end');
-    }))
+      .on('error', function (err) {
+        let displayErr = gutil.colors.red(err.message);
+        gutil.log(displayErr);
+        this.emit('end');
+      }))
     .pipe(dest(file => {
       var pugIndex = file.base.lastIndexOf('pug');
-      var relPath = file.base.substr(pugIndex+4);
+      var relPath = file.base.substr(pugIndex + 4);
       return PUB.root + relPath;
     }))
 );
@@ -134,45 +140,30 @@ task('pugdata', () =>
     .pipe(pug({
       pretty: true
     })
-    .on('error', function(err) {
-      let displayErr = gutil.colors.red(err.message);
-      gutil.log(displayErr);
-      this.emit('end');
-    }))
+      .on('error', function (err) {
+        let displayErr = gutil.colors.red(err.message);
+        gutil.log(displayErr);
+        this.emit('end');
+      }))
     .pipe(dest(file => {
       var pugIndex = file.base.lastIndexOf('pug');
-      var relPath = file.base.substr(pugIndex+4);
+      var relPath = file.base.substr(pugIndex + 4);
       return PUB.root + relPath;
     }))
 );
 
-task('imagemin', () =>
-  src(FILES.images)
-  .pipe(imagemin([
-    imagemin.gifsicle({interlaced: true, progressive: true, optimizationLevel: 5}),
-    imagemin.jpegtran({interlaced: true, progressive: true, optimizationLevel: 5}),
-    imagemin.optipng({interlaced: true, progressive: true, optimizationLevel: 5}),
-    imagemin.svgo({
-      plugins: [
-        {removeViewBox: true},
-        {cleanupIDs: false}
-      ]
-    })
-  ]))
-  .pipe(dest(PUB.img))
-);
-
 task('copyAssets', () =>
-  src(FILES.assets)
-    .pipe(dest(PUB.root))
+  src(FILES.assets).pipe(dest(PUB.root))
 );
 
-task('test', function() {
-  return src('./test/*.html')
-    .pipe(qunit({'page': {
-      viewportSize: { width: 1280, height: 800 }
-    }}));
-});
+task('test', () =>
+  src('./test/*.html')
+    .pipe(qunit({
+      'page': {
+        viewportSize: { width: 1280, height: 800 }
+      }
+    }))
+);
 
 task('watch', (done) => {
   watch([SRC.less + '*.less', SRC.less + '**/*.less'], series('less'));
@@ -180,33 +171,29 @@ task('watch', (done) => {
   watch([SRC.js + 'guide/guide.js', SRC.js + 'guide/**/*.js'], series('jsguide'));
   watch(SRC.js + 'libs/*.js', series('libs'));
   watch([SRC.pug + '**/*.pug', SRC.pug + '*.pug'], series('pug'));
-  watch(FILES.images, series('imagemin'));
   watch(FILES.assets, series('copyAssets'));
   done();
 });
 
 task('clean', () => {
-  return src('./public', {read: false, allowEmpty: true})
-    .pipe(clean());
+  return src('./public', { read: false, allowEmpty: true }).pipe(clean());
 });
 
 task('webserver', (done) => {
   src(PUB.root)
-  .pipe(webserver({
-    host: ip.address(),
-    port: process.env.PORT || 2222,
-    directoryListing: true,
-    open: '/sitemap.html',
-    fallback: '/sitemap.html'
-  }));
+    .pipe(webserver({
+      host: ip.address(),
+      port: process.env.PORT || 2222,
+      directoryListing: true,
+      open: '/sitemap.html',
+      fallback: '/404.html'
+    }));
+
   done();
 });
 
-task('optimized',
-  parallel('imagemin')
-);
 task('build',
-  parallel('less', 'pug', 'pugdata', 'scripts', 'jsguide', 'libs', 'copyAssets', 'optimized', 'watch')
+  parallel('less', 'pug', 'scripts', 'jsguide', 'libs', 'copyAssets', 'watch')
 );
 task('default',
   series('clean', 'build', 'webserver')
