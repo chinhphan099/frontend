@@ -18,6 +18,39 @@
   insert_final_newline = true
   tab_width = 2
   ```
+- Setup Theme
+  ```
+  {
+    "explorer.confirmDelete": false,
+    "workbench.colorTheme": "Monokai",
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+    "editor.renderWhitespace": "all",
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "html.format.endWithNewline": true,
+    "files.insertFinalNewline": true,
+    "editor.fontSize": 17,
+    "editor.mouseWheelZoom": true,
+    "editor.wordWrap": "on",
+    "editor.formatOnPaste": false,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.snippetSuggestions": "top",
+    "workbench.iconTheme": "vscode-icons",
+    "vsicons.dontShowNewVersionMessage": true,
+    "editor.tabSize": 2,
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.editor.highlightModifiedTabs": true,
+    "files.defaultLanguage": "less",
+    "workbench.colorCustomizations": {
+      "tab.hoverBackground": "#000",
+      "tab.activeBackground": "#000",
+      "tab.activeModifiedBorder": "#f00",
+      "tab.inactiveModifiedBorder": "#f00",
+      "tab.activeBorderTop": "#00c8fd",
+      "tab.inactiveBackground": "#313131"
+    }
+  }
+  ```
 
 ## Installation
 ### Install Node.js
