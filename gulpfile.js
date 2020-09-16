@@ -140,11 +140,11 @@ task('pugdata', () =>
     .pipe(pug({
       pretty: true
     })
-      .on('error', function (err) {
-        let displayErr = gutil.colors.red(err.message);
-        gutil.log(displayErr);
-        this.emit('end');
-      }))
+    .on('error', function (err) {
+      let displayErr = gutil.colors.red(err.message);
+      gutil.log(displayErr);
+      this.emit('end');
+    }))
     .pipe(dest(file => {
       var pugIndex = file.base.lastIndexOf('pug');
       var relPath = file.base.substr(pugIndex + 4);
