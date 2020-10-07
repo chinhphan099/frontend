@@ -216,18 +216,18 @@ var Site = (function($, window, undefined) {
 
 })(jQuery, window);
 
-jQuery(function() {
-  Site.globalFct();
-  Site.customValid();
-  jQuery.ajax({
-    url: 'data/data.json',
-    type: 'GET'
-  }).done(function(data) {
-    if(data) {
-      var template = 'data/handlebar.html';
-      Site.compileHandlebar('GET', template, data).done(function(html) {
-        Site.body.append(html);
-      });
-    }
-  });
-});
+// jQuery(function() {
+//   Site.globalFct();
+//   Site.customValid();
+//   jQuery.ajax({
+//     url: 'data/data.json',
+//     type: 'GET'
+//   }).done(function(data) {
+//     if(data) {
+//       var template = 'data/handlebar.html';
+//       Site.compileHandlebar('GET', template, data).done(function(html) {
+//         Site.body.append(html);
+//       });
+//     }
+//   });
+// });
