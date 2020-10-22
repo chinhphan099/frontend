@@ -45,7 +45,7 @@ PUB.img = PUB.root + 'images/';
 
 task('scripts', () =>
   src([SRC.js + 'site.js', SRC.js + 'components/*.js'])
-    .pipe(sourcemaps.init())
+    // .pipe(sourcemaps.init())
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .on('error', function (err) {
@@ -66,13 +66,13 @@ task('scripts', () =>
     //   this.emit('end');
     // })
     // .pipe(dest(PUB.js))
-    .pipe(sourcemaps.write('.'))
+    // .pipe(sourcemaps.write('.'))
     .pipe(dest(PUB.js))
 );
 
 task('jsguide', () =>
   src([SRC.js + 'guide/guide.js', SRC.js + 'guide/components/*.js'])
-    .pipe(sourcemaps.init())
+    // .pipe(sourcemaps.init())
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .on('error', function (err) {
@@ -92,7 +92,7 @@ task('jsguide', () =>
     //   this.emit('end');
     // })
     .pipe(dest(PUB.js))
-    .pipe(sourcemaps.write('.'))
+    // .pipe(sourcemaps.write('.'))
     .pipe(dest(PUB.js))
 );
 
