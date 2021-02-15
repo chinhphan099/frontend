@@ -85,6 +85,7 @@ background-position-y,
 background-clip,
 background-origin,
 background-size,
+backdrop-filter,
 
 border,
 border-color,
