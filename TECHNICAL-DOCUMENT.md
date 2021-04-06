@@ -36,6 +36,7 @@ Document
     + Uploader @ [http://blueimp.github.io/jQuery-File-Upload](http://blueimp.github.io/jQuery-File-Upload)
     + Easing animate @ [http://easings.net/](http://easings.net/)
     + Zoom @ [http://www.elevateweb.co.uk/image-zoom](http://www.elevateweb.co.uk/image-zoom)
+    + Phone Input @ [https://github.com/jackocnr/intl-tel-input](https://github.com/jackocnr/intl-tel-input)
     + AutoComplete @ [https://www.devbridge.com/sourcery/components/jquery-autocomplete/](https://www.devbridge.com/sourcery/components/jquery-autocomplete/)
     + Upload & Drag & Drop image [http://foliotek.github.io/Croppie/](http://foliotek.github.io/Croppie/)
     + Media Query Snippets [http://nmsdvid.com/snippets/](http://nmsdvid.com/snippets/)
