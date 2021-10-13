@@ -35,6 +35,7 @@ Document
     + Custom scroll @ [http://jscrollpane.kelvinluck.com](http://jscrollpane.kelvinluck.com)
     + Uploader @ [http://blueimp.github.io/jQuery-File-Upload](http://blueimp.github.io/jQuery-File-Upload)
     + Easing animate @ [http://easings.net/](http://easings.net/)
+    + Animation css @ [https://wowjs.uk/docs.html](https://wowjs.uk/docs.html)
     + Zoom @ [http://www.elevateweb.co.uk/image-zoom](http://www.elevateweb.co.uk/image-zoom)
     + Phone Input @ [https://github.com/jackocnr/intl-tel-input](https://github.com/jackocnr/intl-tel-input)
     + AutoComplete @ [https://www.devbridge.com/sourcery/components/jquery-autocomplete/](https://www.devbridge.com/sourcery/components/jquery-autocomplete/)
