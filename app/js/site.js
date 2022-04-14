@@ -192,6 +192,27 @@ var Site = (function($, window, undefined) {
     return deferred;
   };
 
+  var clearParameter = function(url, param) {
+    const urlparts = url.split('?')
+    if (urlparts.length >= 2) {
+      const urlBase = urlparts.shift()
+      const queryString = urlparts.join('?')
+
+      const prefix = encodeURIComponent(param) + '='
+      const pars = queryString.split(/[&;]/g)
+      for (let i = pars.length - 1; i >= 0; i--) {
+        if (pars[i].lastIndexOf(prefix, 0) !== -1) {
+          pars.splice(i, 1)
+        }
+      }
+      url = urlBase
+      if (pars.length > 0) {
+        url += '?' + pars.join('&')
+      }
+      return url;
+    }
+  };
+
   return {
     win: win,
     doc: doc,
@@ -209,6 +230,7 @@ var Site = (function($, window, undefined) {
     checkDate: checkDate,
     scrollTopAfterCollapse: scrollTopAfterCollapse,
     compileHandlebar: compileHandlebar,
+    clearParameter: clearParameter,
     createCookie: createCookie,
     readCookie: readCookie,
     eraseCookie: eraseCookie
