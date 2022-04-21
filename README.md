@@ -18,6 +18,7 @@
   insert_final_newline = true
   tab_width = 2
   ```
+
 - Setup Theme
   ```
   {
