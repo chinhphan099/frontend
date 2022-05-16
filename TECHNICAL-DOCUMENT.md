@@ -52,6 +52,7 @@ Document
     + Menu aim [https://github.com/kamens/jQuery-menu-aim](https://github.com/kamens/jQuery-menu-aim)
     + Datepicker [https://github.com/uxsolutions/bootstrap-datepicker](https://github.com/uxsolutions/bootstrap-datepicker)
     + Chosen dropdown [https://github.com/harvesthq/chosen](https://github.com/harvesthq/chosen)
+    + Mansony Layout [https://github.com/TristanBlg/Isolde](https://github.com/TristanBlg/Isolde)
 
 ## Web service
   - RESTFUL
