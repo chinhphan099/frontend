@@ -2,10 +2,10 @@ Document
 ===========================
 
 ## Project overview
-  - Project summary
+  - Front-end source
 
 ## Source control
-  - GIT repository @ [http://url](http://url)
+  - GIT repository @ [https://github.com/chinhphan099/frontend](https://github.com/chinhphan099/frontend)
 
 ## Technical used
   - HTML5
